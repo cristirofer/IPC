@@ -44,23 +44,24 @@ public class LogInController implements Initializable {
     @FXML
     private Button logInButton;
     
-    private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+    private void manageError(Label errorLabel,TextField textField1,TextField textField2, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
-        showErrorMessage(errorLabel,textField);
-        textField.requestFocus();
+        showErrorMessage(errorLabel,textField1,textField2);
+        textField1.requestFocus();
     }
-    private void manageCorrect(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+    private void manageCorrect(Label errorLabel,TextField textField1,TextField textField2, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.TRUE);
-        hideErrorMessage(errorLabel,textField);
+        hideErrorMessage(errorLabel,textField1, textField2);
     }
     
-    private void showErrorMessage(Label errorLabel,TextField textField){
+    private void showErrorMessage(Label errorLabel,TextField textField, TextField textField2){
         errorLabel.visibleProperty().set(true);
         textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
     }
-    private void hideErrorMessage(Label errorLabel,TextField textField){
+    private void hideErrorMessage(Label errorLabel,TextField textField1,TextField textField2){
         errorLabel.visibleProperty().set(false);
-        textField.styleProperty().setValue("");
+        textField1.styleProperty().setValue("");
+        textField2.styleProperty().setValue("");
     }
 
     /**
@@ -90,9 +91,9 @@ public class LogInController implements Initializable {
     private void checkEditEmail() throws ClubDAOException, IOException{
     if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()))
         //Incorrect email
-        manageError(loginErrorMessage, loginemail,validEmail );
+        manageError(loginErrorMessage, loginemail,loginpassword,validEmail );
     else
-        manageCorrect(loginErrorMessage, loginemail,validEmail );
+        manageCorrect(loginErrorMessage, loginemail,loginpassword,validEmail );
     }
     
     @FXML
