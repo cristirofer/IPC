@@ -5,19 +5,20 @@
  */
 package javafxmlapplication;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Club;
+import model.ClubDAOException;
 
 
 public class JavaFXMLApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Club.getInstance().setName("GreenBall");
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
         FXMLLoader loader= new  FXMLLoader(getClass().getResource("/view/Log-in (main Screen).fxml"));
@@ -37,7 +38,8 @@ public class JavaFXMLApplication extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClubDAOException, IOException {
+        Club.getInstance();//.setName("GreenBall");
         launch(args);
         
     }

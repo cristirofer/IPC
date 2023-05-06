@@ -30,9 +30,7 @@ import model.ClubDAOException;
  */
 public class LogInController implements Initializable {
     
-    private BooleanProperty validPassword;
-    private BooleanProperty validEmail;
-    private BooleanProperty equalPasswords; 
+    private BooleanProperty validFields;
     private final int EQUALS = 0;  
 
     
@@ -45,21 +43,21 @@ public class LogInController implements Initializable {
     @FXML
     private Button logInButton;
     
-    private void manageError(Label errorLabel,TextField textField1,TextField textField2, BooleanProperty boolProp ){
+    private void manageError(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage(errorLabel,textField1,textField2);
         textField1.requestFocus();
     }
-    private void manageCorrect(Label errorLabel,TextField textField1,TextField textField2, BooleanProperty boolProp ){
+    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.TRUE);
         hideErrorMessage(errorLabel,textField1, textField2);
     }
     
-    private void showErrorMessage(Label errorLabel,TextField textField, TextField textField2){
+    private void showErrorMessage(Label errorLabel,TextField textField, PasswordField textField2){
         errorLabel.visibleProperty().set(true);
         textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
     }
-    private void hideErrorMessage(Label errorLabel,TextField textField1,TextField textField2){
+    private void hideErrorMessage(Label errorLabel,TextField textField1,PasswordField textField2){
         errorLabel.visibleProperty().set(false);
         textField1.styleProperty().setValue("");
         textField2.styleProperty().setValue("");
@@ -70,31 +68,30 @@ public class LogInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        validEmail = new SimpleBooleanProperty();
-        validPassword = new SimpleBooleanProperty();   
-        equalPasswords = new SimpleBooleanProperty();
-        
-        validPassword.setValue(Boolean.FALSE);
-        validEmail.setValue(Boolean.FALSE);
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
+        validFields = new SimpleBooleanProperty();
+        validFields.setValue(Boolean.FALSE);
         logInButton.disableProperty().bind(Bindings.not(validFields)); 
-         loginemail.focusedProperty().addListener((observable, oldValue, newValue)->{
+        loginemail.focusedProperty().addListener((observable, oldValue, newValue)->{
         if(!newValue){ 
-            try {
             //focus lost.
-            checkEditEmail();
-            } catch (ClubDAOException | IOException ex) {
-                Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            checkEditedFields();
         }
         });
+    }
+    private void checkEditedFields() {
+    if((loginpassword.textProperty().getValueSafe().compareTo("") != EQUALS) && (loginemail.textProperty().getValueSafe().compareTo("") != EQUALS)){
+        validFields.setValue(Boolean.TRUE);
+    }else
+        validFields.setValue(Boolean.FALSE);
     }    
-    private void checkEditEmail() throws ClubDAOException, IOException{
-    if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()))
-        //Incorrect email
-        manageError(loginErrorMessage, loginemail,loginpassword,validEmail );
-    else
-        manageCorrect(loginErrorMessage, loginemail,loginpassword,validEmail );
+    private boolean checkEditEmail() throws ClubDAOException, IOException{
+        if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe())){
+            manageError(loginErrorMessage, loginemail,loginpassword,validFields );
+            return false;
+        }else{
+            manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
+            return true;
+        }
     }
     
     @FXML
@@ -102,7 +99,12 @@ public class LogInController implements Initializable {
     }
 
     @FXML
-    private void logInClicked(MouseEvent event) {
+    private void logInClicked(MouseEvent event) throws ClubDAOException, IOException {
+        if(checkEditEmail()){
+            //load next screen
+        }else{//do nothing, user must re-try
+            
+        }
     }
     
 }
