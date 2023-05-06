@@ -84,12 +84,14 @@ public class LogInController implements Initializable {
     }else
         validFields.setValue(Boolean.FALSE);
     }    
-    private void checkEditEmail() throws ClubDAOException, IOException{
-    if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()))
-        //Incorrect email
-        manageError(loginErrorMessage, loginemail,loginpassword,validFields );
-    else
-        manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
+    private boolean checkEditEmail() throws ClubDAOException, IOException{
+        if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe())){
+            manageError(loginErrorMessage, loginemail,loginpassword,validFields );
+            return false;
+        }else{
+            manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
+            return true;
+        }
     }
     
     @FXML
@@ -98,7 +100,11 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logInClicked(MouseEvent event) throws ClubDAOException, IOException {
-        checkEditEmail();
+        if(checkEditEmail()){
+            //load next screen
+        }else{//do nothing, user must re-try
+            
+        }
     }
     
 }
