@@ -10,15 +10,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Club;
 
 
 public class JavaFXMLApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        Club.getInstance().setName("GreenBall");
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("/view/TableView.fxml"));
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource(""));
         Parent root = loader.load();
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
