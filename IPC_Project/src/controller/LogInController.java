@@ -20,7 +20,12 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.ClubDAOException;
 
 /**
@@ -95,7 +100,17 @@ public class LogInController implements Initializable {
     }
     
     @FXML
-    private void loadSignUpTab(MouseEvent event) {
+    private void loadSignUpTab(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Sign-Up.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Sign-Up");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        loginemail.getScene().getWindow().hide();
+        
     }
 
     @FXML
