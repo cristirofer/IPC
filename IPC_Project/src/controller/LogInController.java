@@ -71,7 +71,7 @@ public class LogInController implements Initializable {
         validFields = new SimpleBooleanProperty();
         validFields.setValue(Boolean.FALSE);
         logInButton.disableProperty().bind(Bindings.not(validFields)); 
-        loginemail.focusedProperty().addListener((observable, oldValue, newValue)->{
+        loginpassword.focusedProperty().addListener((observable, oldValue, newValue)->{
         if(!newValue){ 
             //focus lost.
             checkEditedFields();
