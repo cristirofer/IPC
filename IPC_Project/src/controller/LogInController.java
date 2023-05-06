@@ -20,9 +20,11 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -47,6 +49,8 @@ public class LogInController implements Initializable {
     private Label loginErrorMessage;
     @FXML
     private Button logInButton;
+    @FXML
+    private Hyperlink linktoSignUp;
     
     private void manageError(Label errorLabel,TextField textField1,PasswordField textField2){
         showErrorMessage(errorLabel,textField1,textField2);
@@ -98,8 +102,7 @@ public class LogInController implements Initializable {
             return true;
         }
     }
-    
-    @FXML
+    /*
     private void loadSignUpTab(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Sign-Up.fxml"));
         Parent root = loader.load();
@@ -112,7 +115,8 @@ public class LogInController implements Initializable {
         loginemail.getScene().getWindow().hide();
         
     }
-
+*/
+    
     @FXML
     private void logInClicked(MouseEvent event) throws ClubDAOException, IOException {
         if(checkEditEmail()){
@@ -120,6 +124,19 @@ public class LogInController implements Initializable {
         }else{//do nothing, user must re-try
             
         }
+    }
+
+    @FXML
+    private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Sign-Up.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Sign-Up");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        loginemail.getScene().getWindow().hide();
     }
     
 }

@@ -105,7 +105,7 @@
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
-                  <Hyperlink onMouseClicked="#loadSignUpTab" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
+                  <Hyperlink fx:id="linktoSignUp" accessibleRole="BUTTON" onAction="#signUpClicked" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
