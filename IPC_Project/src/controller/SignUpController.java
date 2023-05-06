@@ -6,7 +6,11 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -15,6 +19,25 @@ import javafx.fxml.Initializable;
  */
 public class SignUpController implements Initializable {
 
+    @FXML
+    private TextField nameS;
+    @FXML
+    private TextField fNameS;
+    @FXML
+    private TextField numberS;
+    @FXML
+    private TextField passwS;
+    @FXML
+    private TextField repPasswS;
+    @FXML
+    private TextField cardS;
+    @FXML
+    private TextField profileS;
+    @FXML
+    private Button acceptButton;
+    @FXML
+    private Button cancelButton;
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +45,13 @@ public class SignUpController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void isAccepted(MouseEvent event) {
+    }
+
+    @FXML
+    private void isCanceled(MouseEvent event) {
+    }
     
 }
