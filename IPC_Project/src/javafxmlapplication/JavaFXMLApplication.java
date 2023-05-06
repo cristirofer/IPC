@@ -39,7 +39,7 @@ public class JavaFXMLApplication extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ClubDAOException, IOException {
-        Club.getInstance();//.setName("GreenBall");
+        Club.getInstance().setName("GreenBall");
         launch(args);
         
     }

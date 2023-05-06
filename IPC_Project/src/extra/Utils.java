@@ -15,6 +15,8 @@ import model.Member;
  */
 
 public class Utils {
+    private final int EQUALS = 0;  
+
     public static Boolean checkEmail(String email){
         if(email == null) return false;
         String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
@@ -34,7 +36,7 @@ public class Utils {
         if(nickname == null || password == null) return false;
         Member member;
         member = Club.getInstance().getMemberByCredentials(nickname,password);
-        if(member.equals(null)){
+        if(member.compareTo(null) == EQUALS){
             return false;
         } else {
             return true;
