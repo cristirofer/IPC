@@ -72,11 +72,10 @@ public class LogInController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         validEmail = new SimpleBooleanProperty();
         validPassword = new SimpleBooleanProperty();   
-        equalPasswords = new SimpleBooleanProperty();
         
         validPassword.setValue(Boolean.FALSE);
         validEmail.setValue(Boolean.FALSE);
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
+        BooleanBinding validFields = Bindings.and(validEmail, validPassword);
         logInButton.disableProperty().bind(Bindings.not(validFields)); 
          loginemail.focusedProperty().addListener((observable, oldValue, newValue)->{
         if(!newValue){ 
