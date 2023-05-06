@@ -4,6 +4,8 @@
  */
 package extra;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.Club;
@@ -33,13 +35,16 @@ public class Utils {
         return matcher.matches();
     }
     public static Boolean checkLogInUser(String nickname, String password) throws ClubDAOException, IOException{
+        Boolean res = false;
         if(nickname == null || password == null) return false;
-        Member member = null;
-        if(member == Club.getInstance().getMemberByCredentials(nickname,password)){
-            return false;
-        } else {
-            return true;
+        List<Member> members = Club.getInstance().getMembers();
+        for (Member member : members) {
+            if(member.getNickName() == nickname){
+                res = true;
+                break;
+            }
         }
+        return res;
     }
     
     
