@@ -43,24 +43,24 @@ public class LogInController implements Initializable {
     @FXML
     private Button logInButton;
     
-    private void manageError(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
-        boolProp.setValue(Boolean.FALSE);
+    private void manageError(Label errorLabel,TextField textField1,PasswordField textField2){
         showErrorMessage(errorLabel,textField1,textField2);
         textField1.requestFocus();
     }
-    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
-        boolProp.setValue(Boolean.TRUE);
-        hideErrorMessage(errorLabel,textField1, textField2);
+    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2){
+        hideErrorMessage(errorLabel);
     }
     
-    private void showErrorMessage(Label errorLabel,TextField textField, PasswordField textField2){
+    private void showErrorMessage(Label errorLabel,TextField textField1, PasswordField textField2){
         errorLabel.visibleProperty().set(true);
-        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
-    }
-    private void hideErrorMessage(Label errorLabel,TextField textField1,PasswordField textField2){
-        errorLabel.visibleProperty().set(false);
         textField1.styleProperty().setValue("");
         textField2.styleProperty().setValue("");
+        textField1.styleProperty().setValue("-fx-background-color: #FCE5E0");
+        textField2.styleProperty().setValue("-fx-background-color: #FCE5E0");    
+
+    }
+    private void hideErrorMessage(Label errorLabel){
+        errorLabel.visibleProperty().set(false);
     }
 
     /**
@@ -86,10 +86,10 @@ public class LogInController implements Initializable {
     }    
     private boolean checkEditEmail() throws ClubDAOException, IOException{
         if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe())){
-            manageError(loginErrorMessage, loginemail,loginpassword,validFields );
+            manageError(loginErrorMessage, loginemail,loginpassword );
             return false;
         }else{
-            manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
+            manageCorrect(loginErrorMessage, loginemail,loginpassword);
             return true;
         }
     }
