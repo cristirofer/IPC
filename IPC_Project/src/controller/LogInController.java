@@ -79,7 +79,7 @@ public class LogInController implements Initializable {
         });
     }
     private void checkEditedFields() {
-    if((loginpassword.textProperty().getValueSafe().compareTo("") != EQUALS) || (loginemail.textProperty().getValueSafe().compareTo("") != EQUALS)){
+    if((loginpassword.textProperty().getValueSafe().compareTo("") != EQUALS) && (loginemail.textProperty().getValueSafe().compareTo("") != EQUALS)){
         validFields.setValue(Boolean.TRUE);
     }else
         validFields.setValue(Boolean.FALSE);
