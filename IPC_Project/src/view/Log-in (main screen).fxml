@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonViewController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonViewController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="540.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/tennisCourt.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="390.0">
+      <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="674.0">
          <children>
             <ImageView fitHeight="61.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                <image>
