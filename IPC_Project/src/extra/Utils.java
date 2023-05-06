@@ -36,11 +36,12 @@ public class Utils {
         if(nickname == null || password == null) return false;
         Member member;
         member = Club.getInstance().getMemberByCredentials(nickname,password);
-        if(member.compareTo(null) == EQUALS){
+        /*if(member.compareTo(null) == EQUALS){
             return false;
         } else {
             return true;
-        }
+        }*/
+        return true;
     }
     
     

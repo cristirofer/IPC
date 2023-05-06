@@ -8,12 +8,14 @@ import extra.Utils;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.TextField;
 import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.MouseEvent;
@@ -27,7 +29,6 @@ import model.ClubDAOException;
 public class SignUpController implements Initializable {
 
     private BooleanProperty validFields;
-    private final int EQUALS = 0; 
     
     @FXML
     private TextField nameS;
@@ -67,8 +68,40 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        validEmail = new SimpleBooleanProperty();
+        validPassword = new SimpleBooleanProperty();   
+        equalPasswords = new SimpleBooleanProperty();
+        
+        validPassword.setValue(Boolean.FALSE);
+        validEmail.setValue(Boolean.FALSE);
+        equalPasswords.setValue(Boolean.FALSE);
+        
+        BooleanBinding validFields = Bindings.and(validEmail, validPassword)
+                 .and(equalPasswords);
+        acceptButton.disableProperty().bind(Bindings.not(validFields));
+        cancelButton.setOnAction((event)->{cancelButton.getScene().getWindow().hide();});
+        
+        nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkEditEmail();
+            }
+        });
+        
+        
+        passwS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkEditPassword();
+            }
+        });
+        
+        repPasswS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkEquals();
+            }
+        });
+        
+        
+    } 
 
     @FXML
     private void isAccepted(MouseEvent event) {
@@ -80,11 +113,26 @@ public class SignUpController implements Initializable {
         validPassword.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
     }
-
+    private void checkEditEmail(){
+        if(!Utils.checkEmail(nicknameS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(lIncorrectEmail, nicknameS,validEmail );
+        else
+            manageCorrect(lIncorrectEmail, nicknameS,validEmail );
+    }
+    
+    
+    private void checkEditPassword(){
+        if(!Utils.checkPassword(passwS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(lIncorrectPassword, passwS,validPassword );
+        else
+            manageCorrect(lIncorrectPassword, passwS,validPassword );
+    }
+/*
     @FXML
     private void isCanceled(MouseEvent event) {
     }
-    /*
     private void manageError(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage(errorLabel,textField1,textField2);
@@ -130,13 +178,6 @@ public class SignUpController implements Initializable {
         manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
     }
     */
-    @FXML
-    private void loadSignUpTab(MouseEvent event) {
-    }
-
-    @FXML
-    private void logInClicked(MouseEvent event) {
-    }
     
     
     private void checkEquals(){
@@ -175,3 +216,54 @@ public class SignUpController implements Initializable {
         textField.styleProperty().setValue("");
     }
 }
+
+
+/*
+    @FXML
+    private void isCanceled(MouseEvent event) {
+    }
+    private void manageError(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.FALSE);
+        showErrorMessage(errorLabel,textField1,textField2);
+        textField1.requestFocus();
+    }
+    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.TRUE);
+        hideErrorMessage(errorLabel,textField1, textField2);
+    }
+    
+    private void showErrorMessage(Label errorLabel,TextField textField, PasswordField textField2){
+        errorLabel.visibleProperty().set(true);
+        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
+    }
+    private void hideErrorMessage(Label errorLabel,TextField textField1,PasswordField textField2){
+        errorLabel.visibleProperty().set(false);
+        textField1.styleProperty().setValue("");
+        textField2.styleProperty().setValue("");
+    }
+
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        validFields = new SimpleBooleanProperty();
+        validFields.setValue(Boolean.FALSE);
+        logInButton.disableProperty().bind(Bindings.not(validFields)); 
+        loginemail.focusedProperty().addListener((observable, oldValue, newValue)->{
+        if(!newValue){ 
+            try {
+            //focus lost.
+            checkEditEmail();
+            } catch (ClubDAOException | IOException ex) {
+                Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        });
+    }    
+    private void checkEditEmail() throws ClubDAOException, IOException{
+    if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()))
+        //Incorrect email
+        manageError(loginErrorMessage, loginemail,loginpassword,validFields );
+    else
+        manageCorrect(loginErrorMessage, loginemail,loginpassword,validFields );
+    }
+    */
