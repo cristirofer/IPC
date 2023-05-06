@@ -9,14 +9,14 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icons/tennisCourt.jpg" />
+            <Image url="@../resources/images/tennisCourt.jpg" />
          </image>
       </ImageView>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="390.0">
          <children>
             <ImageView fitHeight="61.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/title.png" />
+                  <Image url="@../resources/images/title.png" />
                </image>
             </ImageView>
          </children>

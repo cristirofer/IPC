@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="540.0" prefWidth="329.0" />
@@ -14,7 +13,7 @@
          <children>
             <ImageView fitHeight="126.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../icons/db6d7b6dc83b9c59286a10c9a023f14b.png" />
+                  <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" />
