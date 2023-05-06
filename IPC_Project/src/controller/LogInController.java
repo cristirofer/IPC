@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.PasswordField;
 import model.ClubDAOException;
 
 /**
@@ -38,7 +39,7 @@ public class LogInController implements Initializable {
     @FXML
     private TextField loginemail;
     @FXML
-    private TextField loginpassword;
+    private PasswordField loginpassword;
     @FXML
     private Label loginErrorMessage;
     @FXML
