@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonViewController">
    <children>
@@ -14,11 +23,79 @@
       </ImageView>
       <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="674.0">
          <children>
-            <ImageView fitHeight="61.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/images/title.png" />
-               </image>
-            </ImageView>
+            <HBox alignment="TOP_RIGHT" prefHeight="131.0" prefWidth="674.0">
+               <children>
+                  <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/title.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <opaqueInsets>
+                  <Insets right="10.0" />
+               </opaqueInsets>
+            </HBox>
+            <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f">
+               <font>
+                  <Font name="Niagara Solid" size="45.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/c60bee2195287f294ee99ae8635173d4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <GridPane prefHeight="58.0" prefWidth="627.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.20001220703125" minWidth="10.0" prefWidth="232.6000244140625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.5999755859375" minWidth="10.0" prefWidth="441.3999755859375" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="31.799993896484374" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="32.60001220703125" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label contentDisplay="CENTER" text="User" textAlignment="RIGHT" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="Calibri Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Password" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="211.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
+                  <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="674.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
+                  <Hyperlink prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/check%20availability.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
