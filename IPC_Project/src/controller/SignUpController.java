@@ -6,10 +6,13 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -37,7 +40,21 @@ public class SignUpController implements Initializable {
     private Button acceptButton;
     @FXML
     private Button cancelButton;
+    @FXML
+    private TextField nicknameS;
+    @FXML
+    private Label lIncorrectEmail;
+    @FXML
+    private Label lIncorrectPassword;
+    @FXML
+    private Label lPassDifferent;
 
+    
+    //properties to control valid fieds values. 
+    private final int EQUALS = 0;
+    private BooleanProperty validPassword;
+    private BooleanProperty validEmail;
+    private BooleanProperty equalPasswords;
     /**
      * Initializes the controller class.
      */
@@ -48,10 +65,53 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void isAccepted(MouseEvent event) {
+        nicknameS.textProperty().setValue("");
+        passwS.textProperty().setValue("");
+        repPasswS.textProperty().setValue("");
+        
+        validEmail.setValue(Boolean.FALSE);
+        validPassword.setValue(Boolean.FALSE);
+        equalPasswords.setValue(Boolean.FALSE);
     }
 
     @FXML
     private void isCanceled(MouseEvent event) {
     }
     
+    
+    private void checkEquals(){
+        if(passwS.textProperty().getValueSafe().compareTo(repPasswS.textProperty().getValueSafe()) != EQUALS){
+            showErrorMessage(lPassDifferent, repPasswS);
+            equalPasswords.setValue(Boolean.FALSE);
+            passwS.textProperty().setValue("");
+            repPasswS.textProperty().setValue("");
+            passwS.requestFocus();
+        }else
+            manageCorrect(lPassDifferent, repPasswS, equalPasswords);
+    }
+    private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.FALSE);
+        showErrorMessage(errorLabel,textField);
+        textField.requestFocus();
+ 
+    }
+    
+    private void manageCorrect(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.TRUE);
+        hideErrorMessage(errorLabel,textField);
+        
+    }
+    
+    private void showErrorMessage(Label errorLabel,TextField textField)
+    {
+        errorLabel.visibleProperty().set(true);
+        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
+    }
+    
+    
+    private void hideErrorMessage(Label errorLabel,TextField textField)
+    {
+        errorLabel.visibleProperty().set(false);
+        textField.styleProperty().setValue("");
+    }
 }
