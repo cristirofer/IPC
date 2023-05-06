@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+   <children>
+      <VBox prefHeight="540.0" prefWidth="289.0">
+         <children>
+            <ImageView fitHeight="552.0" fitWidth="453.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/tennisCourt2.jpg" />
+               </image>
+            </ImageView>
+         </children></VBox>
+      <VBox alignment="CENTER" prefHeight="540.0" prefWidth="671.0">
+         <children>
+            <ImageView fitHeight="81.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/availability.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" />
+            <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="146.0" prefWidth="507.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="236.80005493164063" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="210.6" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="222.59999999999997" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Court Number" textAlignment="RIGHT">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin></Label>
+                  <Label text="Time" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding></Label>
+                  <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="fNameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <opaqueInsets>
+                  <Insets right="10.0" />
+               </opaqueInsets>
+            </GridPane>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="146.0" prefWidth="507.0">
+               <children>
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#isCanceled" prefHeight="38.0" prefWidth="153.0" style="-fx-background-color: #2d752f;" text="GO TO MAIN WINDOW" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Button>
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="146.0" prefWidth="234.0">
+                     <children>
+                        <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="SEE" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
