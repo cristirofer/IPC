@@ -20,12 +20,6 @@ import javafx.scene.control.TextField;
 public class PersonViewController implements Initializable {
 
 
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private TextField surnameTextField;
-    @FXML
-    private Button acceptButton;
     /**
      * Initializes the controller class.
      */
@@ -34,12 +28,5 @@ public class PersonViewController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    private void acceptOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void cancelOnAction(ActionEvent event) {
-    }
 
 }
