@@ -18,7 +18,7 @@
          </children></VBox>
       <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0">
          <children>
-            <ImageView fitHeight="126.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
                </image>
