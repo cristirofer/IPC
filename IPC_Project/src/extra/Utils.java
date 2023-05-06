@@ -34,9 +34,8 @@ public class Utils {
     }
     public static Boolean checkLogInUser(String nickname, String password) throws ClubDAOException, IOException{
         if(nickname == null || password == null) return false;
-        Member member;
-        member = Club.getInstance().getMemberByCredentials(nickname,password);
-        if(member == null){
+        Member member = null;
+        if(member == Club.getInstance().getMemberByCredentials(nickname,password)){
             return false;
         } else {
             return true;
