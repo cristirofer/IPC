@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,14 +22,17 @@
             <Image url="@../resources/images/tennisCourt.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="674.0">
+      <VBox alignment="TOP_CENTER" prefHeight="318.0" prefWidth="674.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="131.0" prefWidth="674.0">
+            <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
                <children>
                   <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/title.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets right="30.0" top="10.0" />
+                     </HBox.margin>
                   </ImageView>
                </children>
                <opaqueInsets>
@@ -40,47 +44,68 @@
                   <Font name="Niagara Solid" size="45.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="46.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/images/c60bee2195287f294ee99ae8635173d4.png" />
+                        <Image url="@../resources/images/74f0a74939256fd792b17834fab54353.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
-            <GridPane prefHeight="58.0" prefWidth="627.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.20001220703125" minWidth="10.0" prefWidth="232.6000244140625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.5999755859375" minWidth="10.0" prefWidth="441.3999755859375" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="31.799993896484374" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="32.60001220703125" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <HBox prefHeight="66.0" prefWidth="674.0">
                <children>
-                  <Label contentDisplay="CENTER" text="User" textAlignment="RIGHT" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="Calibri Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Password" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="211.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
-                  <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <GridPane prefHeight="66.0" prefWidth="438.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="246.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.5999755859375" minWidth="10.0" prefWidth="215.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="31.799993896484374" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="32.60001220703125" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label contentDisplay="CENTER" text="Nickname" textAlignment="RIGHT" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Password" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="loginemail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
+                        <PasswordField fx:id="loginpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <VBox alignment="CENTER" prefHeight="66.0" prefWidth="239.0">
+                     <children>
+                        <Label fx:id="loginErrorMessage" prefHeight="17.0" prefWidth="188.0" text="Error. Incorrect email or password." textFill="RED" visible="false">
+                           <VBox.margin>
+                              <Insets right="28.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
-            </GridPane>
-            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="674.0">
+            </HBox>
+            <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f">
+               <font>
+                  <Font name="Calibri" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="6.0" />
+               </VBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
-                  <Hyperlink prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
+                  <Hyperlink onMouseClicked="#loadSignUpTab" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
