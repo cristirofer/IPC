@@ -136,7 +136,7 @@ public class LogInController implements Initializable {
         stage.setTitle("Sign-Up");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        //linktoSignUp.getScene().getWindow().hide();
+        linktoSignUp.getScene().getWindow().hide();
     }
     
 }

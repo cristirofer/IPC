@@ -84,7 +84,6 @@ public class SignUpController implements Initializable {
         
         BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
         acceptButton.disableProperty().bind(Bindings.not(validFields));
-        cancelButton.setOnAction((event)->{cancelButton.getScene().getWindow().hide();});
         
         nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
