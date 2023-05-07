@@ -130,7 +130,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="154.0">
                      <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#isCanceled" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
