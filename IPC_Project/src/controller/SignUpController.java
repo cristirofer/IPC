@@ -27,8 +27,6 @@ import model.ClubDAOException;
  * @author Crist
  */
 public class SignUpController implements Initializable {
-
-    private BooleanProperty validFields;
     
     @FXML
     private TextField nameS;
@@ -65,6 +63,8 @@ public class SignUpController implements Initializable {
     private BooleanProperty equalPasswords;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,8 +76,7 @@ public class SignUpController implements Initializable {
         validEmail.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
         
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword)
-                 .and(equalPasswords);
+        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
         acceptButton.disableProperty().bind(Bindings.not(validFields));
         cancelButton.setOnAction((event)->{cancelButton.getScene().getWindow().hide();});
         
