@@ -214,6 +214,10 @@ public class SignUpController implements Initializable {
         errorLabel.visibleProperty().set(false);
         textField.styleProperty().setValue("");
     }
+
+    @FXML
+    private void isCanceled(MouseEvent event) {
+    }
 }
 
 

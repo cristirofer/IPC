@@ -125,7 +125,7 @@ public class LogInController implements Initializable {
             
         }
     }
-
+    
     @FXML
     private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Sign-Up.fxml"));
@@ -136,7 +136,7 @@ public class LogInController implements Initializable {
         stage.setTitle("Sign-Up");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        loginemail.getScene().getWindow().hide();
+        linktoSignUp.getScene().getWindow().hide();
     }
     
 }
