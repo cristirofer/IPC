@@ -13,12 +13,17 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.ClubDAOException;
 
 /**
@@ -216,7 +221,16 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    private void isCanceled(MouseEvent event) {
+    private void isCanceled(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in(main screen).fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log-in");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        cancelButton.getScene().getWindow().hide();
     }
 }
 
