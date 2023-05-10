@@ -83,11 +83,11 @@
                         <PasswordField fx:id="loginpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <VBox alignment="CENTER" prefHeight="66.0" prefWidth="239.0">
+                  <VBox alignment="CENTER" prefHeight="66.0" prefWidth="243.0">
                      <children>
-                        <Label fx:id="loginErrorMessage" prefHeight="17.0" prefWidth="188.0" text="Error. Incorrect email or password." textFill="RED" visible="false">
+                        <Label fx:id="loginErrorMessage" contentDisplay="CENTER" prefHeight="50.0" prefWidth="215.0" textFill="RED">
                            <VBox.margin>
-                              <Insets right="28.0" />
+                              <Insets left="10.0" right="20.0" />
                            </VBox.margin>
                         </Label>
                      </children>

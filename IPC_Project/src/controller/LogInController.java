@@ -52,20 +52,30 @@ public class LogInController implements Initializable {
     @FXML
     private Hyperlink linktoSignUp;
     
-    private void manageError(Label errorLabel,TextField textField1,PasswordField textField2){
-        showErrorMessage(errorLabel,textField1,textField2);
+    private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
+        showNicknameErrorMessage(errorLabel,textField1, textField2);
+        textField1.requestFocus();
+    }
+    private void managePasswordError(Label errorLabel,PasswordField textField1){
+        showPasswordErrorMessage(errorLabel,textField1);
         textField1.requestFocus();
     }
     private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2){
         hideErrorMessage(errorLabel);
     }
     
-    private void showErrorMessage(Label errorLabel,TextField textField1, PasswordField textField2){
-        errorLabel.visibleProperty().set(true);
-        textField1.styleProperty().setValue("");
-        textField2.styleProperty().setValue("");
+    private void showNicknameErrorMessage(Label errorLabel,TextField textField1, PasswordField textField2){
+        errorLabel.setText("Error, incorrect or not" + "\n"+ "registered Nickname.");
+        textField1.setText("");
+        textField2.setText("");
         textField1.styleProperty().setValue("-fx-background-color: #FCE5E0");
-        textField2.styleProperty().setValue("-fx-background-color: #FCE5E0");    
+        textField2.styleProperty().setValue("-fx-background-color: #FCE5E0");
+    }
+    
+    private void showPasswordErrorMessage(Label errorLabel,PasswordField textField1){
+        errorLabel.setText("Error, incorrect password.");
+        textField1.setText("");
+        textField1.styleProperty().setValue("-fx-background-color: #FCE5E0");
 
     }
     private void hideErrorMessage(Label errorLabel){
@@ -94,8 +104,13 @@ public class LogInController implements Initializable {
         validFields.setValue(Boolean.FALSE);
     }    
     private boolean checkEditEmail() throws ClubDAOException, IOException{
-        if(!Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe())){
-            manageError(loginErrorMessage, loginemail,loginpassword );
+        if(Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()) == 0){
+            //nickname error
+            manageNicknameError(loginErrorMessage, loginemail, loginpassword);
+            return false;
+        } else if(Utils.checkLogInUser(loginemail.textProperty().getValueSafe(),loginpassword.textProperty().getValueSafe()) == 1){
+            //password error
+            managePasswordError(loginErrorMessage, loginpassword );
             return false;
         }else{
             manageCorrect(loginErrorMessage, loginemail,loginpassword);
