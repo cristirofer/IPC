@@ -34,14 +34,25 @@ public class Utils {
         Matcher matcher = pattern.matcher(password); 
         return matcher.matches();
     }
-    public static Boolean checkLogInUser(String nickname, String password) throws ClubDAOException, IOException{
-        Boolean res = false;
-        if(nickname == null || password == null) return false;
+    public static int checkLogInUser(String nickname, String password) throws ClubDAOException, IOException{
+        //if not a valid nickname, returns 0
+        //if not valid password, returns 1
+        //if all ok, returns 2
+        int res = 0;
+        if(nickname == null || password == null) return 0;
         List<Member> members = Club.getInstance().getMembers();
         for (Member member : members) {
             if(member.getNickName() == nickname){
-                res = true;
+                res = 1;
                 break;
+            }
+        }
+        if(res == 1) {
+            Member myMember = Club.getInstance().getMemberByCredentials(nickname, password);
+            if (myMember != null) {
+              return res+1;
+             }else {
+                return res;
             }
         }
         return res;
