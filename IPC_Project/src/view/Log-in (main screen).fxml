@@ -149,9 +149,9 @@
                   </HBox>
                   <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
                            <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/images/check%20availability.png" />
                                  </image>

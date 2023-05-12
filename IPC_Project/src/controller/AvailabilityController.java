@@ -96,7 +96,11 @@ public class AvailabilityController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
    
         timeSlotSelected = new SimpleObjectProperty<>();
+        // Create a Locale object for English
+        Locale locale = Locale.ENGLISH;
 
+        // Set the default locale of your application to English
+        Locale.setDefault(locale);
         //---------------------------------------------------------------------
         //cambia los SlotTime al cambiar de dia
         day.valueProperty().addListener((a, b, c) -> {
@@ -173,6 +177,7 @@ public class AvailabilityController implements Initializable {
             timeSlotSelected.setValue(timeSlot);
             //----------------------------------------------------------------
             // si es un doubleClik  vamos a mostrar una alerta y cambiar el estilo de la celda
+            /*
             if (event.getClickCount() > 1) {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("SlotTime");
@@ -192,6 +197,7 @@ public class AvailabilityController implements Initializable {
                     }
                 }
             }
+            */
         });
     }
 
@@ -238,7 +244,8 @@ public class AvailabilityController implements Initializable {
         private final LocalDateTime start;
         private final Duration duration;
         protected final Pane view;
-
+        
+        
         private final BooleanProperty selected = new SimpleBooleanProperty();
 
         public final BooleanProperty selectedProperty() {
