@@ -61,7 +61,7 @@ public class LogInController implements Initializable {
         textField1.requestFocus();
     }
     private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2){
-        hideErrorMessage(errorLabel);
+        hideErrorMessage(errorLabel,textField1,textField2);
     }
     
     private void showNicknameErrorMessage(Label errorLabel,TextField textField1, PasswordField textField2){
@@ -78,8 +78,10 @@ public class LogInController implements Initializable {
         textField1.styleProperty().setValue("-fx-background-color: #FCE5E0");
 
     }
-    private void hideErrorMessage(Label errorLabel){
+    private void hideErrorMessage(Label errorLabel,TextField textField1,PasswordField textField2){
         errorLabel.setText("");
+        textField1.styleProperty().setValue("-fx-background-color: #2d752f");
+        textField2.styleProperty().setValue("-fx-background-color: #2d752f");   
     }
 
     /**
