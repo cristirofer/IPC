@@ -67,8 +67,8 @@ public class AvailabilityController implements Initializable {
      * Initializes the controller class.
      */
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
-    private final Duration slotLength = Duration.ofMinutes(90);
-    private final LocalTime lastSlotStart = LocalTime.of(21, 0);
+    private final Duration slotLength = Duration.ofMinutes(60);
+    private final LocalTime lastSlotStart = LocalTime.of(22, 0);
 
     // se puede cambiar por codigo la pseudoclase activa de un nodo    
     private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
