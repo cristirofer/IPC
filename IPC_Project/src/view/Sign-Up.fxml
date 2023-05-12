@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
@@ -26,12 +27,12 @@
          </children></VBox>
       <VBox alignment="CENTER" prefHeight="540.0" prefWidth="671.0">
          <children>
-            <ImageView fitHeight="114.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" />
+            <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
@@ -77,7 +78,10 @@
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin></Label>
-                  <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                   <TextField fx:id="fNameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="numberS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="cardS" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -114,8 +118,11 @@
                <opaqueInsets>
                   <Insets right="10.0" />
                </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </GridPane>
-            <HBox alignment="CENTER_RIGHT" prefHeight="134.0" prefWidth="671.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="671.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                      <children>
