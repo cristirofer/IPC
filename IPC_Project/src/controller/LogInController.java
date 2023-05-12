@@ -79,7 +79,7 @@ public class LogInController implements Initializable {
 
     }
     private void hideErrorMessage(Label errorLabel){
-        errorLabel.visibleProperty().set(false);
+        errorLabel.setText("");
     }
 
     /**
