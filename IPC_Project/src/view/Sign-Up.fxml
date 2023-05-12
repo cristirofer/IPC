@@ -80,8 +80,7 @@
                   <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" />
                   <TextField fx:id="fNameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="numberS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="cardS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="profileS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="cardS" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label text="Nickname" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="10.0" />
@@ -105,6 +104,12 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <children>
+                        <TextField fx:id="profileS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="175.0" />
+                        <Button fx:id="selectprofileS" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." />
+                     </children>
+                  </HBox>
                </children>
                <opaqueInsets>
                   <Insets right="10.0" />
