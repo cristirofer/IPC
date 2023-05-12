@@ -3,8 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,150 +20,195 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <VBox prefHeight="540.0" prefWidth="289.0">
+      <MenuBar>
+         <menus>
+            <Menu text="About us">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Amazon" />
+                  <MenuItem mnemonicParsing="false" text="Blogger" />
+                  <MenuItem mnemonicParsing="false" text="Ebay" />
+                  <MenuItem mnemonicParsing="false" text="Facebook" />
+                  <MenuItem mnemonicParsing="false" text="Google+" />
+               </items>
+            </Menu>
+            <Menu text="Help">
+               <items>
+                  <Menu mnemonicParsing="false" text="Buy in">
+                     <items>
+                        <RadioMenuItem fx:id="amazonOption" mnemonicParsing="false" onAction="#amazonChosen" text="Amazon">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="buyGroup" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="ebayOption" mnemonicParsing="false" onAction="#ebayChosen" text="Ebay" toggleGroup="$buyGroup" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu text="Options">
+               <items>
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#isExited" text="Exit" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <ImageView fitHeight="541.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/images/tennisCourt.jpg" />
-               </image>
-            </ImageView>
-         </children></VBox>
-      <VBox alignment="CENTER" prefHeight="540.0" prefWidth="671.0">
-         <children>
-            <ImageView fitHeight="91.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
-               </image>
-            </ImageView>
-            <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="199.000048828125" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="233.39995117187505" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <VBox prefHeight="530.0" prefWidth="290.0">
                <children>
-                  <Label text="Name" textAlignment="RIGHT">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin></Label>
-                  <Label text="Family Name" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding></Label>
-                  <Label text="Phone Number" GridPane.rowIndex="2">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding></Label>
-                  <Label text="Password" GridPane.rowIndex="4">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding></Label>
-                  <Label text="Repeat Password" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding></Label>
-                  <Label text="Card Number (optional)" GridPane.rowIndex="6">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding></Label>
-                  <Label text="Profile picture (optional)" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin></Label>
-                  <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin></TextField>
-                  <TextField fx:id="fNameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="numberS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="cardS" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label text="Nickname" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="nicknameS" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="passwS" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <PasswordField fx:id="repPasswS" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label fx:id="lIncorrectEmail" text="Invalid email!" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label fx:id="lIncorrectPassword" text="It must have at least 8 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets left="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label fx:id="lPassDifferent" text="Passwords don't match" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <ImageView fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/tennisCourt.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="540.0" prefWidth="671.0">
+               <children>
+                  <ImageView fitHeight="91.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
+                     </image>
+                  </ImageView>
+                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="199.000048828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="233.39995117187505" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <TextField fx:id="profileS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="175.0" />
-                        <Button fx:id="selectprofileS" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." />
+                        <Label text="Name" textAlignment="RIGHT">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Family Name" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Phone Number" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Password" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Repeat Password" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Card Number (optional)" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Profile picture (optional)" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="nameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="209.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="fNameS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="numberS" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="cardS" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="Nickname" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="nicknameS" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <PasswordField fx:id="passwS" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <PasswordField fx:id="repPasswS" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="lIncorrectEmail" text="Invalid email!" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lIncorrectPassword" text="It must have at least 8 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lPassDifferent" text="Passwords don't match" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <children>
+                              <TextField fx:id="profileS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="175.0" />
+                              <Button fx:id="selectprofileS" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="..." />
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets right="10.0" />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="671.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
+                           <children>
+                              <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="ACCEPT" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/tik.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="154.0">
+                           <children>
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/cancel.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
-               <opaqueInsets>
-                  <Insets right="10.0" />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </GridPane>
-            <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="671.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
-                     <children>
-                        <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="ACCEPT" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/images/tik.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="154.0">
-                     <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/images/cancel.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
-</HBox>
+</VBox>

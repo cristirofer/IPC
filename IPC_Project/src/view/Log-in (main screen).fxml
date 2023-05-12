@@ -4,8 +4,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,113 +20,149 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
    <children>
-      <ImageView fitHeight="540.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/images/tennisCourt.jpg" />
-         </image>
-      </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="318.0" prefWidth="674.0">
+      <MenuBar>
+         <menus>
+            <Menu text="About us">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Amazon" />
+                  <MenuItem mnemonicParsing="false" text="Blogger" />
+                  <MenuItem mnemonicParsing="false" text="Ebay" />
+                  <MenuItem mnemonicParsing="false" text="Facebook" />
+                  <MenuItem mnemonicParsing="false" text="Google+" />
+               </items>
+            </Menu>
+            <Menu text="Help">
+               <items>
+                  <Menu mnemonicParsing="false" text="Buy in">
+                     <items>
+                        <RadioMenuItem fx:id="amazonOption" mnemonicParsing="false" onAction="#amazonChosen" text="Amazon">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="buyGroup" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="ebayOption" mnemonicParsing="false" onAction="#ebayChosen" text="Ebay" toggleGroup="$buyGroup" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu text="Options">
+               <items>
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#isExited" text="Exit" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
+            <ImageView fitHeight="530.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/tennisCourt.jpg" />
+               </image>
+            </ImageView>
+            <VBox alignment="TOP_CENTER" prefHeight="318.0" prefWidth="674.0">
                <children>
-                  <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/title.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="30.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-               <opaqueInsets>
-                  <Insets right="10.0" />
-               </opaqueInsets>
-            </HBox>
-            <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f">
-               <font>
-                  <Font name="Niagara Solid" size="45.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="46.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/74f0a74939256fd792b17834fab54353.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <HBox prefHeight="66.0" prefWidth="674.0">
-               <children>
-                  <GridPane prefHeight="66.0" prefWidth="438.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="246.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.5999755859375" minWidth="10.0" prefWidth="215.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="31.799993896484374" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="32.60001220703125" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
                      <children>
-                        <Label contentDisplay="CENTER" text="Nickname" textAlignment="RIGHT" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Calibri Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Password" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Calibri Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="loginemail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
-                        <PasswordField fx:id="loginpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     </children>
-                  </GridPane>
-                  <VBox alignment="CENTER" prefHeight="66.0" prefWidth="243.0">
-                     <children>
-                        <Label fx:id="loginErrorMessage" contentDisplay="CENTER" prefHeight="50.0" prefWidth="215.0" textFill="RED">
-                           <VBox.margin>
-                              <Insets left="10.0" right="20.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f">
-               <font>
-                  <Font name="Calibri" size="13.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="6.0" />
-               </VBox.margin>
-            </Button>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0">
-               <children>
-                  <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
-                  <Hyperlink fx:id="linktoSignUp" accessibleRole="BUTTON" onAction="#signUpClicked" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
-               </children>
-            </HBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/images/check%20availability.png" />
+                              <Image url="@../resources/images/title.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="30.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets right="10.0" />
+                     </opaqueInsets>
+                  </HBox>
+                  <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f">
+                     <font>
+                        <Font name="Niagara Solid" size="45.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/74f0a74939256fd792b17834fab54353.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                  </Label>
+                  <HBox prefHeight="66.0" prefWidth="674.0">
+                     <children>
+                        <GridPane prefHeight="66.0" prefWidth="438.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="246.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.5999755859375" minWidth="10.0" prefWidth="215.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="31.799993896484374" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="32.60001220703125" minHeight="10.0" prefHeight="29.4" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="Nickname" textAlignment="RIGHT" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Calibri Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Password" textFill="#2d752f" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Calibri Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="loginemail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
+                              <PasswordField fx:id="loginpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <VBox alignment="CENTER" prefHeight="66.0" prefWidth="243.0">
+                           <children>
+                              <Label fx:id="loginErrorMessage" contentDisplay="CENTER" prefHeight="50.0" prefWidth="215.0" textFill="RED">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f">
+                     <font>
+                        <Font name="Calibri" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="6.0" />
+                     </VBox.margin>
                   </Button>
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
+                        <Hyperlink fx:id="linktoSignUp" accessibleRole="BUTTON" onAction="#signUpClicked" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/images/check%20availability.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
-</HBox>
+</VBox>

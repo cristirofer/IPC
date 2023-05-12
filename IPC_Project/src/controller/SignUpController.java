@@ -21,7 +21,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -74,6 +77,14 @@ public class SignUpController implements Initializable {
     private Button selectprofileS;
     @FXML
     private Circle profilePicContainer;
+    @FXML
+    private MenuItem exitButton;
+    @FXML
+    private RadioMenuItem amazonOption;
+    @FXML
+    private ToggleGroup buyGroup;
+    @FXML
+    private RadioMenuItem ebayOption;
     /**
      * Initializes the controller class.
      * @param url
@@ -239,6 +250,18 @@ public class SignUpController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         cancelButton.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void isExited(ActionEvent event) {
+    }
+
+    @FXML
+    private void amazonChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void ebayChosen(ActionEvent event) {
     }
 }
 

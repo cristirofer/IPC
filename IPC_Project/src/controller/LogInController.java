@@ -25,7 +25,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClubDAOException;
@@ -51,6 +54,14 @@ public class LogInController implements Initializable {
     private Button logInButton;
     @FXML
     private Hyperlink linktoSignUp;
+    @FXML
+    private MenuItem exitButton;
+    @FXML
+    private RadioMenuItem amazonOption;
+    @FXML
+    private ToggleGroup buyGroup;
+    @FXML
+    private RadioMenuItem ebayOption;
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
         showNicknameErrorMessage(errorLabel,textField1, textField2);
@@ -167,6 +178,18 @@ public class LogInController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         linktoSignUp.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void isExited(ActionEvent event) {
+    }
+
+    @FXML
+    private void amazonChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void ebayChosen(ActionEvent event) {
     }
     
 }
