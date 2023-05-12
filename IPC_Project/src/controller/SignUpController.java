@@ -5,6 +5,7 @@
 package controller;
 
 import extra.Utils;
+import javafx.scene.image.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClubDAOException;
@@ -69,6 +72,8 @@ public class SignUpController implements Initializable {
     private TextField profileS;
     @FXML
     private Button selectprofileS;
+    @FXML
+    private Circle profilePicContainer;
     /**
      * Initializes the controller class.
      * @param url
@@ -105,8 +110,9 @@ public class SignUpController implements Initializable {
                 checkEquals();
             }
         });
-        
-        
+        Image im ;
+        im = new Image("/resources/images/noprofile.jpg",false);
+        profilePicContainer.setFill(new ImagePattern(im));
     } 
 
     @FXML
