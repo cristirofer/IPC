@@ -37,6 +37,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -76,6 +79,14 @@ public class AvailabilityController implements Initializable {
     private LocalDate daySelected;
     @FXML
     private Label slotSelected;
+    @FXML
+    private MenuItem exitButton;
+    @FXML
+    private RadioMenuItem amazonOption;
+    @FXML
+    private ToggleGroup buyGroup;
+    @FXML
+    private RadioMenuItem ebayOption;
  
 
   
@@ -194,6 +205,18 @@ public class AvailabilityController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         cancelButton.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void isExited(ActionEvent event) {
+    }
+
+    @FXML
+    private void amazonChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void ebayChosen(ActionEvent event) {
     }
 
     
