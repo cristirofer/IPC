@@ -47,8 +47,6 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField cardS;
     @FXML
-    private TextField profileS;
-    @FXML
     private Button acceptButton;
     @FXML
     private Button cancelButton;
@@ -67,6 +65,10 @@ public class SignUpController implements Initializable {
     private BooleanProperty validPassword;
     private BooleanProperty validEmail;
     private BooleanProperty equalPasswords;
+    @FXML
+    private TextField profileS;
+    @FXML
+    private Button selectprofileS;
     /**
      * Initializes the controller class.
      * @param url
