@@ -153,5 +153,18 @@ public class LogInController implements Initializable {
         stage.show();
         linktoSignUp.getScene().getWindow().hide();
     }
+
+    @FXML
+    private void loadAvailability(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Availability.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Availability");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        linktoSignUp.getScene().getWindow().hide();
+    }
     
 }

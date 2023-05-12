@@ -38,7 +38,7 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="391.0" prefWidth="507.0" spacing="36.0" stylesheets="@../resources/css/calendar-view.css">
+            <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="391.0" prefWidth="507.0" spacing="15.0" stylesheets="@../resources/css/calendar-view.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="35.0" prefWidth="411.0">
                      <children>
@@ -74,7 +74,7 @@
                               <RowConstraints maxHeight="48.79999389648438" minHeight="-Infinity" prefHeight="30.400000000000006" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="46.400000000000006" minHeight="-Infinity" prefHeight="31.200048828125006" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="45.599951171875006" minHeight="-Infinity" prefHeight="24.000024414062523" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="45.599951171875006" minHeight="-Infinity" prefHeight="24.000024414062523" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="45.599951171875006" minHeight="-Infinity" prefHeight="24.000024414062523" valignment="CENTER" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <Label fx:id="labelCol" text="COLUMNA 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -130,34 +130,27 @@
                         </GridPane>
                      </children>
                   </VBox>
+                  <Label fx:id="slotSelected" textFill="#6811f5">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
-                  <Insets bottom="10.0" left="48.0" right="48.0" top="20.0" />
+                  <Insets bottom="20.0" left="48.0" right="48.0" top="20.0" />
                </padding>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="507.0">
+            <HBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="507.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#isCanceled" prefHeight="38.0" prefWidth="153.0" style="-fx-background-color: #2d752f;" text="GO TO MAIN WINDOW" textFill="WHITE">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#isCancelled" prefHeight="38.0" prefWidth="153.0" style="-fx-background-color: #2d752f;" text="GO TO MAIN WINDOW" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic" size="12.0" />
                      </font>
                   </Button>
-                  <VBox alignment="CENTER" prefHeight="78.0" prefWidth="205.0">
-                     <children>
-                        <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="SEE" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <opaqueInsets>
-                        <Insets left="10.0" />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="60.0" />
-                     </padding>
-                  </VBox>
                </children>
+               <padding>
+                  <Insets top="8.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>

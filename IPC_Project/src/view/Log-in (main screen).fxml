@@ -110,7 +110,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
+                  <Button mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f;" textFill="#2d752f">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
