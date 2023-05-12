@@ -9,22 +9,22 @@ and open the template in the editor.
 */
 
 .time-slot {
-    -fx-background-color: red, white ;
-    -fx-background-insets: 0, 1 1 0 0 ;
+    -fx-background-color: green, white ;
+    -fx-background-insets: 0, 1 1 1 1 ;
     -fx-cursor: hand;
 }
 
 .time-slot-libre{
-    -fx-background-color: red, #ccccff ;
+    -fx-background-color: green, lightgreen ;
     -fx-background-insets: 0, 1 1 0 0 ;
     -fx-cursor: hand;
 
 }
 
 .time-slot:selected {
-    -fx-background-color: indianred;
+    -fx-background-color: lightslategrey;
 }
 
 .date-picker > .text-field {
-    -fx-text-fill: blue;
+    -fx-text-fill: green;
 }

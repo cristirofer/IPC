@@ -55,7 +55,7 @@
       </MenuBar>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <VBox prefHeight="540.0" prefWidth="289.0">
+            <VBox prefHeight="500.0" prefWidth="431.0">
                <children>
                   <ImageView fitHeight="523.0" fitWidth="431.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,9 +64,9 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0">
+            <VBox alignment="TOP_CENTER" prefHeight="488.0" prefWidth="529.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="72.0" prefWidth="507.0">
+                  <VBox alignment="CENTER" prefHeight="56.0" prefWidth="529.0">
                      <children>
                         <ImageView fitHeight="73.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -78,9 +78,9 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="374.0" prefWidth="529.0" spacing="12.0" stylesheets="@../resources/css/calendar-view.css">
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="384.0" prefWidth="529.0" spacing="12.0" stylesheets="@../resources/css/calendar-view.css">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="35.0" prefWidth="411.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="433.0">
                            <children>
                               <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="115.0" vgap="2.0">
                                  <columnConstraints>
@@ -96,28 +96,34 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </VBox>
-                        <VBox prefHeight="290.0" prefWidth="411.0">
+                        <VBox prefHeight="302.0" prefWidth="433.0">
                            <children>
-                              <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="268.0" prefWidth="411.0" VBox.vgrow="ALWAYS">
+                              <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="284.0" prefWidth="433.0" VBox.vgrow="ALWAYS">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints maxHeight="26.60001220703125" minHeight="-Infinity" prefHeight="20.200018310546874" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="46.599981689453124" minHeight="-Infinity" prefHeight="28.8" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="49.59998168945313" minHeight="-Infinity" prefHeight="32.799981689453126" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="47.20001831054687" minHeight="-Infinity" prefHeight="31.199981689453125" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="47.20001831054688" minHeight="-Infinity" prefHeight="29.60000610351564" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="44.79999389648438" minHeight="-Infinity" prefHeight="28.80000000000001" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="48.79999389648438" minHeight="-Infinity" prefHeight="30.400000000000006" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="46.400000000000006" minHeight="-Infinity" prefHeight="31.200048828125006" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="45.599951171875006" minHeight="-Infinity" prefHeight="24.000024414062523" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="45.599951171875006" minHeight="-Infinity" prefHeight="24.000024414062523" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="22.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="28.0" valignment="CENTER" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label fx:id="labelCol" text="COLUMNA 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Label fx:id="labelCol" text="COLUMNA 1" textFill="#2d752f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
                                     <Label text="9:00 - 10:30" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <opaqueInsets>
                                           <Insets />
@@ -168,19 +174,22 @@
                                     </Label>
                                  </children>
                               </GridPane>
+                              <Label fx:id="slotSelected" prefHeight="17.0" prefWidth="368.0" textFill="GREEN">
+                                 <VBox.margin>
+                                    <Insets left="75.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="145.0" top="5.0" />
+                                 </padding>
+                              </Label>
                            </children>
                         </VBox>
-                        <Label fx:id="slotSelected" textFill="#6811f5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
                      </children>
                      <padding>
-                        <Insets bottom="20.0" left="48.0" right="48.0" top="20.0" />
+                        <Insets bottom="10.0" left="48.0" right="48.0" top="10.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="507.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="529.0">
                      <children>
                         <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#isCancelled" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: #2d752f;" text="GO TO MAIN WINDOW" textFill="WHITE">
                            <font>
@@ -188,6 +197,9 @@
                            </font>
                         </Button>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </HBox>
                </children>
             </VBox>
