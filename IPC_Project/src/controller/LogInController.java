@@ -31,14 +31,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClubDAOException;
@@ -73,6 +77,14 @@ public class LogInController implements Initializable {
     private ToggleGroup buyGroup;
     @FXML
     private RadioMenuItem ebayOption;
+    @FXML
+    private ImageView banner;  
+    @FXML
+    private VBox vBox;
+    @FXML
+    private MenuBar menuBarCenter;
+    @FXML
+    private VBox vBoxCenter;
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
         showNicknameErrorMessage(errorLabel,textField1, textField2);
@@ -114,11 +126,18 @@ public class LogInController implements Initializable {
         validFields = new SimpleBooleanProperty();
         validFields.setValue(Boolean.FALSE);
         logInButton.disableProperty().bind(Bindings.not(validFields)); 
+        loginpassword.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validFields.setValue(true);
+        }));
         loginpassword.focusedProperty().addListener((observable, oldValue, newValue)->{
         if(!newValue){ 
             //focus lost.
             checkEditedFields();
         }
+        });
+        Platform.runLater(() -> {
+            // Realizar el binding después de que la escena esté disponible
+            banner.fitHeightProperty().bind(banner.getScene().heightProperty());
         });
     }
     private void checkEditedFields() {
@@ -171,6 +190,10 @@ public class LogInController implements Initializable {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("Sign-Up");
         stage.setFullScreen(false);
@@ -188,6 +211,10 @@ public class LogInController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
         stage.setTitle("Availability");
         stage.setFullScreen(false);
         stage.setFullScreenExitHint("Press F11 to exit fullscreen");
