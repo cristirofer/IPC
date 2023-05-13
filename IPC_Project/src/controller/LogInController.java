@@ -218,7 +218,6 @@ public class LogInController implements Initializable {
             if(checkEditEmail()){
                 //load next screen
             }else{//do nothing, user must re-try
-
             }
         }
     }
@@ -229,7 +228,6 @@ public class LogInController implements Initializable {
             if(checkEditEmail()){
                 //load next screen
             }else{//do nothing, user must re-try
-
             }
         }
     }
