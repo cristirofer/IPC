@@ -43,6 +43,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -95,12 +96,19 @@ public class AvailabilityController implements Initializable {
     private ToggleGroup buyGroup;
     @FXML
     private RadioMenuItem ebayOption;
+    @FXML
+    private ImageView banner;
  
 
   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+         Platform.runLater(() -> {
+            // Realizar el binding después de que la escena esté disponible
+            banner.fitHeightProperty().bind(banner.getScene().heightProperty());
+        });
    
         timeSlotSelected = new SimpleObjectProperty<>();
         // Create a Locale object for English

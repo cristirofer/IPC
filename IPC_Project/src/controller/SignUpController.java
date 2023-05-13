@@ -29,6 +29,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.EQUALS;
 import javafx.scene.input.KeyCombination;
@@ -94,6 +95,8 @@ public class SignUpController implements Initializable {
     private ToggleGroup buyGroup;
     @FXML
     private RadioMenuItem ebayOption;
+    @FXML
+    private ImageView banner;
     /**
      * Initializes the controller class.
      * @param url
@@ -101,6 +104,10 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Platform.runLater(() -> {
+            // Realizar el binding después de que la escena esté disponible
+            banner.fitHeightProperty().bind(banner.getScene().heightProperty());
+        });
         validEmail = new SimpleBooleanProperty();
         validPassword = new SimpleBooleanProperty();   
         equalPasswords = new SimpleBooleanProperty();
@@ -111,6 +118,7 @@ public class SignUpController implements Initializable {
         
         BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
         acceptButton.disableProperty().bind(Bindings.not(validFields));
+        
         
         nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.

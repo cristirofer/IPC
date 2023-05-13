@@ -58,7 +58,7 @@
          <children>
             <VBox prefHeight="530.0" prefWidth="290.0">
                <children>
-                  <ImageView fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="banner" fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
