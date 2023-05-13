@@ -191,7 +191,7 @@
                   </VBox>
                   <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="529.0">
                      <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#isCancelled" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: #2d752f;" text="GO TO MAIN WINDOW" textFill="WHITE">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#isCancelled" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="GO TO MAIN WINDOW" textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
                            </font>

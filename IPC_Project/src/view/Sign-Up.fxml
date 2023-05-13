@@ -174,7 +174,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                            <children>
-                              <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="ACCEPT" textFill="WHITE">
+                              <Button fx:id="acceptButton" mnemonicParsing="false" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="ACCEPT" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -190,7 +190,7 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="154.0">
                            <children>
-                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="CANCEL" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
