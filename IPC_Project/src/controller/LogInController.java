@@ -214,17 +214,15 @@ public class LogInController implements Initializable {
 
     @FXML
     private void enterPressedNick(KeyEvent event) throws ClubDAOException, IOException {
-        if(validFields.get()){
-            if(event.getCode() == KeyCode.ENTER){
-                /*Event.fireEvent(logInButton, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
-                    0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
-                    true, true, true, true, true, true, null));
-                */
-                if(checkEditEmail()){
+        if(validFields.get() && event.getCode() == KeyCode.ENTER){
+            /*Event.fireEvent(logInButton, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
+            0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
+            true, true, true, true, true, true, null));
+            */
+            if(checkEditEmail()){
                 //load next screen
-                }else{//do nothing, user must re-try
+            }else{//do nothing, user must re-try
 
-                }
             }
         }
     }
