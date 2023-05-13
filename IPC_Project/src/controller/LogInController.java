@@ -23,7 +23,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import static javafx.scene.AccessibleRole.NODE;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -33,6 +35,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClubDAOException;
@@ -205,6 +210,36 @@ public class LogInController implements Initializable {
 
     @FXML
     private void ebayChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void enterPressedNick(KeyEvent event) throws ClubDAOException, IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            /*Event.fireEvent(logInButton, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
+                0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
+                true, true, true, true, true, true, null));
+            */
+            if(checkEditEmail()){
+            //load next screen
+            }else{//do nothing, user must re-try
+            
+        }
+        }
+    }
+
+    @FXML
+    private void enterPressedPass(KeyEvent event) throws ClubDAOException, IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            /*Event.fireEvent(logInButton, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
+                0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
+                true, true, true, true, true, true, null));
+            */
+            if(checkEditEmail()){
+            //load next screen
+            }else{//do nothing, user must re-try
+            
+        }
+        }
     }
     
 }
