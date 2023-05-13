@@ -118,8 +118,8 @@
                                     <Font name="Calibri Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="loginemail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
-                              <PasswordField fx:id="loginpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="loginemail" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#enterPressedNick" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: 2d752f;" GridPane.columnIndex="1" />
+                              <PasswordField fx:id="loginpassword" onKeyPressed="#enterPressedPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <VBox alignment="CENTER" prefHeight="66.0" prefWidth="243.0">
