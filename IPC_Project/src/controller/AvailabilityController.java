@@ -223,8 +223,8 @@ public class AvailabilityController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setMinHeight(540);
-        stage.setMinWidth(960);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
         Image icon = new Image("/resources/images/pelota.png");
         stage.getIcons().add(icon);
         stage.setTitle("Log-in");

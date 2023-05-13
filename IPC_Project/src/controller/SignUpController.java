@@ -264,8 +264,8 @@ public class SignUpController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Log-in");
-        stage.setMinHeight(540);
-        stage.setMinWidth(960);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
         stage.setFullScreen(false);
         Image icon = new Image("/resources/images/pelota.png");
         stage.getIcons().add(icon);

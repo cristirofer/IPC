@@ -190,8 +190,8 @@ public class LogInController implements Initializable {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setMinHeight(540);
-        stage.setMinWidth(960);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
         Image icon = new Image("/resources/images/pelota.png");
         stage.getIcons().add(icon);
         stage.setScene(scene);
@@ -211,8 +211,8 @@ public class LogInController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setMinHeight(540);
-        stage.setMinWidth(960);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
         Image icon = new Image("/resources/images/pelota.png");
         stage.getIcons().add(icon);
         stage.setTitle("Availability");

@@ -34,8 +34,8 @@ public class JavaFXMLApplication extends Application {
         //     - configuracion del stage
         //     - se muestra el stage de manera no modal mediante el metodo show()
 	
-	stage.setMinHeight(540);
-	stage.setMinWidth(960);
+	stage.setMinHeight(579);
+	stage.setMinWidth(976);
 	Image icon = new Image("/resources/images/pelota.png");        
 	stage.setScene(scene);
         stage.setTitle("Login");
