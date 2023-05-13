@@ -125,6 +125,7 @@ public class SignUpController implements Initializable {
                 checkEquals();
             }
         });
+        
         Image im ;
         im = new Image("/resources/images/noprofile.jpg",false);
         profilePicContainer.setFill(new ImagePattern(im));
@@ -250,6 +251,10 @@ public class SignUpController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
         stage.setTitle("Log-in");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();

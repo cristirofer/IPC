@@ -41,6 +41,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -208,6 +209,10 @@ public class AvailabilityController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
         stage.setTitle("Log-in");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();

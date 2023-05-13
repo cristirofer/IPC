@@ -7,9 +7,12 @@ package javafxmlapplication;
 
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
@@ -30,6 +33,14 @@ public class JavaFXMLApplication extends Application {
         // 3- asiganación de la escena al Stage que recibe el metodo 
         //     - configuracion del stage
         //     - se muestra el stage de manera no modal mediante el metodo show()
+        
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("Login");
         stage.show();
