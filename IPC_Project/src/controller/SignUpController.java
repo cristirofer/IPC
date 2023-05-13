@@ -256,7 +256,11 @@ public class SignUpController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Log-in");
+        stage.setMinHeight(540);
+        stage.setMinWidth(960);
         stage.setFullScreen(false);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
         stage.setFullScreenExitHint("Press F11 to exit fullscreen");
         stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.initModality(Modality.APPLICATION_MODAL);
