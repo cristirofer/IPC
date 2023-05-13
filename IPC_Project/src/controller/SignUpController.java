@@ -29,7 +29,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.EQUALS;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -75,6 +78,8 @@ public class SignUpController implements Initializable {
     private BooleanProperty validPassword;
     private BooleanProperty validEmail;
     private BooleanProperty equalPasswords;
+    private int fullScreen = 1;
+
     @FXML
     private TextField profileS;
     @FXML
@@ -251,6 +256,9 @@ public class SignUpController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Log-in");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         cancelButton.getScene().getWindow().hide();
@@ -277,6 +285,17 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void ebayChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void makeFullScreen(KeyEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
     }
 }
 

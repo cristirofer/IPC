@@ -57,6 +57,12 @@ public class Utils {
         }
         return res;
     }
-    
+    public static boolean isEven(int value){
+        if ((value % 2) == 0) {
+            return true;
+        } else {
+            return false;
+        }   
+    }
     
 }

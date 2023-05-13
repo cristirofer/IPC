@@ -4,6 +4,7 @@
  */
 package controller;
 
+import extra.Utils;
 import java.io.IOException;
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -41,6 +42,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -69,6 +73,8 @@ public class AvailabilityController implements Initializable {
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
     private final Duration slotLength = Duration.ofMinutes(60);
     private final LocalTime lastSlotStart = LocalTime.of(22, 0);
+    private int fullScreen = 1;
+
 
     // se puede cambiar por codigo la pseudoclase activa de un nodo    
     private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
@@ -209,6 +215,9 @@ public class AvailabilityController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Log-in");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         cancelButton.getScene().getWindow().hide();
@@ -235,6 +244,17 @@ public class AvailabilityController implements Initializable {
 
     @FXML
     private void ebayChosen(ActionEvent event) {
+    }
+
+    @FXML
+    private void makeFullScreen(KeyEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
     }
 
     

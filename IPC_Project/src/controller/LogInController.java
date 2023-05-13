@@ -173,6 +173,9 @@ public class LogInController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Sign-Up");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         linktoSignUp.getScene().getWindow().hide();
@@ -186,6 +189,9 @@ public class LogInController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Availability");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         linktoSignUp.getScene().getWindow().hide();
@@ -234,19 +240,13 @@ public class LogInController implements Initializable {
         }
     }
     
-    private boolean isEven(int value){
-        if ((value % 2) == 0) {
-            return true;
-        } else {
-            return false;
-        }   
-    }
+    
 
     @FXML
     private void makeFullScreen(KeyEvent event) {
         Stage stage = (Stage) linktoSignUp.getScene().getWindow();
         fullScreen++;
-        if(isEven(fullScreen) && event.getCode() == KeyCode.F11){
+        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
             stage.setFullScreen(true);
             stage.setFullScreenExitHint("Press F11 to exit fullscreen");
             stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
