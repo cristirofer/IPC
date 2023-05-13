@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
@@ -32,6 +33,9 @@ public class JavaFXMLApplication extends Application {
         //     - se muestra el stage de manera no modal mediante el metodo show()
         stage.setScene(scene);
         stage.setTitle("Login");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         stage.show();
     }
 

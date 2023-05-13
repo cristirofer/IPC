@@ -36,6 +36,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
@@ -51,6 +52,7 @@ public class LogInController implements Initializable {
     
     private BooleanProperty validFields;
     private final int EQUALS = 0;  
+    private int fullScreen = 1;
 
     
     @FXML
@@ -232,4 +234,23 @@ public class LogInController implements Initializable {
         }
     }
     
+    private boolean isEven(int value){
+        if ((value % 2) == 0) {
+            return true;
+        } else {
+            return false;
+        }   
+    }
+
+    @FXML
+    private void makeFullScreen(KeyEvent event) {
+        Stage stage = (Stage) linktoSignUp.getScene().getWindow();
+        fullScreen++;
+        if(isEven(fullScreen) && event.getCode() == KeyCode.F11){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
+
 }
