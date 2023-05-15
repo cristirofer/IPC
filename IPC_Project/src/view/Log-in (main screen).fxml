@@ -21,9 +21,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+<VBox fx:id="vBox" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
    <children>
-      <MenuBar fx:id="menuBarCenter">
+      <MenuBar fx:id="menuBarCenter" VBox.vgrow="NEVER">
          <menus>
             <Menu text="About us">
                <items>
@@ -55,7 +55,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+      <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fx:id="banner" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,11 +65,11 @@
                   <Rectangle2D />
                </viewport>
             </ImageView>
-            <VBox fx:id="vBoxCenter" alignment="TOP_CENTER" prefHeight="318.0" prefWidth="674.0">
+            <VBox fx:id="vBoxCenter" alignment="CENTER" prefHeight="318.0" prefWidth="674.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="184.0" prefWidth="413.0" VBox.vgrow="NEVER">
                      <children>
-                        <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../resources/images/title.png" />
                            </image>
@@ -82,7 +82,7 @@
                         <Insets right="10.0" />
                      </opaqueInsets>
                   </HBox>
-                  <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f">
+                  <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f" VBox.vgrow="NEVER">
                      <font>
                         <Font name="Niagara Solid" size="45.0" />
                      </font>
@@ -94,7 +94,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <HBox prefHeight="66.0" prefWidth="674.0">
+                  <HBox alignment="CENTER" prefHeight="66.0" prefWidth="674.0" VBox.vgrow="NEVER">
                      <children>
                         <GridPane prefHeight="66.0" prefWidth="438.0">
                            <columnConstraints>
@@ -137,7 +137,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f">
+                  <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f" VBox.vgrow="NEVER">
                      <font>
                         <Font name="Calibri" size="13.0" />
                      </font>
@@ -145,13 +145,13 @@
                         <Insets top="6.0" />
                      </VBox.margin>
                   </Button>
-                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0">
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="674.0" VBox.vgrow="NEVER">
                      <children>
                         <Label prefHeight="18.0" prefWidth="148.0" text="You don't have an account?" />
                         <Hyperlink fx:id="linktoSignUp" accessibleRole="BUTTON" onAction="#signUpClicked" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
                      </children>
                   </HBox>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
+                  <HBox alignment="CENTER" prefHeight="155.0" prefWidth="674.0" VBox.vgrow="NEVER">
                      <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
                            <graphic>
@@ -161,6 +161,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
