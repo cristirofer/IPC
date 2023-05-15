@@ -48,7 +48,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox fx:id="vBoxCenter" alignment="TOP_CENTER" prefHeight="318.0" prefWidth="674.0">
+      <VBox fx:id="vBoxCenter" prefHeight="478.0" prefWidth="960.0">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
                <children>
@@ -65,27 +65,15 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <Label prefHeight="42.0" prefWidth="90.0" textFill="#2d752f">
+            <Label prefHeight="59.0" prefWidth="214.0" text="Welcome" textFill="#2d752f">
                <font>
-                  <Font name="Niagara Solid" size="45.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="46.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/74f0a74939256fd792b17834fab54353.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f">
-               <font>
-                  <Font name="Calibri" size="13.0" />
+                  <Font name="Century Gothic" size="45.0" />
                </font>
                <VBox.margin>
-                  <Insets top="6.0" />
+                  <Insets left="5.0" />
                </VBox.margin>
-            </Button>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="155.0" prefWidth="674.0">
+            </Label>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="155.0" prefWidth="674.0">
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
                      <graphic>
@@ -97,6 +85,41 @@
                      </graphic>
                   </Button>
                </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="193.0" prefHeight="155.0" prefWidth="674.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/check%20availability.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="188.0" prefHeight="155.0" prefWidth="674.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/check%20availability.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>
