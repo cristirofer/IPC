@@ -9,9 +9,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
@@ -32,6 +35,14 @@ public class BookController implements Initializable {
     private VBox vBoxCenter;
     @FXML
     private Circle profilePicContainer;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button bookButton;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private Label labelCol;
 
     /**
      * Initializes the controller class.
