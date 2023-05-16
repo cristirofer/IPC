@@ -99,8 +99,6 @@ public class SignUpController implements Initializable {
     private int fullScreen = 1;
 
     @FXML
-    private TextField profileS;
-    @FXML
     private Button selectprofileS;
     @FXML
     private Circle profilePicContainer;
@@ -493,7 +491,6 @@ public class SignUpController implements Initializable {
         File file = fileChooser.showOpenDialog(null);
         if(file != null){
             Image avatar = new Image(file.toURI().toString());
-            profileS.setText(file.toURI().toString().substring(6));
             profilePicContainer.setFill(new ImagePattern(avatar));
             globalAvatar = avatar;
         }
