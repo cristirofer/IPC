@@ -5,11 +5,17 @@
 package controller;
 
 import extra.Utils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -37,8 +43,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Club;
 import model.ClubDAOException;
 
 /**
@@ -83,6 +91,8 @@ public class SignUpController implements Initializable {
     private BooleanProperty validName;
     private BooleanProperty validSurname;
     private BooleanProperty validPaymentInfo;
+    private BooleanProperty validImagePath;
+    private Image globalAvatar;
     private int fullScreen = 1;
 
     @FXML
@@ -105,6 +115,8 @@ public class SignUpController implements Initializable {
     private Label incorrectSurname;
     @FXML
     private Label incorrectName;
+    @FXML
+    private Label incorrectImageRoute;
     /**
      * Initializes the controller class.
      * @param url
@@ -123,6 +135,7 @@ public class SignUpController implements Initializable {
         validName = new SimpleBooleanProperty();
         validSurname = new SimpleBooleanProperty();
         validPaymentInfo = new SimpleBooleanProperty();
+        validImagePath = new SimpleBooleanProperty();
         
         validPassword.setValue(Boolean.FALSE);
         validEmail.setValue(Boolean.FALSE);
@@ -131,8 +144,9 @@ public class SignUpController implements Initializable {
         validName.setValue(Boolean.FALSE);
         validSurname.setValue(Boolean.FALSE);
         validPaymentInfo.setValue(Boolean.FALSE);
+        validImagePath.setValue(Boolean.FALSE);
         
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords).and(validPhone).and(validPaymentInfo).and(validName).and(validSurname);
+        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords).and(validPhone).and(validName).and(validSurname);
         acceptButton.disableProperty().bind(Bindings.not(validFields));
         
         nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
@@ -142,10 +156,41 @@ public class SignUpController implements Initializable {
             validSurname.setValue(true);
         }));
         
+        numberS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validPhone.setValue(true);
+        }));
+        passwS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validPassword.setValue(true);
+        }));
+        nicknameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validEmail.setValue(true);
+        }));
+        cscS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validPaymentInfo.setValue(true);
+        }));
+        
+        cardS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validPaymentInfo.setValue(true);
+        }));
+        repPasswS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            equalPasswords.setValue(true);
+        }));
         
         nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
                 checkEditEmail();
+            }
+        });
+        
+        profileS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ 
+                try {
+                //focus lost.
+                    searchImage();
+                    manageCorrect(incorrectImageRoute,profileS,validImagePath);
+                } catch (FileNotFoundException ex) {
+                    manageError(incorrectImageRoute, profileS,validImagePath);
+                }
             }
         });
         
@@ -159,8 +204,6 @@ public class SignUpController implements Initializable {
                 checkSurname();
             }
         });
-        
-        
         
         passwS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
@@ -194,6 +237,7 @@ public class SignUpController implements Initializable {
         Image im ;
         im = new Image("/resources/images/noprofile.jpg",false);
         profilePicContainer.setFill(new ImagePattern(im));
+        globalAvatar = im;
     } 
 
     @FXML
@@ -221,7 +265,7 @@ public class SignUpController implements Initializable {
         //Incorrect email
             manageError(incorrectName, nameS,validName );
         else
-            manageCorrect(incorrectSurname, nameS,validName );
+            manageCorrect(incorrectName, nameS,validName );
     }
     private void checkSurname(){
         if(!Utils.checkSurname(fNameS.textProperty().getValueSafe()))
@@ -395,6 +439,35 @@ public class SignUpController implements Initializable {
             stage.setFullScreenExitHint("Press F11 to exit fullscreen");
             stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         }
+    }
+
+    @FXML
+    private void searchImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG,extFilterJPEG,extFilterPNG);
+        File file = fileChooser.showOpenDialog(null);
+        if(file != null){
+            Image avatar = new Image(file.toURI().toString());
+            profileS.setText(file.toURI().toString().substring(6));
+            profilePicContainer.setFill(new ImagePattern(avatar));
+            globalAvatar = avatar;
+        }
+    }
+    
+    private void searchImage() throws FileNotFoundException{
+        String url = profileS.getText();
+        Image avatar = new Image(new FileInputStream(url));
+        profilePicContainer.setFill(new ImagePattern(avatar));
+        globalAvatar = avatar;
+    }
+
+    @FXML
+    private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
+        Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), cardS.getText(), Integer.parseInt(cscS.getText()), globalAvatar);
+        
     }
 }
 
