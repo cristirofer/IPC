@@ -182,7 +182,7 @@ public class SignUpController implements Initializable {
         
         cscS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
-                checkPaymentInfo();
+                checkPaymentInfoCSC();
             }
         });
         
