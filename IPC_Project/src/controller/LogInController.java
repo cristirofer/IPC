@@ -29,6 +29,7 @@ import static javafx.scene.AccessibleRole.NODE;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.MenuBar;
@@ -81,6 +82,8 @@ public class LogInController implements Initializable {
     private MenuBar menuBarCenter;
     @FXML
     private VBox vBoxCenter;
+    @FXML
+    private MenuItem infoButton;
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
         showNicknameErrorMessage(errorLabel,textField1, textField2);
@@ -318,6 +321,17 @@ public class LogInController implements Initializable {
             stage.setFullScreenExitHint("Press F11 to exit fullscreen");
             stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         }
+    }
+
+    @FXML
+    private void infoPressed(ActionEvent event) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("About us...");
+        alert.setHeaderText(null);
+        // or null if we do not want a header
+        alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
+        alert.showAndWait();
     }
 
 }
