@@ -28,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -152,6 +153,7 @@ public class SignUpController implements Initializable {
         nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
             validName.setValue(true);
         }));
+        
         fNameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
             validSurname.setValue(true);
         }));
@@ -181,18 +183,20 @@ public class SignUpController implements Initializable {
                 checkEditEmail();
             }
         });
-        
+        /*
         profileS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ 
                 try {
                 //focus lost.
+                    manageCorrect2(incorrectImageRoute,profileS,validImagePath);
                     searchImage();
-                    manageCorrect(incorrectImageRoute,profileS,validImagePath);
                 } catch (FileNotFoundException ex) {
-                    manageError(incorrectImageRoute, profileS,validImagePath);
+                    manageError2(incorrectImageRoute, profileS,validImagePath);
+                } finally {
                 }
             }
         });
+        */
         
         nameS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
@@ -374,6 +378,15 @@ public class SignUpController implements Initializable {
         textField.requestFocus();
  
     }
+    private void manageError2(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.FALSE);
+        showErrorMessage2(errorLabel,textField); 
+    }
+    private void manageCorrect2(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+        boolProp.setValue(Boolean.TRUE);
+        hideErrorMessage2(errorLabel,textField);
+        
+    }
     
     private void manageCorrect(Label errorLabel,TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.TRUE);
@@ -387,6 +400,18 @@ public class SignUpController implements Initializable {
         textField.styleProperty().setValue("-fx-background-color: #FCE5E0");
         textField.setText("");
     }
+    private void showErrorMessage2(Label errorLabel,TextField textField)
+    {
+        errorLabel.visibleProperty().set(true);
+        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");
+    }
+    
+    private void hideErrorMessage2(Label errorLabel,TextField textField)
+    {
+        errorLabel.visibleProperty().set(false);
+        textField.styleProperty().setValue("-fx-background-color: #ffffff");
+    }
+
     
     private void hideErrorMessage(Label errorLabel,TextField textField)
     {
@@ -456,18 +481,41 @@ public class SignUpController implements Initializable {
             globalAvatar = avatar;
         }
     }
-    
+    /*
     private void searchImage() throws FileNotFoundException{
         String url = profileS.getText();
         Image avatar = new Image(new FileInputStream(url));
         profilePicContainer.setFill(new ImagePattern(avatar));
         globalAvatar = avatar;
     }
+    */
 
     @FXML
     private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
         Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), cardS.getText(), Integer.parseInt(cscS.getText()), globalAvatar);
-        
+        Alert alert = new Alert(AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("Member confirmation");
+        alert.setHeaderText("Member registered succesfully!");
+        // or null if we do not want a header
+        alert.setContentText("Press next to be redirected.");
+        alert.showAndWait();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMinHeight(579);
+        stage.setMinWidth(976);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Main Window");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        nicknameS.getScene().getWindow().hide();
     }
 }
 
