@@ -104,7 +104,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Login" textFill="#2d752f" VBox.vgrow="NEVER">
+                        <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af; -fx-cursor: hand;" text="Login" textFill="#2d752f" VBox.vgrow="NEVER">
                            <font>
                               <Font name="Calibri" size="13.0" />
                            </font>

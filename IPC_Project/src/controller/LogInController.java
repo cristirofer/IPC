@@ -123,8 +123,8 @@ public class LogInController implements Initializable {
     }
     private void hideErrorMessage(Label errorLabel,TextField textField1,PasswordField textField2){
         errorLabel.setText("");
-        textField1.styleProperty().setValue("-fx-background-color: #2d752f");
-        textField2.styleProperty().setValue("-fx-background-color: #2d752f");   
+        textField1.styleProperty().setValue("-fx-background-color: #ffffff");
+        textField2.styleProperty().setValue("-fx-background-color: #ffffff");   
     }
 
     /**

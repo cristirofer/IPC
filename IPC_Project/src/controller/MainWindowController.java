@@ -63,6 +63,8 @@ public class MainWindowController implements Initializable {
     private Button bookButton;
     @FXML
     private Button myBookingsButton;
+    @FXML
+    private MenuItem infoButton;
 
     /**
      * Initializes the controller class.
@@ -132,6 +134,10 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void loadConfig(ActionEvent event) {
+    }
+
+    @FXML
+    private void infoPressed(ActionEvent event) {
     }
     
 }
