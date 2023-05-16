@@ -166,6 +166,7 @@
                         <Label fx:id="incorrectName" layoutX="447.0" layoutY="81.0" prefHeight="17.0" prefWidth="180.0" text="Invalid name." textFill="RED" visible="false" GridPane.columnIndex="2" />
                         <Label fx:id="incorrectSurname" layoutX="447.0" layoutY="18.0" prefHeight="17.0" prefWidth="180.0" text="Invalid surname." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="incorrectImageRoute" layoutX="447.0" layoutY="50.0" prefHeight="17.0" prefWidth="180.0" text="Invalid image route." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <Label fx:id="nicknameInUse" layoutX="452.0" layoutY="112.0" prefHeight="17.0" prefWidth="180.0" text="Nickname already in use." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
                      <opaqueInsets>
                         <Insets right="10.0" />

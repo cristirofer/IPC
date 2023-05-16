@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -49,6 +50,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -118,6 +120,8 @@ public class SignUpController implements Initializable {
     private Label incorrectName;
     @FXML
     private Label incorrectImageRoute;
+    @FXML
+    private Label nicknameInUse;
     /**
      * Initializes the controller class.
      * @param url
@@ -179,8 +183,11 @@ public class SignUpController implements Initializable {
         }));
         
         nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
-            if(!newValue){ //focus lost.
+            if(!newValue){ try {
+                //focus lost.
                 checkEditEmail();
+                } catch (ClubDAOException ex) {}
+                catch (IOException ex) {}
             }
         });
         /*
@@ -287,12 +294,21 @@ public class SignUpController implements Initializable {
             manageCorrect(paymentError, cscS,validPaymentInfo );
     }
     
-    private void checkEditEmail(){
-        if(!Utils.checkEmail(nicknameS.textProperty().getValueSafe()))
+    private void checkEditEmail() throws ClubDAOException, IOException{
+        if(!Utils.checkEmail(nicknameS.textProperty().getValueSafe())){
         //Incorrect email
             manageError(lIncorrectEmail, nicknameS,validEmail );
-        else
-            manageCorrect(lIncorrectEmail, nicknameS,validEmail );
+        }
+        else if(Utils.checkEmail(nicknameS.textProperty().getValueSafe())){
+            manageCorrect2(lIncorrectEmail,nicknameInUse, nicknameS,validEmail );
+        }
+        List<Member> members = Club.getInstance().getMembers();
+        for (Member member : members) {
+            if(member.getNickName().equals(nicknameS.getText())){
+               manageError(nicknameInUse, nicknameS,validEmail );
+               break;
+            }
+        }
     }
     
     private void checkPhone(){
@@ -382,9 +398,9 @@ public class SignUpController implements Initializable {
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage2(errorLabel,textField); 
     }
-    private void manageCorrect2(Label errorLabel,TextField textField, BooleanProperty boolProp ){
+    private void manageCorrect2(Label errorLabel1, Label errorLabel2, TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.TRUE);
-        hideErrorMessage2(errorLabel,textField);
+        hideErrorMessage2(errorLabel1,errorLabel2,textField);
         
     }
     
@@ -406,10 +422,11 @@ public class SignUpController implements Initializable {
         textField.styleProperty().setValue("-fx-background-color: #FCE5E0");
     }
     
-    private void hideErrorMessage2(Label errorLabel,TextField textField)
+    private void hideErrorMessage2(Label errorLabel1,Label errorLabel2,TextField textField)
     {
-        errorLabel.visibleProperty().set(false);
+        errorLabel1.visibleProperty().set(false);
         textField.styleProperty().setValue("-fx-background-color: #ffffff");
+        errorLabel2.visibleProperty().set(false);
     }
 
     
