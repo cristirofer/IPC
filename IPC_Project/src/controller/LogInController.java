@@ -46,6 +46,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Club;
 import model.ClubDAOException;
 
 /**
@@ -89,7 +90,7 @@ public class LogInController implements Initializable {
         showPasswordErrorMessage(errorLabel,textField1);
         textField1.requestFocus();
     }
-    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2){
+    private void manageCorrect(Label errorLabel,TextField textField1,PasswordField textField2) throws IOException{
         hideErrorMessage(errorLabel,textField1,textField2);
     }
     
@@ -174,6 +175,23 @@ public class LogInController implements Initializable {
     private void logInClicked(MouseEvent event) throws ClubDAOException, IOException {
         if(checkEditEmail()){
             //load next screen
+            Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setMinHeight(579);
+            stage.setMinWidth(976);
+            Image icon = new Image("/resources/images/pelota.png");
+            stage.getIcons().add(icon);
+            stage.setTitle("Main Window");
+            stage.setFullScreen(false);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            linktoSignUp.getScene().getWindow().hide();
         }else{//do nothing, user must re-try
             
         }
@@ -240,6 +258,23 @@ public class LogInController implements Initializable {
         if(validFields.get() && event.getCode() == KeyCode.ENTER){
             if(checkEditEmail()){
                 //load next screen
+                Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setMinHeight(579);
+                stage.setMinWidth(976);
+                Image icon = new Image("/resources/images/pelota.png");
+                stage.getIcons().add(icon);
+                stage.setTitle("Main Window");
+                stage.setFullScreen(false);
+                stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+                stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                linktoSignUp.getScene().getWindow().hide();
             }else{//do nothing, user must re-try
             }
         }
@@ -250,6 +285,23 @@ public class LogInController implements Initializable {
         if(validFields.get() && event.getCode() == KeyCode.ENTER){
             if(checkEditEmail()){
                 //load next screen
+                Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setMinHeight(579);
+                stage.setMinWidth(976);
+                Image icon = new Image("/resources/images/pelota.png");
+                stage.getIcons().add(icon);
+                stage.setTitle("Main Window");
+                stage.setFullScreen(false);
+                stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+                stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                linktoSignUp.getScene().getWindow().hide();
             }else{//do nothing, user must re-try
             }
         }
