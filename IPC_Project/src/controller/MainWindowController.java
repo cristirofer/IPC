@@ -19,11 +19,13 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -47,11 +49,15 @@ public class MainWindowController implements Initializable {
     @FXML
     private Circle profilePicContainer;
     @FXML
-    private Button logInButton;
-    @FXML
     private Label labelWelcome;
     @FXML
     private Button availabilityButton;
+    @FXML
+    private Button configurationButton;
+    @FXML
+    private Button bookButton;
+    @FXML
+    private Button myBookingsButton;
 
     /**
      * Initializes the controller class.
@@ -59,6 +65,9 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Image im ;
+        im = new Image("/resources/images/noprofile.jpg",false);
+        profilePicContainer.setFill(new ImagePattern(im));
     }    
 
     @FXML
@@ -93,6 +102,14 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void logInClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void loadBook(ActionEvent event) {
+    }
+
+    @FXML
+    private void loadBookings(ActionEvent event) {
     }
     
 }
