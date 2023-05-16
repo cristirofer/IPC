@@ -83,7 +83,7 @@ public class Utils {
         if(nickname == null || password == null) return 0;
         List<Member> members = Club.getInstance().getMembers();
         for (Member member : members) {
-            if(member.getNickName() == nickname){
+            if(member.getNickName().equals(nickname)){
                 res = 1;
                 break;
             }
@@ -92,7 +92,7 @@ public class Utils {
             Member myMember = Club.getInstance().getMemberByCredentials(nickname, password);
             if (myMember != null) {
               return res+1;
-             }else {
+            }else {
                 return res;
             }
         }
