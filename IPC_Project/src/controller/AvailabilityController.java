@@ -91,12 +91,6 @@ public class AvailabilityController implements Initializable {
     @FXML
     private MenuItem exitButton;
     @FXML
-    private RadioMenuItem amazonOption;
-    @FXML
-    private ToggleGroup buyGroup;
-    @FXML
-    private RadioMenuItem ebayOption;
-    @FXML
     private ImageView banner;
  
 
@@ -251,13 +245,6 @@ public class AvailabilityController implements Initializable {
         }
     }
 
-    @FXML
-    private void amazonChosen(ActionEvent event) {
-    }
-
-    @FXML
-    private void ebayChosen(ActionEvent event) {
-    }
 
     @FXML
     private void makeFullScreen(KeyEvent event) {

@@ -6,39 +6,20 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #2d752f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <MenuBar fx:id="menuBarCenter">
          <menus>
-            <Menu text="About us">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Amazon" />
-                  <MenuItem mnemonicParsing="false" text="Blogger" />
-                  <MenuItem mnemonicParsing="false" text="Ebay" />
-                  <MenuItem mnemonicParsing="false" text="Facebook" />
-                  <MenuItem mnemonicParsing="false" text="Google+" />
-               </items>
-            </Menu>
             <Menu text="Help">
                <items>
-                  <Menu mnemonicParsing="false" text="Buy in">
-                     <items>
-                        <RadioMenuItem fx:id="amazonOption" mnemonicParsing="false" onAction="#amazonChosen" text="Amazon">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="buyGroup" />
-                           </toggleGroup>
-                        </RadioMenuItem>
-                        <RadioMenuItem fx:id="ebayOption" mnemonicParsing="false" onAction="#ebayChosen" text="Ebay" toggleGroup="$buyGroup" />
-                     </items>
-                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="About us" />
                </items>
             </Menu>
             <Menu text="Options">
@@ -48,13 +29,29 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox fx:id="vBoxCenter" prefHeight="478.0" prefWidth="960.0">
+      <VBox fx:id="vBoxCenter" alignment="CENTER_LEFT" prefHeight="520.0" prefWidth="960.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="674.0">
+            <HBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="757.0">
                <children>
+                  <HBox prefHeight="130.0" prefWidth="527.0">
+                     <children>
+                        <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button fx:id="logInButton" mnemonicParsing="false" onMouseClicked="#logInClicked" style="-fx-background-color: #adf7af;" text="Profile Configuration" textFill="#2d752f">
+                           <font>
+                              <Font name="Calibri" size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
                   <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/images/title.png" />
+                        <Image url="@../resources/images/greenBall%20blanco.png" />
                      </image>
                      <HBox.margin>
                         <Insets right="30.0" top="10.0" />
@@ -65,61 +62,77 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <Label prefHeight="59.0" prefWidth="214.0" text="Welcome" textFill="#2d752f">
-               <font>
-                  <Font name="Century Gothic" size="45.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Label>
-            <HBox alignment="BOTTOM_LEFT" prefHeight="155.0" prefWidth="674.0">
+            <HBox alignment="BOTTOM_LEFT" prefHeight="371.0" prefWidth="960.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/images/check%20availability.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="273.0" prefWidth="418.0">
+                     <children>
+                        <Label fx:id="labelWelcome" prefHeight="58.0" prefWidth="296.0" text="WELCOME" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="31.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="83.0" prefWidth="418.0">
+                           <children>
+                              <Button fx:id="availabilityButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="388.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="#2d752f">
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/availability.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="103.0" prefWidth="418.0">
+                           <children>
+                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="395.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/Book%20a%20court.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="132.0" prefWidth="418.0">
+                           <children>
+                              <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="57.0" prefWidth="389.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="#2d752f">
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/My%20reservations.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" left="30.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="368.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="170.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../resources/images/imagen%20teniis.png" />
+                     </image>
+                  </ImageView>
                </children>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="193.0" prefHeight="155.0" prefWidth="674.0">
-               <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/images/check%20availability.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="188.0" prefHeight="155.0" prefWidth="674.0">
-               <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadAvailability" prefHeight="60.0" prefWidth="216.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" textFill="#2d752f">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/images/check%20availability.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
             </HBox>
          </children>
       </VBox>

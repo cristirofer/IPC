@@ -43,6 +43,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClubDAOException;
@@ -71,12 +72,6 @@ public class LogInController implements Initializable {
     private Hyperlink linktoSignUp;
     @FXML
     private MenuItem exitButton;
-    @FXML
-    private RadioMenuItem amazonOption;
-    @FXML
-    private ToggleGroup buyGroup;
-    @FXML
-    private RadioMenuItem ebayOption;
     @FXML
     private ImageView banner;  
     @FXML
@@ -239,13 +234,6 @@ public class LogInController implements Initializable {
         }
     }
 
-    @FXML
-    private void amazonChosen(ActionEvent event) {
-    }
-
-    @FXML
-    private void ebayChosen(ActionEvent event) {
-    }
 
     @FXML
     private void enterPressedNick(KeyEvent event) throws ClubDAOException, IOException {

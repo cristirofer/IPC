@@ -9,9 +9,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -25,27 +23,9 @@
    <children>
       <MenuBar fx:id="menuBarCenter" VBox.vgrow="NEVER">
          <menus>
-            <Menu text="About us">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Amazon" />
-                  <MenuItem mnemonicParsing="false" text="Blogger" />
-                  <MenuItem mnemonicParsing="false" text="Ebay" />
-                  <MenuItem mnemonicParsing="false" text="Facebook" />
-                  <MenuItem mnemonicParsing="false" text="Google+" />
-               </items>
-            </Menu>
             <Menu text="Help">
                <items>
-                  <Menu mnemonicParsing="false" text="Buy in">
-                     <items>
-                        <RadioMenuItem fx:id="amazonOption" mnemonicParsing="false" onAction="#amazonChosen" text="Amazon">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="buyGroup" />
-                           </toggleGroup>
-                        </RadioMenuItem>
-                        <RadioMenuItem fx:id="ebayOption" mnemonicParsing="false" onAction="#ebayChosen" text="Ebay" toggleGroup="$buyGroup" />
-                     </items>
-                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="About us" />
                </items>
             </Menu>
             <Menu text="Options">
