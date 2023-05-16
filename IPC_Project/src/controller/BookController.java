@@ -107,7 +107,7 @@ public class BookController implements Initializable {
         
        Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
-            banner.fitHeightProperty().bind(banner.getScene().heightProperty());
+         //   banner.fitHeightProperty().bind(banner.getScene().heightProperty());
         });
    
         timeSlotSelected = new SimpleObjectProperty<>();
@@ -168,12 +168,12 @@ public class BookController implements Initializable {
 
             //---------------------------------------------------------------------------------------
             // creamos el SlotTime, lo anyadimos a la lista de la columna y asignamos sus manejadores
-            AvailabilityController.TimeSlot timeSlot = new AvailabilityController.TimeSlot(startTime, slotLength);
-            timeSlots.add(timeSlot);
-            registerHandlers(timeSlot);
+            //AvailabilityController.TimeSlot timeSlot = new AvailabilityController.TimeSlot(startTime, slotLength);
+            //timeSlots.add(timeSlot);
+            //registerHandlers(timeSlot);
             //-----------------------------------------------------------
             // lo anyadimos al grid en la posicion x= 1, y= slotIndex
-            grid.add(timeSlot.getView(), 1, slotIndex);
+            //grid.add(timeSlot.getView(), 1, slotIndex);
             slotIndex++;
         }
     }
