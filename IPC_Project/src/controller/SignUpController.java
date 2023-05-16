@@ -79,6 +79,10 @@ public class SignUpController implements Initializable {
     private BooleanProperty validPassword;
     private BooleanProperty validEmail;
     private BooleanProperty equalPasswords;
+    private BooleanProperty validPhone;
+    private BooleanProperty validName;
+    private BooleanProperty validSurname;
+    private BooleanProperty validPaymentInfo;
     private int fullScreen = 1;
 
     @FXML
@@ -97,6 +101,16 @@ public class SignUpController implements Initializable {
     private RadioMenuItem ebayOption;
     @FXML
     private ImageView banner;
+    @FXML
+    private Label IincorrectPhoneNumber;
+    @FXML
+    private Label paymentError;
+    @FXML
+    private TextField cscS;
+    @FXML
+    private Label incorrectSurname;
+    @FXML
+    private Label incorrectName;
     /**
      * Initializes the controller class.
      * @param url
@@ -111,13 +125,28 @@ public class SignUpController implements Initializable {
         validEmail = new SimpleBooleanProperty();
         validPassword = new SimpleBooleanProperty();   
         equalPasswords = new SimpleBooleanProperty();
+        validPhone = new SimpleBooleanProperty();
+        validName = new SimpleBooleanProperty();
+        validSurname = new SimpleBooleanProperty();
+        validPaymentInfo = new SimpleBooleanProperty();
         
         validPassword.setValue(Boolean.FALSE);
         validEmail.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
+        validPhone.setValue(Boolean.FALSE);
+        validName.setValue(Boolean.FALSE);
+        validSurname.setValue(Boolean.FALSE);
+        validPaymentInfo.setValue(Boolean.FALSE);
         
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords);
+        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords).and(validPhone).and(validPaymentInfo).and(validName).and(validSurname);
         acceptButton.disableProperty().bind(Bindings.not(validFields));
+        
+        nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validName.setValue(true);
+        }));
+        fNameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
+            validSurname.setValue(true);
+        }));
         
         
         nicknameS.focusedProperty().addListener((observable, oldValue, newValue)->{
@@ -126,10 +155,40 @@ public class SignUpController implements Initializable {
             }
         });
         
+        nameS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkName();
+            }
+        });
+        fNameS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkSurname();
+            }
+        });
+        
+        
         
         passwS.focusedProperty().addListener((observable, oldValue, newValue)->{
             if(!newValue){ //focus lost.
                 checkEditPassword();
+            }
+        });
+        
+        numberS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkPhone();
+            }
+        });
+        
+        cscS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkPaymentInfo();
+            }
+        });
+        
+        cardS.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if(!newValue){ //focus lost.
+                checkPaymentInfo();
             }
         });
         
@@ -148,17 +207,58 @@ public class SignUpController implements Initializable {
         nicknameS.textProperty().setValue("");
         passwS.textProperty().setValue("");
         repPasswS.textProperty().setValue("");
+        numberS.textProperty().setValue("");
         
         validEmail.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
+        validPhone.setValue(Boolean.FALSE);
+
     }
+    private void checkPaymentInfo(){
+        if(!Utils.checkCreditCard(cardS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(paymentError, cardS,validPaymentInfo );
+        else
+            manageCorrect(paymentError, cardS,validPaymentInfo );
+    }
+    private void checkName(){
+        if(!Utils.checkName(nameS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(incorrectName, nameS,validName );
+        else
+            manageCorrect(incorrectSurname, nameS,validName );
+    }
+    private void checkSurname(){
+        if(!Utils.checkSurname(fNameS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(incorrectSurname, fNameS,validSurname );
+        else
+            manageCorrect(incorrectSurname, fNameS,validSurname );
+    }
+    
+    private void checkPaymentInfoCSC(){
+        if(!Utils.checkCSC(cscS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(paymentError, cscS,validPaymentInfo );
+        else
+            manageCorrect(paymentError, cscS,validPaymentInfo );
+    }
+    
     private void checkEditEmail(){
         if(!Utils.checkEmail(nicknameS.textProperty().getValueSafe()))
         //Incorrect email
             manageError(lIncorrectEmail, nicknameS,validEmail );
         else
             manageCorrect(lIncorrectEmail, nicknameS,validEmail );
+    }
+    
+    private void checkPhone(){
+        if(!Utils.checkPhone(numberS.textProperty().getValueSafe()))
+        //Incorrect email
+            manageError(IincorrectPhoneNumber, numberS,validPhone );
+        else
+            manageCorrect(IincorrectPhoneNumber, numberS,validPhone );
     }
     
     
@@ -246,9 +346,9 @@ public class SignUpController implements Initializable {
     private void showErrorMessage(Label errorLabel,TextField textField)
     {
         errorLabel.visibleProperty().set(true);
-        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
+        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");
+        textField.setText("");
     }
-    
     
     private void hideErrorMessage(Label errorLabel,TextField textField)
     {

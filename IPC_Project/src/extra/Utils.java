@@ -21,7 +21,7 @@ public class Utils {
 
     public static Boolean checkEmail(String email){
         if(email == null) return false;
-        String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String regex = "^([\\w\\d][^\\s!#$%&'*+/=?`{|}~^-]{2,15})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
@@ -29,11 +29,52 @@ public class Utils {
     
     public static Boolean checkPassword(String password){     
         if (password == null) return false;  
-        String regex =  "^[A-Za-z0-9]{8,15}$"; 
+        String regex =  "^[A-Za-z0-9]{6,15}$"; 
         Pattern pattern = Pattern.compile(regex); 
         Matcher matcher = pattern.matcher(password); 
         return matcher.matches();
     }
+    
+    public static Boolean checkPhone(String phone){     
+        if (phone == null) return false;  
+        String regex =  "^[0-9]{9}$"; 
+        Pattern pattern = Pattern.compile(regex); 
+        Matcher matcher = pattern.matcher(phone); 
+        return matcher.matches();
+    }
+    
+    public static Boolean checkCreditCard(String CreditCard){     
+        if (CreditCard == null) return false;  
+        String regexCr =  "^[0-9]{16}$"; 
+        Pattern pattern1 = Pattern.compile(regexCr); 
+        Matcher matcher1 = pattern1.matcher(CreditCard); 
+        return matcher1.matches();
+    }
+    
+    public static Boolean checkCSC(String CSC){     
+        if (CSC == null) return false;  
+        String regexC =  "^[0-9]{3}$"; 
+        Pattern pattern2 = Pattern.compile(regexC); 
+        Matcher matcher2 = pattern2.matcher(CSC); 
+        return matcher2.matches();
+    }
+    
+    public static Boolean checkName(String name){     
+        if (name == null) return false;  
+        String regexC =  "^[a-zA-Z]{1,}$"; 
+        Pattern pattern2 = Pattern.compile(regexC); 
+        Matcher matcher2 = pattern2.matcher(name); 
+        return matcher2.matches();
+    }
+    
+    public static Boolean checkSurname(String surname){     
+        if (surname == null) return false;  
+        String regexC =  "^[a-zA-Z]{1,}$"; 
+        Pattern pattern2 = Pattern.compile(regexC); 
+        Matcher matcher2 = pattern2.matcher(surname); 
+        return matcher2.matches();
+    }
+    
     public static int checkLogInUser(String nickname, String password) throws ClubDAOException, IOException{
         //if not a valid nickname, returns 0
         //if not valid password, returns 1
