@@ -50,6 +50,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -92,6 +94,86 @@ public class AvailabilityController implements Initializable {
     private MenuItem exitButton;
     @FXML
     private ImageView banner;
+    @FXML
+    private Label dateLabel;
+    
+    private boolean lightMode = true;
+    @FXML
+    private VBox vBox;
+    @FXML
+    private Label label9;
+    @FXML
+    private Label label10;
+    @FXML
+    private Label label11;
+    @FXML
+    private Label label12;
+    @FXML
+    private Label label13;
+    @FXML
+    private Label label14;
+    @FXML
+    private Label label15;
+    @FXML
+    private Label label16;
+    @FXML
+    private Label label17;
+    @FXML
+    private Label label18;
+    @FXML
+    private Label label19;
+    @FXML
+    private Label label20;
+    @FXML
+    private Label label21;
+    
+    @FXML
+    private void changeMode(ActionEvent event) {
+        lightMode = !lightMode;
+        if(lightMode) {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+    }
+    
+    public void setLightMode() {
+        label9.setStyle("-fx-text-fill: black;");
+        label10.setStyle("-fx-text-fill: black;");
+        label11.setStyle("-fx-text-fill: black;");
+        label12.setStyle("-fx-text-fill: black;");
+        label13.setStyle("-fx-text-fill: black;");
+        label14.setStyle("-fx-text-fill: black;");
+        label15.setStyle("-fx-text-fill: black;");
+        label16.setStyle("-fx-text-fill: black;");
+        label17.setStyle("-fx-text-fill: black;");
+        label18.setStyle("-fx-text-fill: black;");
+        label19.setStyle("-fx-text-fill: black;");
+        label20.setStyle("-fx-text-fill: black;");
+        label21.setStyle("-fx-text-fill: black;");
+        dateLabel.setStyle("-fx-text-fill: black;");
+        vBox.getStylesheets().remove("/resources/css/darkMode.css");
+        vBox.getStylesheets().add("/resources/css/lightMode.css");
+    }
+    
+    public void setDarkMode() {
+        label9.setStyle("-fx-text-fill: white;");
+        label10.setStyle("-fx-text-fill: white;");
+        label11.setStyle("-fx-text-fill: white;");
+        label12.setStyle("-fx-text-fill: white;");
+        label13.setStyle("-fx-text-fill: white;");
+        label14.setStyle("-fx-text-fill: white;");
+        label15.setStyle("-fx-text-fill: white;");
+        label16.setStyle("-fx-text-fill: white;");
+        label17.setStyle("-fx-text-fill: white;");
+        label18.setStyle("-fx-text-fill: white;");
+        label19.setStyle("-fx-text-fill: white;");
+        label20.setStyle("-fx-text-fill: white;");
+        label21.setStyle("-fx-text-fill: white;");
+        dateLabel.setStyle("-fx-text-fill: white;");
+        vBox.getStylesheets().remove("/resources/css/lightMode.css");
+        vBox.getStylesheets().add("/resources/css/darkMode.css");
+    }
  
 
   
