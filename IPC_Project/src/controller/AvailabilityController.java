@@ -397,7 +397,6 @@ public class AvailabilityController implements Initializable {
         public Node getView() {
             return view;
         }
-
     }
     
 }

@@ -7,6 +7,7 @@ package controller;
 import extra.Utils;
 import java.io.IOException;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,7 +20,9 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
@@ -44,6 +47,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -91,8 +95,8 @@ public class BookController implements Initializable {
     private final LocalTime lastSlotStart = LocalTime.of(22, 0);
     
     private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
-    private List<AvailabilityController.TimeSlot> timeSlots = new ArrayList<>(); //Para varias columnas List<List<TimeSolt>>
-    private ObjectProperty<AvailabilityController.TimeSlot> timeSlotSelected;
+    private List<TimeSlot> timeSlots = new ArrayList<>(); //Para varias columnas List<List<TimeSolt>>
+    private ObjectProperty<TimeSlot> timeSlotSelected;
     private LocalDate daySelected;
     
     /**
@@ -104,11 +108,14 @@ public class BookController implements Initializable {
         Image im ;
         im = new Image("/resources/images/noprofile.jpg",false);
         profilePicContainer.setFill(new ImagePattern(im));
+<<<<<<< Updated upstream
         
        Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
          //   banner.fitHeightProperty().bind(banner.getScene().heightProperty());
         });
+=======
+>>>>>>> Stashed changes
    
         timeSlotSelected = new SimpleObjectProperty<>();
         // Create a Locale object for English
@@ -154,7 +161,7 @@ public class BookController implements Initializable {
         //--------------------------------------------        
         //borramos los SlotTime del grid
         ObservableList<Node> children = grid.getChildren();
-        for (AvailabilityController.TimeSlot timeSlot : timeSlots) {
+        for (TimeSlot timeSlot : timeSlots) {
             children.remove(timeSlot.getView());
         }
         timeSlots = new ArrayList<>();
@@ -168,9 +175,15 @@ public class BookController implements Initializable {
 
             //---------------------------------------------------------------------------------------
             // creamos el SlotTime, lo anyadimos a la lista de la columna y asignamos sus manejadores
+<<<<<<< Updated upstream
             //AvailabilityController.TimeSlot timeSlot = new AvailabilityController.TimeSlot(startTime, slotLength);
             //timeSlots.add(timeSlot);
             //registerHandlers(timeSlot);
+=======
+            TimeSlot timeSlot = new TimeSlot(startTime, slotLength);
+            timeSlots.add(timeSlot);
+            registerHandlers(timeSlot);
+>>>>>>> Stashed changes
             //-----------------------------------------------------------
             // lo anyadimos al grid en la posicion x= 1, y= slotIndex
             //grid.add(timeSlot.getView(), 1, slotIndex);
@@ -178,7 +191,7 @@ public class BookController implements Initializable {
         }
     }
 
-    private void registerHandlers(AvailabilityController.TimeSlot timeSlot) {
+    private void registerHandlers(TimeSlot timeSlot) {
 
         timeSlot.getView().setOnMousePressed((MouseEvent event) -> {
             //---------------------------------------------slot----------------------------
@@ -283,4 +296,62 @@ public class BookController implements Initializable {
         alert.showAndWait();
     }
     
+    public class TimeSlot {
+
+        private final LocalDateTime start;
+        private final Duration duration;
+        protected final Pane view;
+        
+        
+        private final BooleanProperty selected = new SimpleBooleanProperty();
+
+        public final BooleanProperty selectedProperty() {
+            return selected;
+        }
+
+        public final boolean isSelected() {
+            return selectedProperty().get();
+        }
+
+        public final void setSelected(boolean selected) {
+            selectedProperty().set(selected);
+        }
+
+        public TimeSlot(LocalDateTime start, Duration duration) {
+            this.start = start;
+            this.duration = duration;
+            view = new Pane();
+            view.getStyleClass().add("time-slot");
+            // ---------------------------------------------------------------
+            // de esta manera cambiamos la apariencia del TimeSlot cuando los seleccionamos
+            selectedProperty().addListener((obs, wasSelected, isSelected)
+                    -> view.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, isSelected));
+
+        }
+
+        public LocalDateTime getStart() {
+            return start;
+        }
+
+        public LocalTime getTime() {
+            return start.toLocalTime();
+        }
+
+        public LocalDate getDate() {
+            return start.toLocalDate();
+        }
+
+        public DayOfWeek getDayOfWeek() {
+            return start.getDayOfWeek();
+        }
+
+        public Duration getDuration() {
+            return duration;
+        }
+
+        public Node getView() {
+            return view;
+        }
+    
+    }
 }
