@@ -43,6 +43,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
@@ -84,6 +85,15 @@ public class LogInController implements Initializable {
     private VBox vBoxCenter;
     @FXML
     private MenuItem infoButton;
+    
+    private boolean lightMode = true;
+    @FXML
+    private HBox hbox1;
+    @FXML
+    private VBox vbox1;
+    @FXML
+    private Label accountLabel;
+   
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
         showNicknameErrorMessage(errorLabel,textField1, textField2);
@@ -332,6 +342,28 @@ public class LogInController implements Initializable {
         // or null if we do not want a header
         alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
         alert.showAndWait();
+    }
+
+    @FXML
+    private void changeMode(ActionEvent event) {
+        lightMode = !lightMode;
+        if(lightMode) {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+    }
+    
+    public void setLightMode() {
+        accountLabel.setStyle("-fx-text-fill: black;");
+        vBox.getStylesheets().remove("/resources/css/darkMode.css");
+        vBox.getStylesheets().add("/resources/css/lightMode.css");
+    }
+    
+    public void setDarkMode() {
+        accountLabel.setStyle("-fx-text-fill: white;");
+        vBox.getStylesheets().remove("/resources/css/lightMode.css");
+        vBox.getStylesheets().add("/resources/css/darkMode.css");
     }
 
 }
