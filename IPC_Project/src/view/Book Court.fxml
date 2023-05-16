@@ -24,7 +24,7 @@
          <menus>
             <Menu text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About us" />
+                  <MenuItem fx:id="infoButton" mnemonicParsing="false" onAction="#infoPressed" text="About us" />
                </items>
             </Menu>
             <Menu text="Options">
@@ -70,7 +70,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <DatePicker prefHeight="34.0" prefWidth="194.0" />
+                              <DatePicker fx:id="day" prefHeight="34.0" prefWidth="194.0" />
                            </children>
                            <padding>
                               <Insets right="10.0" top="20.0" />
@@ -86,7 +86,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <ComboBox prefHeight="34.0" prefWidth="196.0" promptText="Please select" />
+                              <ComboBox fx:id="court" prefHeight="34.0" prefWidth="196.0" promptText="Please select" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -99,12 +99,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="253.0" spacing="30.0">
                                  <children>
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="90.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="42.0" prefWidth="90.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="bookButton" mnemonicParsing="false" style="-fx-background-color: #2d752f;" text="BOOK" textFill="WHITE">
+                                    <Button fx:id="bookButton" mnemonicParsing="false" onAction="#bookPressed" style="-fx-background-color: #2d752f;" text="BOOK" textFill="WHITE">
                                        <font>
                                           <Font name="Century Gothic Bold" size="20.0" />
                                        </font>
@@ -141,6 +141,7 @@
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -221,6 +222,7 @@
                                     <Insets right="4.0" />
                                  </GridPane.margin>
                               </Label>
+                              <Label fx:id="slotSelected" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                            </children>
                         </GridPane>
                      </children>
