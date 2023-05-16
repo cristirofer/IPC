@@ -108,14 +108,6 @@ public class BookController implements Initializable {
         Image im ;
         im = new Image("/resources/images/noprofile.jpg",false);
         profilePicContainer.setFill(new ImagePattern(im));
-<<<<<<< Updated upstream
-        
-       Platform.runLater(() -> {
-            // Realizar el binding después de que la escena esté disponible
-         //   banner.fitHeightProperty().bind(banner.getScene().heightProperty());
-        });
-=======
->>>>>>> Stashed changes
    
         timeSlotSelected = new SimpleObjectProperty<>();
         // Create a Locale object for English
@@ -175,15 +167,9 @@ public class BookController implements Initializable {
 
             //---------------------------------------------------------------------------------------
             // creamos el SlotTime, lo anyadimos a la lista de la columna y asignamos sus manejadores
-<<<<<<< Updated upstream
-            //AvailabilityController.TimeSlot timeSlot = new AvailabilityController.TimeSlot(startTime, slotLength);
-            //timeSlots.add(timeSlot);
-            //registerHandlers(timeSlot);
-=======
             TimeSlot timeSlot = new TimeSlot(startTime, slotLength);
             timeSlots.add(timeSlot);
             registerHandlers(timeSlot);
->>>>>>> Stashed changes
             //-----------------------------------------------------------
             // lo anyadimos al grid en la posicion x= 1, y= slotIndex
             //grid.add(timeSlot.getView(), 1, slotIndex);
