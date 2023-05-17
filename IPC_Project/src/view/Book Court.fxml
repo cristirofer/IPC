@@ -38,17 +38,20 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="158.0" prefWidth="960.0">
                <children>
-                  <HBox prefHeight="130.0" prefWidth="527.0">
+                  <HBox prefHeight="119.0" prefWidth="507.0">
                      <children>
                         <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                      </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </HBox>
                   <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/greenBall%20blanco.png" />
                      </image>
                      <HBox.margin>
-                        <Insets right="30.0" top="10.0" />
+                        <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
@@ -86,7 +89,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <ComboBox fx:id="court" prefHeight="34.0" prefWidth="196.0" promptText="Please select" />
+                              <ComboBox fx:id="court" onAction="#selectCourt" prefHeight="34.0" prefWidth="196.0" promptText="Please select" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -99,7 +102,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="253.0" spacing="30.0">
                                  <children>
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="42.0" prefWidth="90.0" style="-fx-background-color: #2d752f;" text="CANCEL" textFill="WHITE">
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="GO BACK" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -128,8 +131,8 @@
                      <children>
                         <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="364.0" prefWidth="356.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="ALWAYS" maxWidth="108.80001220703124" minWidth="78.400048828125" prefWidth="103.20003662109374" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="252.39996337890628" />
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="152.79998779296875" minWidth="78.400048828125" prefWidth="142.4000244140625" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="214.3999755859375" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -223,6 +226,71 @@
                                  </GridPane.margin>
                               </Label>
                               <Label fx:id="slotSelected" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                              <Label fx:id="fil1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#fil1Clicked" prefHeight="26.0" prefWidth="212.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil2" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#fil2Clicked" prefHeight="72.0" prefWidth="223.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil3" alignment="CENTER" onMouseClicked="#fil3Clicked" prefHeight="67.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil4" alignment="CENTER" onMouseClicked="#fil4Clicked" prefHeight="82.0" prefWidth="282.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil5" alignment="CENTER" onMouseClicked="#fil5Clicked" prefHeight="93.0" prefWidth="234.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil6" alignment="CENTER" onMouseClicked="#fil6Clicked" prefHeight="127.0" prefWidth="290.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil7" alignment="CENTER" onMouseClicked="#fil7Clicked" prefHeight="110.0" prefWidth="279.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil8" alignment="CENTER" onMouseClicked="#fil8Clicked" prefHeight="86.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil9" alignment="CENTER" onMouseClicked="#fil9Clicked" prefHeight="98.0" prefWidth="262.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil10" alignment="CENTER" onMouseClicked="#fil10Clicked" prefHeight="91.0" prefWidth="280.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil11" alignment="CENTER" onMouseClicked="#fil11Clicked" prefHeight="78.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil12" alignment="CENTER" onMouseClicked="#fil12Clicked" prefHeight="84.0" prefWidth="259.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="fil13" alignment="CENTER" onMouseClicked="#fil13Clicked" prefHeight="60.0" prefWidth="224.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
                            </children>
                         </GridPane>
                      </children>

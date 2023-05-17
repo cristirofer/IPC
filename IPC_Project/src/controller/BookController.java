@@ -20,6 +20,8 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -53,6 +55,12 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Booking;
+import model.Club;
+import model.ClubDAOException;
+import model.Court;
+import model.Member;
+import controller.LogInController;
 
 /**
  * FXML Controller class
@@ -89,7 +97,7 @@ public class BookController implements Initializable {
     @FXML
     private Label slotSelected;
 
-    
+    private boolean isSelected;
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
     private final Duration slotLength = Duration.ofMinutes(60);
     private final LocalTime lastSlotStart = LocalTime.of(22, 0);
@@ -99,12 +107,45 @@ public class BookController implements Initializable {
     private ObjectProperty<TimeSlot> timeSlotSelected;
     private LocalDate daySelected;
     
+    @FXML
+    private Label fil1;
+    @FXML
+    private Label fil2;
+    @FXML
+    private Label fil3;
+    @FXML
+    private Label fil4;
+    @FXML
+    private Label fil5;
+    @FXML
+    private Label fil6;
+    @FXML
+    private Label fil7;
+    @FXML
+    private Label fil8;
+    @FXML
+    private Label fil9;
+    @FXML
+    private Label fil10;
+    @FXML
+    private Label fil11;
+    @FXML
+    private Label fil12;
+    @FXML
+    private Label fil13;
+    
+    private LocalTime myTime;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        //BooleanBinding validFields = Binding(slotSelected);
+        //bookButton.disableProperty().bind(Bindings.not(isSelected)); 
         Image im ;
         im = new Image("/resources/images/noprofile.jpg",false);
         profilePicContainer.setFill(new ImagePattern(im));
@@ -139,6 +180,7 @@ public class BookController implements Initializable {
             if (c == null) {
                 slotSelected.setText("");
             } else {
+                myTime = c.getTime();
                 slotSelected.setText(c.getDate().format(dayFormatter)
                         + "-"
                         + c.getStart().format(timeFormatter));
@@ -239,6 +281,7 @@ public class BookController implements Initializable {
             stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         }
     }
+    
 
     @FXML
     private void cancelPressed(ActionEvent event) throws IOException {
@@ -261,14 +304,42 @@ public class BookController implements Initializable {
     }
 
     @FXML
-    private void bookPressed(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-        alert.setTitle("Done");
-        alert.setHeaderText("Your booking has been sucessfully created!");
-        // or null if we do not want a header
-        alert.setContentText("You can see the details in My Bookings");
-        alert.showAndWait();
+    private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
+        if(isSelected){
+            /*LocalDate date = LocalDate.now();
+            LocalDateTime datetime = LocalDateTime.of(date, myTime);
+            Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
+            boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
+            Club c = Club.getInstance();
+            //Court selected = c.getCourt(TableList1.getSelectionModel().getSelectedItem().getCourt());
+            //Booking b = c.registerBooking(datetime, date, myTime, isPaid, selected , myMember);
+            */
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Done");
+            alert.setHeaderText("Your booking has been sucessfully created!");
+            // or null if we do not want a header
+            alert.setContentText("You can see the details in My Bookings");
+            alert.showAndWait();
+            /*} else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            // or null if we do not want a header
+            alert.setContentText("You already have a booking at that time");
+            alert.showAndWait();
+            }
+            */
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            // or null if we do not want a header
+            alert.setContentText("Please select something...");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -280,6 +351,75 @@ public class BookController implements Initializable {
         // or null if we do not want a header
         alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
         alert.showAndWait();
+    }
+
+    @FXML
+    private void selectCourt(ActionEvent event) {
+    }
+
+    @FXML
+    private void fil1Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil2Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil3Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil4Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil5Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil6Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil7Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil8Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil9Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil10Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil11Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil12Clicked(MouseEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil13Clicked(MouseEvent event) {
+        isSelected = true;
     }
     
     public class TimeSlot {

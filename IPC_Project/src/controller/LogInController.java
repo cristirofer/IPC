@@ -50,6 +50,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -93,6 +94,17 @@ public class LogInController implements Initializable {
     private VBox vbox1;
     @FXML
     private Label accountLabel;
+    
+    
+    private static String myString1;
+    private static String myString2;
+    
+    public static String getMyNickname(){
+        return myString1;
+    }
+    public static String getMyPassword(){
+        return myString2;
+    }
    
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
@@ -298,6 +310,8 @@ public class LogInController implements Initializable {
         if(validFields.get() && event.getCode() == KeyCode.ENTER){
             if(checkEditEmail()){
                 //load next screen
+                myString1 = loginemail.textProperty().getValueSafe();
+                myString2 = loginpassword.textProperty().getValueSafe();
                 Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
                 Parent root = loader.load();
