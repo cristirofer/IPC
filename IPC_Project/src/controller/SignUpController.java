@@ -13,6 +13,7 @@ import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -131,6 +132,7 @@ public class SignUpController implements Initializable {
             // Realizar el binding después de que la escena esté disponible
             banner.fitHeightProperty().bind(banner.getScene().heightProperty());
         });
+        Locale locale = Locale.ENGLISH;
         validEmail = new SimpleBooleanProperty();
         validPassword = new SimpleBooleanProperty();   
         equalPasswords = new SimpleBooleanProperty();
@@ -506,30 +508,58 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
-        Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), cardS.getText(), Integer.parseInt(cscS.getText()), globalAvatar);
-        Alert alert = new Alert(AlertType.INFORMATION);
-        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-        alert.setTitle("Member confirmation");
-        alert.setHeaderText("Member registered succesfully!");
-        // or null if we do not want a header
-        alert.setContentText("Press next to be redirected.");
-        alert.showAndWait();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setMinHeight(579);
-        stage.setMinWidth(976);
-        Image icon = new Image("/resources/images/pelota.png");
-        stage.getIcons().add(icon);
-        stage.setTitle("Main Window");
-        stage.setFullScreen(false);
-        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
-        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
-        nicknameS.getScene().getWindow().hide();
+        if(cardS.textProperty().getValue().equals("") || cscS.textProperty().getValue().equals("")){
+            String card = "";
+            Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), card, 0, globalAvatar);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Member confirmation");
+            alert.setHeaderText("Member registered succesfully!");
+            // or null if we do not want a header
+            alert.setContentText("Press next to be redirected.");
+            alert.showAndWait();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setMinHeight(579);
+            stage.setMinWidth(976);
+            Image icon = new Image("/resources/images/pelota.png");
+            stage.getIcons().add(icon);
+            stage.setTitle("Main Window");
+            stage.setFullScreen(false);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            nicknameS.getScene().getWindow().hide();
+        } else {
+            Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), cardS.getText(), Integer.parseInt(cscS.getText()), globalAvatar);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Member confirmation");
+            alert.setHeaderText("Member registered succesfully!");
+            // or null if we do not want a header
+            alert.setContentText("Press next to be redirected.");
+            alert.showAndWait();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setMinHeight(579);
+            stage.setMinWidth(976);
+            Image icon = new Image("/resources/images/pelota.png");
+            stage.getIcons().add(icon);
+            stage.setTitle("Main Window");
+            stage.setFullScreen(false);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            nicknameS.getScene().getWindow().hide();
+        }
     }
 }
 

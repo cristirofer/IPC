@@ -44,7 +44,7 @@ public class Utils {
     }
     
     public static Boolean checkCreditCard(String CreditCard){     
-        if (CreditCard == null) return false;  
+        if (CreditCard.equals("")) return true;  
         String regexCr =  "^[0-9]{16}$"; 
         Pattern pattern1 = Pattern.compile(regexCr); 
         Matcher matcher1 = pattern1.matcher(CreditCard); 
@@ -52,7 +52,7 @@ public class Utils {
     }
     
     public static Boolean checkCSC(String CSC){     
-        if (CSC == null) return false;  
+        if (CSC.equals("")) return true;  
         String regexC =  "^[0-9]{3}$"; 
         Pattern pattern2 = Pattern.compile(regexC); 
         Matcher matcher2 = pattern2.matcher(CSC); 

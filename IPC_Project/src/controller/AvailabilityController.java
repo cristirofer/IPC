@@ -181,7 +181,7 @@ public class AvailabilityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         Platform.runLater(() -> {
+        Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
             banner.fitHeightProperty().bind(banner.getScene().heightProperty());
         });

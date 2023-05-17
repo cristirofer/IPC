@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 .time-slot {
-    -fx-background-color: green, white ;
+    -fx-background-color: white, lightgreen ;
     -fx-background-insets: 0, 1 1 1 1 ;
     -fx-cursor: hand;
 }
