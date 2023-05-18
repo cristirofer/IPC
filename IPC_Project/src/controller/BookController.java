@@ -61,6 +61,10 @@ import model.ClubDAOException;
 import model.Court;
 import model.Member;
 import controller.LogInController;
+import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 
@@ -108,6 +112,7 @@ public class BookController implements Initializable {
     private List<TimeSlot> timeSlots = new ArrayList<>(); //Para varias columnas List<List<TimeSolt>>
     private ObjectProperty<TimeSlot> timeSlotSelected;
     private LocalDate daySelected;
+    private String selectedCourt = "Court 1";
     
     
     private LocalTime myTime;
@@ -118,8 +123,7 @@ public class BookController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        court.getItems().addAll("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
-        //court.setCellFactory(c -> new ImagenTabCell());
+        
         // TODO
         
         //BooleanBinding validFields = Binding(slotSelected);
@@ -148,8 +152,7 @@ public class BookController implements Initializable {
         //---------------------------------------------------------------------
         // pinta los SlotTime en el grid
         setTimeSlotsGrid(day.getValue());
-
-      
+        
         //---------------------------------------------------------------------
         // enlazamos timeSlotSelected con el label para mostrar la seleccion
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
@@ -164,6 +167,19 @@ public class BookController implements Initializable {
                         + c.getStart().format(timeFormatter));
             }
         });
+        
+        ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
+        court.setItems(list);
+        //displayCourtAvailability(selectedCourt,day.getValue());*/
+        String courtName = null;
+        try {
+            courtName = Club.getInstance().getCourts().get(1).getName();
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        labelCol.setText(courtName);
     }
 
     private void setTimeSlotsGrid(LocalDate date) {
@@ -332,9 +348,6 @@ public class BookController implements Initializable {
         alert.showAndWait();
     }
 
-    @FXML
-    private void selectCourt(ActionEvent event) {
-    }
 
     private void fil1Clicked(MouseEvent event) {
         isSelected = true;
@@ -387,6 +400,17 @@ public class BookController implements Initializable {
     private void fil13Clicked(MouseEvent event) {
         isSelected = true;
     }
+    
+    @FXML
+    private void selectCourt(ActionEvent event) {
+        selectedCourt = court.getSelectionModel().getSelectedItem().toString();
+        displayCourtAvailability(selectedCourt,day.getValue());
+    }
+    
+    private void displayCourtAvailability(String court, LocalDate dateSelected){
+        //to do
+    }
+    
     
     public class TimeSlot {
 
@@ -444,24 +468,5 @@ public class BookController implements Initializable {
         public Node getView() {
             return view;
         }
-    
-    }
-    /*class ImagenTabCell extends ComboBoxListCell<String> {
-        private ImageView view = new ImageView();
-        private Image image;
-
-        @Override
-        public void updateItem(String t, boolean empty) {
-            super.updateItem(t, empty); 
-            if (t == null || empty) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                image = new Image(t,25,25,true,true);
-                view.setImage(image);
-                setGraphic(view);
-                setText(null);
-            }
-        }
-    } */
+    } 
 }
