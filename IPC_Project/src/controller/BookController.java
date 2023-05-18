@@ -65,6 +65,7 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 
@@ -116,6 +117,32 @@ public class BookController implements Initializable {
     
     
     private LocalTime myTime;
+    @FXML
+    private ToggleButton fil1;
+    @FXML
+    private ToggleButton fil2;
+    @FXML
+    private ToggleButton fil3;
+    @FXML
+    private ToggleButton fil4;
+    @FXML
+    private ToggleButton fil5;
+    @FXML
+    private ToggleButton fil6;
+    @FXML
+    private ToggleButton fil7;
+    @FXML
+    private ToggleButton fil8;
+    @FXML
+    private ToggleButton fil9;
+    @FXML
+    private ToggleButton fil10;
+    @FXML
+    private ToggleButton fil11;
+    @FXML
+    private ToggleButton fil12;
+    @FXML
+    private ToggleButton fil13;
     
     
     /**
@@ -402,13 +429,17 @@ public class BookController implements Initializable {
     }
     
     @FXML
-    private void selectCourt(ActionEvent event) {
+    private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
         displayCourtAvailability(selectedCourt,day.getValue());
     }
     
-    private void displayCourtAvailability(String court, LocalDate dateSelected){
+    private void displayCourtAvailability(String court, LocalDate dateSelected) throws ClubDAOException, IOException{
         //to do
+        ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(selectedCourt, daySelected);
+        for (Booking bi : b){
+            
+        }
     }
     
     

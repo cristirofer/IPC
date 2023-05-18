@@ -227,67 +227,67 @@
                                  </GridPane.margin>
                               </Label>
                               <Label fx:id="slotSelected" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <ToggleButton fx:id="fil1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <ToggleButton fx:id="fil2" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <ToggleButton fx:id="fil3" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil3" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <ToggleButton fx:id="fil4" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil4" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <ToggleButton fx:id="fil5" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil5" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <ToggleButton fx:id="fil6" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil6" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                              <ToggleButton fx:id="fil7" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil7" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                              <ToggleButton fx:id="fil8" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil8" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                              <ToggleButton fx:id="fil9" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil9" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                              <ToggleButton fx:id="fil10" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil10" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                              <ToggleButton fx:id="fil11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil11" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                              <ToggleButton fx:id="fil12" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil12" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                              <ToggleButton fx:id="fil13" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="fil13" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
