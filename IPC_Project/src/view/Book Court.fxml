@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -226,71 +227,71 @@
                                  </GridPane.margin>
                               </Label>
                               <Label fx:id="slotSelected" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                              <Label fx:id="fil1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#fil1Clicked" prefHeight="26.0" prefWidth="212.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil2" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#fil2Clicked" prefHeight="72.0" prefWidth="223.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil3" alignment="CENTER" onMouseClicked="#fil3Clicked" prefHeight="67.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil4" alignment="CENTER" onMouseClicked="#fil4Clicked" prefHeight="82.0" prefWidth="282.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil5" alignment="CENTER" onMouseClicked="#fil5Clicked" prefHeight="93.0" prefWidth="234.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil6" alignment="CENTER" onMouseClicked="#fil6Clicked" prefHeight="127.0" prefWidth="290.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil7" alignment="CENTER" onMouseClicked="#fil7Clicked" prefHeight="110.0" prefWidth="279.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil8" alignment="CENTER" onMouseClicked="#fil8Clicked" prefHeight="86.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil9" alignment="CENTER" onMouseClicked="#fil9Clicked" prefHeight="98.0" prefWidth="262.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil10" alignment="CENTER" onMouseClicked="#fil10Clicked" prefHeight="91.0" prefWidth="280.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil11" alignment="CENTER" onMouseClicked="#fil11Clicked" prefHeight="78.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil12" alignment="CENTER" onMouseClicked="#fil12Clicked" prefHeight="84.0" prefWidth="259.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
-                              <Label fx:id="fil13" alignment="CENTER" onMouseClicked="#fil13Clicked" prefHeight="60.0" prefWidth="224.0" style="-fx-cursor: hand;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                              </ToggleButton>
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                  <GridPane.margin>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </GridPane>
                      </children>

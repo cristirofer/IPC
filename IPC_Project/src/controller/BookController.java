@@ -61,6 +61,8 @@ import model.ClubDAOException;
 import model.Court;
 import model.Member;
 import controller.LogInController;
+import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -90,7 +92,7 @@ public class BookController implements Initializable {
     @FXML
     private DatePicker day;
     @FXML
-    private ComboBox<?> court;
+    private ComboBox<String> court;
     private int fullScreen = 1;
     @FXML
     private MenuItem infoButton;
@@ -107,32 +109,6 @@ public class BookController implements Initializable {
     private ObjectProperty<TimeSlot> timeSlotSelected;
     private LocalDate daySelected;
     
-    @FXML
-    private Label fil1;
-    @FXML
-    private Label fil2;
-    @FXML
-    private Label fil3;
-    @FXML
-    private Label fil4;
-    @FXML
-    private Label fil5;
-    @FXML
-    private Label fil6;
-    @FXML
-    private Label fil7;
-    @FXML
-    private Label fil8;
-    @FXML
-    private Label fil9;
-    @FXML
-    private Label fil10;
-    @FXML
-    private Label fil11;
-    @FXML
-    private Label fil12;
-    @FXML
-    private Label fil13;
     
     private LocalTime myTime;
     
@@ -142,6 +118,8 @@ public class BookController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        court.getItems().addAll("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
+        //court.setCellFactory(c -> new ImagenTabCell());
         // TODO
         
         //BooleanBinding validFields = Binding(slotSelected);
@@ -307,6 +285,7 @@ public class BookController implements Initializable {
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
         if(isSelected){
             /*LocalDate date = LocalDate.now();
+            comboBox.getItems().addAll(todos los courts);
             LocalDateTime datetime = LocalDateTime.of(date, myTime);
             Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
             boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
@@ -357,67 +336,54 @@ public class BookController implements Initializable {
     private void selectCourt(ActionEvent event) {
     }
 
-    @FXML
     private void fil1Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil2Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil3Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil4Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil5Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil6Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil7Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil8Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil9Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil10Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil11Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil12Clicked(MouseEvent event) {
         isSelected = true;
     }
 
-    @FXML
     private void fil13Clicked(MouseEvent event) {
         isSelected = true;
     }
@@ -480,4 +446,22 @@ public class BookController implements Initializable {
         }
     
     }
+    /*class ImagenTabCell extends ComboBoxListCell<String> {
+        private ImageView view = new ImageView();
+        private Image image;
+
+        @Override
+        public void updateItem(String t, boolean empty) {
+            super.updateItem(t, empty); 
+            if (t == null || empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                image = new Image(t,25,25,true,true);
+                view.setImage(image);
+                setGraphic(view);
+                setText(null);
+            }
+        }
+    } */
 }
