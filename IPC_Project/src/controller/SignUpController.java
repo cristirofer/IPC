@@ -516,7 +516,7 @@ public class SignUpController implements Initializable {
             alert.setTitle("Member confirmation");
             alert.setHeaderText("Member registered succesfully!");
             // or null if we do not want a header
-            alert.setContentText("Press next to be redirected.");
+            alert.setContentText("Press accept to be redirected.");
             alert.showAndWait();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
             Parent root = loader.load();
