@@ -435,28 +435,36 @@ public class BookController implements Initializable {
                     fil5.disableProperty();
                     break;
                 case "14:00" :
-                    fil1.setText("Booked");
+                    fil6.setText("Booked");
+                    fil6.disableProperty();
                     break;
                 case "15:00" :
-                    fil1.setText("Booked");
+                    fil7.setText("Booked");
+                    fil7.disableProperty();
                     break;
                 case "16:00" :
-                    fil1.setText("Booked");
+                    fil8.setText("Booked");
+                    fil8.disableProperty();
                     break;
                 case "17:00" :
-                    fil1.setText("Booked");
+                    fil9.setText("Booked");
+                    fil9.disableProperty();
                     break;
                 case "18:00" :
-                    fil1.setText("Booked");
+                    fil10.setText("Booked");
+                    fil10.disableProperty();
                     break;
                 case "19:00" :
-                    fil1.setText("Booked");
+                    fil11.setText("Booked");
+                    fil11.disableProperty();
                     break;
                 case "20:00" :
-                    fil1.setText("Booked");
+                    fil12.setText("Booked");
+                    fil12.disableProperty();
                     break;
                 case "21:00" :
-                    fil1.setText("Booked");
+                    fil3.setText("Booked");
+                    fil3.disableProperty();
                     break;
             }
         }

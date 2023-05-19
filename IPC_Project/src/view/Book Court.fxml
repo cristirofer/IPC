@@ -140,7 +140,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css">
                      <children>
-                        <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="364.0" prefWidth="356.0">
+                        <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="324.0" prefWidth="356.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="ALWAYS" maxWidth="152.79998779296875" minWidth="78.400048828125" prefWidth="142.4000244140625" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="214.3999755859375" />
@@ -155,7 +155,6 @@
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -236,7 +235,6 @@
                                     <Insets right="4.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label fx:id="slotSelected" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                               <ToggleButton fx:id="fil1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" style="-fx-background-color: #2d752f;" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
@@ -304,7 +302,11 @@
                               </ToggleButton>
                            </children>
                         </GridPane>
+                        <Label fx:id="slotSelected" prefHeight="26.0" prefWidth="356.0" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                   </VBox>
                </children>
             </HBox>
