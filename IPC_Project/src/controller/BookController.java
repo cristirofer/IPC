@@ -123,7 +123,7 @@ public class BookController implements Initializable {
     
     
 
-    private boolean isSelected;
+    private boolean isSelected = false;
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
     private final Duration slotLength = Duration.ofMinutes(60);
     private final LocalTime lastSlotStart = LocalTime.of(22, 0);
@@ -161,8 +161,6 @@ public class BookController implements Initializable {
     private ToggleButton fil12;
     @FXML
     private ToggleButton fil13;
-    @FXML
-    private Label test;
     
     
     /**
@@ -226,7 +224,7 @@ public class BookController implements Initializable {
         //court.setItems(list);
         
         
-       Platform.runLater(() -> {
+       //Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
             isBooked1.setValue(Boolean.FALSE);
             isBooked2.setValue(Boolean.FALSE);
@@ -263,7 +261,7 @@ public class BookController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+        //});
         
     }
 
@@ -387,12 +385,11 @@ public class BookController implements Initializable {
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
         if(isSelected){
-            LocalDate date = LocalDate.now();
-            LocalDateTime datetime = LocalDateTime.of(date, myTime);
+            LocalDateTime datetime = LocalDateTime.now();
             Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
             boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
             Court selected = getMyCourt();
-            Booking b = Club.getInstance().registerBooking(datetime, daySelected, myTime, isPaid, selected , myMember);
+            Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
       
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -401,6 +398,7 @@ public class BookController implements Initializable {
             // or null if we do not want a header
             alert.setContentText("You can see the details in My Bookings");
             alert.showAndWait();
+            
             /*} else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -411,6 +409,8 @@ public class BookController implements Initializable {
             alert.showAndWait();
             }
             */
+            displayCourtAvailability();
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -452,7 +452,7 @@ public class BookController implements Initializable {
     }
     
     private Court returnCourt(String nombrePista) throws ClubDAOException, IOException{
-        ArrayList<Court> courtList = (ArrayList<Court>) Club.getInstance().getCourts();
+        List<Court> courtList = Club.getInstance().getCourts();
         for(int i = 0; i < courtList.size(); i++){
             if(courtList.get(i).getName().equals(nombrePista)){
                 return courtList.get(i);
@@ -481,8 +481,7 @@ public class BookController implements Initializable {
         fil10.setText("Free");
         fil11.setText("Free");
         fil12.setText("Free");
-        fil13.setText("Free");
-        
+        fil13.setText("Free");        
         
         isBooked1.setValue(Boolean.FALSE);
         isBooked2.setValue(Boolean.FALSE);
@@ -498,7 +497,7 @@ public class BookController implements Initializable {
         isBooked12.setValue(Boolean.FALSE);
         isBooked13.setValue(Boolean.FALSE);
         
-        java.util.List<model.Booking> b = Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
+        List<Booking> b = Club.getInstance().getCourtBookings(getMyCourt().getName(), day.getValue());
         for (Booking bi : b){
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             String t = bi.getFromTime().format(timeFormatter);
@@ -562,66 +561,79 @@ public class BookController implements Initializable {
     @FXML
     private void fil1clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(9, 0);
     }
 
     @FXML
     private void fil2clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(10, 0);
     }
 
     @FXML
     private void fil3clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(11, 0);
     }
 
     @FXML
     private void fil4clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(12, 0);
     }
 
     @FXML
     private void fil5clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(13, 0);
     }
 
     @FXML
     private void fil6clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(14, 0);
     }
 
     @FXML
     private void fil7clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(15, 0);
     }
 
     @FXML
     private void fil8clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(16, 0);
     }
 
     @FXML
     private void fil11clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(17, 0);
     }
 
     @FXML
     private void fil9clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(18, 0);
     }
 
     @FXML
     private void fil10clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(19, 0);
     }
 
     @FXML
     private void fil12clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(20, 0);
     }
 
     @FXML
     private void fil13clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(21, 0);
     }
     
     
