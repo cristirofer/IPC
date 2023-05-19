@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +35,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Club;
+import model.ClubDAOException;
 
 /**
  * FXML Controller class
@@ -55,7 +59,6 @@ public class MainWindowController implements Initializable {
     private Circle profilePicContainer;
     @FXML
     private Label labelWelcome;
-    @FXML
     private Button availabilityButton;
     @FXML
     private Button configurationButton;
@@ -72,8 +75,12 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Image im ;
-        im = new Image("/resources/images/noprofile.jpg",false);
+        Image im = new Image("/resources/images/noprofile.jpg",false);
+        try {
+            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         profilePicContainer.setFill(new ImagePattern(im));
     }    
 
@@ -92,9 +99,6 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    @FXML
-    private void loadAvailability(ActionEvent event) {
-    }
 
     @FXML
     private void makeFullScreen(KeyEvent event) {

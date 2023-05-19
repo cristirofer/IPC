@@ -5,6 +5,7 @@
 package controller;
 
 import extra.Utils;
+import controller.BookController;
 import java.io.IOException;
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -69,6 +70,7 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
+
 
 /**
  * FXML Controller class
@@ -159,6 +161,8 @@ public class BookController implements Initializable {
     private ToggleButton fil12;
     @FXML
     private ToggleButton fil13;
+    @FXML
+    private Label test;
     
     
     /**
@@ -173,8 +177,12 @@ public class BookController implements Initializable {
         
         //BooleanBinding validFields = Binding(slotSelected);
         //bookButton.disableProperty().bind(Bindings.not(isSelected)); 
-        Image im ;
-        im = new Image("/resources/images/noprofile.jpg",false);
+        Image im = new Image("/resources/images/noprofile.jpg",false);
+        try {
+            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         profilePicContainer.setFill(new ImagePattern(im));
    
         timeSlotSelected = new SimpleObjectProperty<>();
@@ -289,7 +297,7 @@ public class BookController implements Initializable {
             slotIndex++;
         }
     }
-*/
+
     private void registerHandlers(TimeSlot timeSlot) {
 
         timeSlot.getView().setOnMousePressed((MouseEvent event) -> {
@@ -324,9 +332,10 @@ public class BookController implements Initializable {
                     }
                 }
             }
-            */
+            
         });   
     }
+    */
     @FXML
     private void isExited(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -489,8 +498,7 @@ public class BookController implements Initializable {
         isBooked12.setValue(Boolean.FALSE);
         isBooked13.setValue(Boolean.FALSE);
         
-        List<Booking> bl = Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
-        ArrayList<Booking> b = new ArrayList<>(bl);
+        java.util.List<model.Booking> b = Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
         for (Booking bi : b){
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             String t = bi.getFromTime().format(timeFormatter);
