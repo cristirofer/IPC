@@ -92,9 +92,6 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    @FXML
-    private void loadAvailability(ActionEvent event) {
-    }
 
     @FXML
     private void makeFullScreen(KeyEvent event) {
@@ -129,7 +126,23 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void loadBookings(ActionEvent event) {
+    private void loadBookings(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Bookings.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Bookings");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        bookButton.getScene().getWindow().hide();
     }
 
     @FXML
@@ -138,6 +151,32 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void infoPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("About us...");
+        alert.setHeaderText(null);
+        // or null if we do not want a header
+        alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
+        alert.showAndWait();
     }
-    
+
+    @FXML
+    private void loadAvailability(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Availability.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Availability");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        bookButton.getScene().getWindow().hide();
+    }   
 }

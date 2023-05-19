@@ -90,12 +90,6 @@ public class BookController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
-    private Button bookButton;
-    @FXML
-    private GridPane grid;
-    @FXML
-    private Label labelCol;
-    @FXML
     private DatePicker day;
     @FXML
     private ComboBox<String> court;
@@ -159,6 +153,12 @@ public class BookController implements Initializable {
     private ToggleButton fil12;
     @FXML
     private ToggleButton fil13;
+    @FXML
+    private Button bookButton;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private Label labelCol;
     
     
     /**
@@ -615,8 +615,8 @@ public class BookController implements Initializable {
     private void fil13clicked(ActionEvent event) {
         isSelected = true;
     }
-    
-    
+
+
     public class TimeSlot {
 
         private final LocalDateTime start;
