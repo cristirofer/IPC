@@ -112,10 +112,9 @@ public class BookController implements Initializable {
     private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
     private List<TimeSlot> timeSlots = new ArrayList<>(); //Para varias columnas List<List<TimeSolt>>
     private ObjectProperty<TimeSlot> timeSlotSelected;
-    private LocalDate daySelected;
+    
     private String selectedCourt = "Court 1";
-    
-    
+    private LocalDate daySelected;
     private LocalTime myTime;
     @FXML
     private ToggleButton fil1;
@@ -193,6 +192,7 @@ public class BookController implements Initializable {
                 slotSelected.setText("");
             } else {
                 myTime = c.getTime();
+                daySelected = c.getDate();
                 slotSelected.setText(c.getDate().format(dayFormatter)
                         + "-"
                         + c.getStart().format(timeFormatter));
@@ -201,16 +201,11 @@ public class BookController implements Initializable {
         
         ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
         court.setItems(list);
-        //displayCourtAvailability(selectedCourt,day.getValue());*/
-        String courtName = null;
-        try {
-            courtName = Club.getInstance().getCourts().get(1).getName();
-        } catch (ClubDAOException ex) {
+        /*try {
+            displayCourtAvailability(selectedCourt,day.getValue());
+        } catch (ClubDAOException | IOException ex) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        labelCol.setText(courtName);
+        } */
     }
 
     private void setTimeSlotsGrid(LocalDate date) {
@@ -328,18 +323,17 @@ public class BookController implements Initializable {
         cancelButton.getScene().getWindow().hide();
     }
 
+    
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
         if(isSelected){
-            /*LocalDate date = LocalDate.now();
-            comboBox.getItems().addAll(todos los courts);
+            LocalDate date = LocalDate.now();
             LocalDateTime datetime = LocalDateTime.of(date, myTime);
             Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
             boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
-            Club c = Club.getInstance();
-            //Court selected = c.getCourt(TableList1.getSelectionModel().getSelectedItem().getCourt());
-            //Booking b = c.registerBooking(datetime, date, myTime, isPaid, selected , myMember);
-            */
+            Court selected = getMyCourt();
+            Booking b = Club.getInstance().registerBooking(datetime, daySelected, myTime, isPaid, selected , myMember);
+      
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
             alert.setTitle("Done");
@@ -378,59 +372,6 @@ public class BookController implements Initializable {
         alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
         alert.showAndWait();
     }
-
-
-    private void fil1Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil2Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil3Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil4Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil5Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil6Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil7Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil8Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil9Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil10Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil11Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil12Clicked(MouseEvent event) {
-        isSelected = true;
-    }
-
-    private void fil13Clicked(MouseEvent event) {
-        isSelected = true;
-    }
     
     public Court getMyCourt() throws ClubDAOException, IOException{
         switch(selectedCourt){
@@ -460,17 +401,83 @@ public class BookController implements Initializable {
         return null;
     }
     
+    
     @FXML
     private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
+        
     }
-    
     private void displayCourtAvailability(String court, LocalDate dateSelected) throws ClubDAOException, IOException{
         //to do
-        ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(selectedCourt, daySelected);
+        ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
         for (Booking bi : b){
             
         }
+    }
+
+    @FXML
+    private void fil1clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil2clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil3clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil4clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil5clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil6clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil7clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil8clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil11clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil9clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil10clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil12clicked(ActionEvent event) {
+        isSelected = true;
+    }
+
+    @FXML
+    private void fil13clicked(ActionEvent event) {
+        isSelected = true;
     }
     
     
