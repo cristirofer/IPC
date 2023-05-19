@@ -193,7 +193,7 @@ public class BookController implements Initializable {
             } else {
                 myTime = c.getTime();
                 daySelected = c.getDate();
-                slotSelected.setText(c.getDate().format(dayFormatter)
+                slotSelected.setText(daySelected.format(dayFormatter)
                         + "-"
                         + c.getStart().format(timeFormatter));
             }
@@ -201,11 +201,14 @@ public class BookController implements Initializable {
         
         ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
         court.setItems(list);
-        /*try {
-            displayCourtAvailability(selectedCourt,day.getValue());
-        } catch (ClubDAOException | IOException ex) {
+        try {
+            displayCourtAvailability();
+        } catch (ClubDAOException ex) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-        } */
+        } catch (IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     private void setTimeSlotsGrid(LocalDate date) {
@@ -407,7 +410,7 @@ public class BookController implements Initializable {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
         
     }
-    private void displayCourtAvailability(String court, LocalDate dateSelected) throws ClubDAOException, IOException{
+    private void displayCourtAvailability() throws ClubDAOException, IOException{
         //to do
         ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
         for (Booking bi : b){
