@@ -235,7 +235,7 @@ public class BookController implements Initializable {
             registerHandlers(timeSlot);
             //-----------------------------------------------------------
             // lo anyadimos al grid en la posicion x= 1, y= slotIndex
-            //grid.add(timeSlot.getView(), 1, slotIndex);
+            grid.add(timeSlot.getView(), 1, slotIndex);
             slotIndex++;
         }
     }
