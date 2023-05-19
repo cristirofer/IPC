@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Collections;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -61,6 +61,7 @@ import model.ClubDAOException;
 import model.Court;
 import model.Member;
 import controller.LogInController;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,6 +104,22 @@ public class BookController implements Initializable {
     private MenuItem infoButton;
     @FXML
     private Label slotSelected;
+    
+    private BooleanProperty isBooked1 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked2 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked3 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked4 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked5 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked6 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked7 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked8 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked9 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked10 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked11 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked12 = new SimpleBooleanProperty();
+    private BooleanProperty isBooked13 = new SimpleBooleanProperty();
+    
+    
 
     private boolean isSelected;
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
@@ -142,10 +159,6 @@ public class BookController implements Initializable {
     private ToggleButton fil12;
     @FXML
     private ToggleButton fil13;
-    @FXML
-    private Label test1;
-    @FXML
-    private Label test2;
     
     
     /**
@@ -155,6 +168,8 @@ public class BookController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         // TODO
+        
+        
         
         //BooleanBinding validFields = Binding(slotSelected);
         //bookButton.disableProperty().bind(Bindings.not(isSelected)); 
@@ -170,10 +185,10 @@ public class BookController implements Initializable {
         Locale.setDefault(locale);
         //---------------------------------------------------------------------
         //cambia los SlotTime al cambiar de dia
-        day.valueProperty().addListener((a, b, c) -> {
-            setTimeSlotsGrid(c);
-            labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
-        });
+        //day.valueProperty().addListener((a, b, c) -> {
+        //    setTimeSlotsGrid(c);
+         //     labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
+        //});
         
         //---------------------------------------------------------------------
         //inicializa el DatePicker al dia actual
@@ -181,7 +196,7 @@ public class BookController implements Initializable {
 
         //---------------------------------------------------------------------
         // pinta los SlotTime en el grid
-        setTimeSlotsGrid(day.getValue());
+        // setTimeSlotsGrid(day.getValue());
         
         //---------------------------------------------------------------------
         // enlazamos timeSlotSelected con el label para mostrar la seleccion
@@ -202,17 +217,49 @@ public class BookController implements Initializable {
         //ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
         //court.setItems(list);
         
-        try {
+        
+       Platform.runLater(() -> {
+            // Realizar el binding después de que la escena esté disponible
+            isBooked1.setValue(Boolean.FALSE);
+            isBooked2.setValue(Boolean.FALSE);
+            isBooked3.setValue(Boolean.FALSE);
+            isBooked4.setValue(Boolean.FALSE);
+            isBooked5.setValue(Boolean.FALSE);
+            isBooked6.setValue(Boolean.FALSE);
+            isBooked7.setValue(Boolean.FALSE);
+            isBooked8.setValue(Boolean.FALSE);
+            isBooked9.setValue(Boolean.FALSE);
+            isBooked10.setValue(Boolean.FALSE);
+            isBooked11.setValue(Boolean.FALSE);
+            isBooked12.setValue(Boolean.FALSE);
+            isBooked13.setValue(Boolean.FALSE);
+
+
+            fil1.disableProperty().bind(isBooked1);
+            fil2.disableProperty().bind(isBooked2);
+            fil3.disableProperty().bind(isBooked3);
+            fil4.disableProperty().bind(isBooked4);
+            fil5.disableProperty().bind(isBooked5);
+            fil6.disableProperty().bind(isBooked6);
+            fil7.disableProperty().bind(isBooked7);
+            fil8.disableProperty().bind(isBooked8);
+            fil9.disableProperty().bind(isBooked9);
+            fil10.disableProperty().bind(isBooked10);
+            fil11.disableProperty().bind(isBooked11);
+            fil12.disableProperty().bind(isBooked12);
+            fil13.disableProperty().bind(isBooked13);
+            try {
             displayCourtAvailability();
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (ClubDAOException ex) {
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
     }
 
-    private void setTimeSlotsGrid(LocalDate date) {
+/*    private void setTimeSlotsGrid(LocalDate date) {
         //actualizamos la seleccion
         timeSlotSelected.setValue(null);
 
@@ -242,7 +289,7 @@ public class BookController implements Initializable {
             slotIndex++;
         }
     }
-
+*/
     private void registerHandlers(TimeSlot timeSlot) {
 
         timeSlot.getView().setOnMousePressed((MouseEvent event) -> {
@@ -413,62 +460,92 @@ public class BookController implements Initializable {
     }
     private void displayCourtAvailability() throws ClubDAOException, IOException{
         //to do
-        ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
+        fil1.setText("Free");
+        fil2.setText("Free");
+        fil3.setText("Free");
+        fil4.setText("Free");
+        fil5.setText("Free");
+        fil6.setText("Free");
+        fil7.setText("Free");
+        fil8.setText("Free");
+        fil9.setText("Free");
+        fil10.setText("Free");
+        fil11.setText("Free");
+        fil12.setText("Free");
+        fil13.setText("Free");
+        
+        
+        isBooked1.setValue(Boolean.FALSE);
+        isBooked2.setValue(Boolean.FALSE);
+        isBooked3.setValue(Boolean.FALSE);
+        isBooked4.setValue(Boolean.FALSE);
+        isBooked5.setValue(Boolean.FALSE);
+        isBooked6.setValue(Boolean.FALSE);
+        isBooked7.setValue(Boolean.FALSE);
+        isBooked8.setValue(Boolean.FALSE);
+        isBooked9.setValue(Boolean.FALSE);
+        isBooked10.setValue(Boolean.FALSE);
+        isBooked11.setValue(Boolean.FALSE);
+        isBooked12.setValue(Boolean.FALSE);
+        isBooked13.setValue(Boolean.FALSE);
+        
+        List<Booking> bl = Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
+        ArrayList<Booking> b = new ArrayList<>(bl);
         for (Booking bi : b){
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             String t = bi.getFromTime().format(timeFormatter);
             switch(t){
-                case "9:00" :
+                case "09:00" :
                     fil1.setText("Booked");
-                    fil1.disableProperty();
+                    isBooked1.setValue(Boolean.TRUE);
                     break;
                 case "10:00" :
                     fil2.setText("Booked");
-                    fil2.disableProperty();
+                    isBooked2.setValue(Boolean.TRUE);
                     break;
                 case "11:00" :
                     fil3.setText("Booked");
-                    fil3.disableProperty();
+                    isBooked3.setValue(Boolean.TRUE);
                     break;
                 case "12:00" :
                     fil4.setText("Booked");
-                    fil4.disableProperty();
+                    isBooked4.setValue(Boolean.TRUE);
                     break;
                 case "13:00" :
                     fil5.setText("Booked");
-                    fil5.disableProperty();
+                    isBooked5.setValue(Boolean.TRUE);
                     break;
                 case "14:00" :
                     fil6.setText("Booked");
-                    fil6.disableProperty();
+                    isBooked6.setValue(Boolean.TRUE);
                     break;
                 case "15:00" :
                     fil7.setText("Booked");
-                    fil7.disableProperty();
+                    isBooked7.setValue(Boolean.TRUE);
                     break;
                 case "16:00" :
                     fil8.setText("Booked");
-                    fil8.disableProperty();
+                    isBooked8.setValue(Boolean.TRUE);
                     break;
                 case "17:00" :
                     fil9.setText("Booked");
-                    fil9.disableProperty();
+                    isBooked9.setValue(Boolean.TRUE);
                     break;
                 case "18:00" :
                     fil10.setText("Booked");
-                    fil10.disableProperty();
+                    isBooked10.setValue(Boolean.TRUE);
                     break;
                 case "19:00" :
                     fil11.setText("Booked");
-                    fil11.disableProperty();
+                    isBooked11.setValue(Boolean.TRUE);
                     break;
                 case "20:00" :
                     fil12.setText("Booked");
-                    fil12.disableProperty();
+                    isBooked12.setValue(Boolean.TRUE);
                     break;
                 case "21:00" :
                     fil3.setText("Booked");
-                    fil3.disableProperty();
+                    isBooked13.setValue(Boolean.TRUE);
                     break;
             }
         }
