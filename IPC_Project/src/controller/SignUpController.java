@@ -304,7 +304,7 @@ public class SignUpController implements Initializable {
         }
         List<Member> members = Club.getInstance().getMembers();
         for (Member member : members) {
-            if(member.getNickName().equals(nicknameS.getText())){
+            if(member.getNickName().equals(nicknameS.textProperty().getValueSafe())){
                manageError(nicknameInUse, nicknameS,validEmail );
                break;
             }
@@ -499,7 +499,7 @@ public class SignUpController implements Initializable {
     }
     /*
     private void searchImage() throws FileNotFoundException{
-        String url = profileS.getText();
+        String url = profileS.textProperty().getValueSafe();
         Image avatar = new Image(new FileInputStream(url));
         profilePicContainer.setFill(new ImagePattern(avatar));
         globalAvatar = avatar;
@@ -510,7 +510,7 @@ public class SignUpController implements Initializable {
     private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
         if(cardS.textProperty().getValue().equals("") || cscS.textProperty().getValue().equals("")){
             String card = "";
-            Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), card, 0, globalAvatar);
+            Club.getInstance().registerMember(nameS.textProperty().getValueSafe(), fNameS.textProperty().getValueSafe(), numberS.textProperty().getValueSafe(), nicknameS.textProperty().getValueSafe(), passwS.textProperty().getValueSafe(), card, 0, globalAvatar);
             Alert alert = new Alert(AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
             alert.setTitle("Member confirmation");
@@ -535,7 +535,7 @@ public class SignUpController implements Initializable {
             stage.show();
             nicknameS.getScene().getWindow().hide();
         } else {
-            Club.getInstance().registerMember(nameS.getText(), fNameS.getText(), numberS.getText(), nicknameS.getText(), passwS.getText(), cardS.getText(), Integer.parseInt(cscS.getText()), globalAvatar);
+            Club.getInstance().registerMember(nameS.textProperty().getValueSafe(), fNameS.textProperty().getValueSafe(), numberS.textProperty().getValueSafe(), nicknameS.textProperty().getValueSafe(), passwS.textProperty().getValueSafe(), cardS.textProperty().getValueSafe(), Integer.parseInt(cscS.textProperty().getValueSafe()), globalAvatar);
             Alert alert = new Alert(AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
             alert.setTitle("Member confirmation");

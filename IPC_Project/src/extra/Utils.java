@@ -21,7 +21,7 @@ public class Utils {
 
     public static Boolean checkEmail(String email){
         if(email == null) return false;
-        String regex = "^([\\w\\d][^\\s!#$%&'*+/=?`{|}~^-]{2,15})$";
+        String regex = "^[\\w\\d][^\\s!#$%&'*+/=?`{|}~^-]{2,15}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
