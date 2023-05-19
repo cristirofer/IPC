@@ -143,6 +143,10 @@ public class BookController implements Initializable {
     private ToggleButton fil12;
     @FXML
     private ToggleButton fil13;
+    @FXML
+    private Label test1;
+    @FXML
+    private Label test2;
     
     
     /**
@@ -428,10 +432,37 @@ public class BookController implements Initializable {
         isSelected = true;
     }
     
+    public Court getMyCourt() throws ClubDAOException, IOException{
+        switch(selectedCourt){
+            case "Court 1" :
+                return returnCourt("Pista 1");
+            case "Court 2" :
+                return returnCourt("Pista 2");
+            case "Court 3" :
+                return returnCourt("Pista 3");
+            case "Court 4" :
+                return returnCourt("Pista 4");
+            case "Court 5" :
+                return returnCourt("Pista 5");
+            case "Court 6" :
+                return returnCourt("Pista 6");
+        }
+        return null;
+    }
+    
+    private Court returnCourt(String nombrePista) throws ClubDAOException, IOException{
+        ArrayList<Court> courtList = (ArrayList<Court>) Club.getInstance().getCourts();
+        for(int i = 0; i < courtList.size(); i++){
+            if(courtList.get(i).getName().equals(nombrePista)){
+                return courtList.get(i);
+            } 
+        }
+        return null;
+    }
+    
     @FXML
     private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
-        displayCourtAvailability(selectedCourt,day.getValue());
     }
     
     private void displayCourtAvailability(String court, LocalDate dateSelected) throws ClubDAOException, IOException{
