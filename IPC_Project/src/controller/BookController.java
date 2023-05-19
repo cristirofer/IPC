@@ -199,8 +199,9 @@ public class BookController implements Initializable {
             }
         });
         
-        ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
-        court.setItems(list);
+        //ObservableList<String> list = FXCollections.observableArrayList("Court 1", "Court 2", "Court 3", "Court 4", "Court 5", "Court 6");
+        //court.setItems(list);
+        
         try {
             displayCourtAvailability();
         } catch (ClubDAOException ex) {
@@ -237,7 +238,7 @@ public class BookController implements Initializable {
             registerHandlers(timeSlot);
             //-----------------------------------------------------------
             // lo anyadimos al grid en la posicion x= 1, y= slotIndex
-            grid.add(timeSlot.getView(), 1, slotIndex);
+            //grid.add(timeSlot.getView(), 1, slotIndex);
             slotIndex++;
         }
     }
