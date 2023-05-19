@@ -411,7 +411,54 @@ public class BookController implements Initializable {
         //to do
         ArrayList<Booking> b = (ArrayList<Booking>) Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
         for (Booking bi : b){
-            
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
+            String t = bi.getFromTime().format(timeFormatter);
+            switch(t){
+                case "9:00" :
+                    fil1.setText("Booked");
+                    fil1.disableProperty();
+                    break;
+                case "10:00" :
+                    fil2.setText("Booked");
+                    fil2.disableProperty();
+                    break;
+                case "11:00" :
+                    fil3.setText("Booked");
+                    fil3.disableProperty();
+                    break;
+                case "12:00" :
+                    fil4.setText("Booked");
+                    fil4.disableProperty();
+                    break;
+                case "13:00" :
+                    fil5.setText("Booked");
+                    fil5.disableProperty();
+                    break;
+                case "14:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "15:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "16:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "17:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "18:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "19:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "20:00" :
+                    fil1.setText("Booked");
+                    break;
+                case "21:00" :
+                    fil1.setText("Booked");
+                    break;
+            }
         }
     }
 
