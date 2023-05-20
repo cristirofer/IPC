@@ -1,16 +1,15 @@
-.button1 {
-    -fx-background-color: #339900;
-    -fx-background-radius: 5;
+.togggle-button {
+    -fx-background-color:  #2d752f;
     -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
 }
 
-.button1:hover {
-    -fx-background-color: #339900;
-    -fx-background-radius: 5;
+.togggle-button:hover {
+    -fx-background-color: lightgrey;
 }
 
-.button2 {
-    -fx-background-color: #99ff99;
-    -fx-background-radius: 5;
-    -fx-text-fill: #339900;
+.togggle-button:selected {
+    -fx-background-color: grey;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: default;
 }

@@ -241,7 +241,7 @@
                                     <Insets right="4.0" />
                                  </GridPane.margin>
                               </Label>
-                              <ToggleButton fx:id="fil1" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <ToggleButton fx:id="fil1" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" styleClass="togggle-button" stylesheets="@../resources/css/buttons.css" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
