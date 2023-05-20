@@ -261,8 +261,19 @@ public class BookController implements Initializable {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
         //});
-            
-            
+            fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button");
+            fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button");
+            fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button");
+            fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button");
+            fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button");
+            fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button");
+            fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button");
+            fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button");
+            fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button");
+            fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button");
+            fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button");
+            fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button");
+            fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");   
     }
 
 /*    private void setTimeSlotsGrid(LocalDate date) {
@@ -530,46 +541,57 @@ public class BookController implements Initializable {
                 case "11:00" :
                     fil3.setText("Booked");
                     isBooked3.setValue(Boolean.TRUE);
+                    fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "12:00" :
                     fil4.setText("Booked");
                     isBooked4.setValue(Boolean.TRUE);
+                    fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "13:00" :
                     fil5.setText("Booked");
                     isBooked5.setValue(Boolean.TRUE);
+                    fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "14:00" :
                     fil6.setText("Booked");
                     isBooked6.setValue(Boolean.TRUE);
+                    fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "15:00" :
                     fil7.setText("Booked");
                     isBooked7.setValue(Boolean.TRUE);
+                    fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "16:00" :
                     fil8.setText("Booked");
                     isBooked8.setValue(Boolean.TRUE);
+                    fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "17:00" :
                     fil9.setText("Booked");
                     isBooked9.setValue(Boolean.TRUE);
+                    fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "18:00" :
                     fil10.setText("Booked");
                     isBooked10.setValue(Boolean.TRUE);
+                    fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "19:00" :
                     fil11.setText("Booked");
                     isBooked11.setValue(Boolean.TRUE);
+                    fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "20:00" :
                     fil12.setText("Booked");
                     isBooked12.setValue(Boolean.TRUE);
+                    fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "21:00" :
                     fil3.setText("Booked");
                     isBooked13.setValue(Boolean.TRUE);
+                    fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button-occupied");
                     break;
             }
         }
