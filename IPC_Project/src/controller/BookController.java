@@ -162,7 +162,6 @@ public class BookController implements Initializable {
     @FXML
     private ToggleButton fil13;
     
-    
     /**
      * Initializes the controller class.
      */
@@ -262,7 +261,8 @@ public class BookController implements Initializable {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
         //});
-        
+            
+            
     }
 
 /*    private void setTimeSlotsGrid(LocalDate date) {
@@ -497,6 +497,21 @@ public class BookController implements Initializable {
         isBooked12.setValue(Boolean.FALSE);
         isBooked13.setValue(Boolean.FALSE);
         
+        fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button");
+        fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button");
+        fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button");
+        fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button");
+        fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button");
+        fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button");
+        fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button");
+        fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button");
+        fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button");
+        fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button");
+        fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button");
+        fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button");
+        fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");
+        
+        
         List<Booking> b = Club.getInstance().getCourtBookings(getMyCourt().getName(), day.getValue());
         for (Booking bi : b){
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
@@ -505,10 +520,12 @@ public class BookController implements Initializable {
                 case "09:00" :
                     fil1.setText("Booked");
                     isBooked1.setValue(Boolean.TRUE);
+                    fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "10:00" :
                     fil2.setText("Booked");
                     isBooked2.setValue(Boolean.TRUE);
+                    fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "11:00" :
                     fil3.setText("Booked");

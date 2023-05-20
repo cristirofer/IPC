@@ -1,15 +1,18 @@
-.togggle-button {
+.toggle-button {
     -fx-background-color:  #2d752f;
     -fx-text-fill: #ffffff;
     -fx-cursor: hand;
 }
 
-.togggle-button:hover {
+.toggle-button:hover {
     -fx-background-color: lightgrey;
 }
 
-.togggle-button:selected {
+.toggle-button:selected {
     -fx-background-color: grey;
     -fx-text-fill: #ffffff;
     -fx-cursor: default;
+}
+.toggle-button-occupied{
+    -fx-background-color: red;
 }
