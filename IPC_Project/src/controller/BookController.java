@@ -465,7 +465,7 @@ public class BookController implements Initializable {
     @FXML
     private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
-        
+        displayCourtAvailability();
     }
     private void displayCourtAvailability() throws ClubDAOException, IOException{
         //to do
