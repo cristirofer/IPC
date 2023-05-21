@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #2d752f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url(&quot;/resources/images/wallapepr.jpg&quot;); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <MenuBar fx:id="menuBarCenter">
          <menus>
@@ -31,9 +31,17 @@
       </MenuBar>
       <VBox fx:id="vBoxCenter" alignment="CENTER_LEFT" prefHeight="520.0" prefWidth="960.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="757.0">
+            <HBox alignment="TOP_CENTER" prefHeight="130.0" prefWidth="757.0" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="130.0" prefWidth="527.0">
+                  <ImageView fitHeight="55.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@../resources/images/greenBall%20blanco.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="30.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <HBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="559.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Button fx:id="configurationButton" mnemonicParsing="false" onAction="#loadConfig" style="-fx-background-color: #adf7af;" text="Profile Configuration" textFill="#2d752f">
@@ -46,25 +54,17 @@
                         </Button>
                      </children>
                      <padding>
-                        <Insets top="10.0" />
+                        <Insets right="20.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/greenBall%20blanco.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="30.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
                </children>
                <opaqueInsets>
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <HBox alignment="BOTTOM_LEFT" prefHeight="371.0" prefWidth="960.0">
+            <HBox alignment="BOTTOM_LEFT" prefHeight="371.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="273.0" prefWidth="418.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="273.0" prefWidth="418.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label fx:id="labelWelcome" prefHeight="58.0" prefWidth="296.0" text="WELCOME" textFill="WHITE">
                            <font>
@@ -108,7 +108,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="368.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="368.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <HBox.margin>
                         <Insets left="170.0" />
                      </HBox.margin>
