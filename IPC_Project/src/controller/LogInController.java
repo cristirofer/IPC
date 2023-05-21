@@ -206,6 +206,10 @@ public class LogInController implements Initializable {
                 Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
                 Parent root = loader.load();
+                
+                MainWindowController mainController = loader.<MainWindowController>getController();
+                mainController.initBooking(myString1);
+                
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);

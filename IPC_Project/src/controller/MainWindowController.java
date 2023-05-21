@@ -68,6 +68,11 @@ public class MainWindowController implements Initializable {
     private Button myBookingsButton;
     @FXML
     private MenuItem infoButton;
+    private String login;
+    
+    public void initBooking(String login) {
+        this.login = login;
+    }
 
     /**
      * Initializes the controller class.
@@ -136,6 +141,10 @@ public class MainWindowController implements Initializable {
     private void loadBookings(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Bookings.fxml"));
         Parent root = loader.load();
+        
+        BookingsController bookingsController = loader.<BookingsController>getController();
+        bookingsController.initBooking(login);
+        
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
