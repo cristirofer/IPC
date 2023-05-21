@@ -190,10 +190,14 @@ public class BookController implements Initializable {
         Locale.setDefault(locale);
         //---------------------------------------------------------------------
         //cambia los SlotTime al cambiar de dia
-        //day.valueProperty().addListener((a, b, c) -> {
-        //    setTimeSlotsGrid(c);
-         //     labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
-        //});
+        day.valueProperty().addListener((a, b, c) -> {
+            try {
+                displayCourtAvailability();
+            } catch (ClubDAOException | IOException ex) {
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
+        });
         
         //---------------------------------------------------------------------
         //inicializa el DatePicker al dia actual
@@ -253,13 +257,7 @@ public class BookController implements Initializable {
             fil11.disableProperty().bind(isBooked11);
             fil12.disableProperty().bind(isBooked12);
             fil13.disableProperty().bind(isBooked13);
-            try {
-            displayCourtAvailability();
-            } catch (ClubDAOException ex) {
-                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         //});
             fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button");
             fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button");
@@ -273,7 +271,14 @@ public class BookController implements Initializable {
             fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button");
             fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button");
             fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button");
-            fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");   
+            fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");
+            try {
+            displayCourtAvailability();
+            } catch (ClubDAOException ex) {
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
 /*    private void setTimeSlotsGrid(LocalDate date) {
@@ -589,7 +594,7 @@ public class BookController implements Initializable {
                     fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "21:00" :
-                    fil3.setText("Booked");
+                    fil13.setText("Booked");
                     isBooked13.setValue(Boolean.TRUE);
                     fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button-occupied");
                     break;
@@ -601,78 +606,247 @@ public class BookController implements Initializable {
     private void fil1clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(9, 0);
+        fil1.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil2clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(10, 0);
+        fil2.setSelected(true);
+        fil1.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil3clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(11, 0);
+        fil3.setSelected(true);
+        fil2.setSelected(false);
+        fil1.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil4clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(12, 0);
+        fil4.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil1.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil5clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(13, 0);
+        fil5.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil1.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil6clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(14, 0);
+        fil6.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil1.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil7clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(15, 0);
+        fil7.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil1.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil8clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(16, 0);
+        fil8.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil1.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil11clicked(ActionEvent event) {
         isSelected = true;
-        myTime = LocalTime.of(17, 0);
+        myTime = LocalTime.of(19, 0);
+        fil11.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil1.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil9clicked(ActionEvent event) {
         isSelected = true;
-        myTime = LocalTime.of(18, 0);
+        myTime = LocalTime.of(17, 0);
+        fil9.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil1.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil10clicked(ActionEvent event) {
         isSelected = true;
-        myTime = LocalTime.of(19, 0);
+        myTime = LocalTime.of(18, 0);
+        fil10.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil1.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil12clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(20, 0);
+        fil12.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil1.setSelected(false);
+        fil13.setSelected(false);
     }
 
     @FXML
     private void fil13clicked(ActionEvent event) {
         isSelected = true;
         myTime = LocalTime.of(21, 0);
+        fil13.setSelected(true);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil1.setSelected(false);
     }
 
 

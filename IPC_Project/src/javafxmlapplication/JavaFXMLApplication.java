@@ -6,6 +6,7 @@
 package javafxmlapplication;
 
 import java.io.IOException;
+import java.util.Locale;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,7 @@ public class JavaFXMLApplication extends Application {
         // 3- asiganación de la escena al Stage que recibe el metodo 
         //     - configuracion del stage
         //     - se muestra el stage de manera no modal mediante el metodo show()
-	
+	Locale.setDefault(Locale.US);
 	stage.setMinHeight(579);
 	stage.setMinWidth(976);
 	Image icon = new Image("/resources/images/pelota.png");        
