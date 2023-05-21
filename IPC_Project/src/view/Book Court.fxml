@@ -119,12 +119,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="253.0" spacing="30.0">
                                  <children>
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #2d752f;" text="GO BACK" textFill="WHITE">
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="GO BACK" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="bookButton" mnemonicParsing="false" onAction="#bookPressed" style="-fx-background-color: #2d752f;" text="BOOK" textFill="WHITE">
+                                    <Button fx:id="bookButton" mnemonicParsing="false" onAction="#bookPressed" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="BOOK" textFill="WHITE">
                                        <font>
                                           <Font name="Century Gothic Bold" size="20.0" />
                                        </font>
@@ -146,7 +146,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css">
                      <children>
-                        <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="324.0" prefWidth="356.0">
+                        <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" prefHeight="324.0" prefWidth="356.0" stylesheets="@../resources/css/buttons.css">
                            <columnConstraints>
                               <ColumnConstraints hgrow="ALWAYS" maxWidth="152.79998779296875" minWidth="78.400048828125" prefWidth="142.4000244140625" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="214.3999755859375" />
@@ -241,67 +241,67 @@
                                     <Insets right="4.0" />
                                  </GridPane.margin>
                               </Label>
-                              <ToggleButton fx:id="fil1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" style="-fx-background-color: pink;" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <ToggleButton fx:id="fil1" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" stylesheets="@../resources/css/buttons.css" text="fil1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil2" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil2clicked" style="-fx-background-color: #2d752f;" text="fil2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <ToggleButton fx:id="fil2" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil2clicked" stylesheets="@../resources/css/buttons.css" text="fil2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil3" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil3clicked" style="-fx-background-color: #2d752f;" text="fil3" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <ToggleButton fx:id="fil3" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil3clicked" stylesheets="@../resources/css/buttons.css" text="fil3" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil4" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil4clicked" style="-fx-background-color: #2d752f;" text="fil4" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <ToggleButton fx:id="fil4" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil4clicked" stylesheets="@../resources/css/buttons.css" text="fil4" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil5" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil5clicked" style="-fx-background-color: #2d752f;" text="fil5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <ToggleButton fx:id="fil5" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil5clicked" stylesheets="@../resources/css/buttons.css" text="fil5" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil6" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil6clicked" style="-fx-background-color: #2d752f;" text="fil6" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <ToggleButton fx:id="fil6" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil6clicked" prefHeight="25.0" prefWidth="224.0" stylesheets="@../resources/css/buttons.css" text="fil6" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil7" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil7clicked" style="-fx-background-color: #2d752f;" text="fil7" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                              <ToggleButton fx:id="fil7" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil7clicked" stylesheets="@../resources/css/buttons.css" text="fil7" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil8" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil8clicked" style="-fx-background-color: #2d752f;" text="fil8" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                              <ToggleButton fx:id="fil8" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil8clicked" stylesheets="@../resources/css/buttons.css" text="fil8" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil11clicked" style="-fx-background-color: #2d752f;" text="fil11" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                              <ToggleButton fx:id="fil11" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil11clicked" stylesheets="@../resources/css/buttons.css" text="fil11" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil9" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil9clicked" style="-fx-background-color: #2d752f;" text="fil9" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                              <ToggleButton fx:id="fil9" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil9clicked" stylesheets="@../resources/css/buttons.css" text="fil9" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil10" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil10clicked" style="-fx-background-color: #2d752f;" text="fil10" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                              <ToggleButton fx:id="fil10" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil10clicked" stylesheets="@../resources/css/buttons.css" text="fil10" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil12" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil12clicked" style="-fx-background-color: #2d752f;" text="fil12" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                              <ToggleButton fx:id="fil12" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil12clicked" stylesheets="@../resources/css/buttons.css" text="fil12" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="fil13" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil13clicked" style="-fx-background-color: #2d752f;" text="fil13" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                              <ToggleButton fx:id="fil13" maxHeight="23.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil13clicked" stylesheets="@../resources/css/buttons.css" text="fil13" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>

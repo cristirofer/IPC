@@ -5,6 +5,7 @@
 package controller;
 
 import extra.Utils;
+import controller.BookController;
 import java.io.IOException;
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -70,6 +71,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 
+
 /**
  * FXML Controller class
  *
@@ -115,7 +117,7 @@ public class BookController implements Initializable {
     
     
 
-    private boolean isSelected;
+    private boolean isSelected = false;
     private final LocalTime firstSlotStart = LocalTime.of(9, 0);
     private final Duration slotLength = Duration.ofMinutes(60);
     private final LocalTime lastSlotStart = LocalTime.of(22, 0);
@@ -160,7 +162,6 @@ public class BookController implements Initializable {
     @FXML
     private Label labelCol;
     
-    
     /**
      * Initializes the controller class.
      */
@@ -173,8 +174,12 @@ public class BookController implements Initializable {
         
         //BooleanBinding validFields = Binding(slotSelected);
         //bookButton.disableProperty().bind(Bindings.not(isSelected)); 
-        Image im ;
-        im = new Image("/resources/images/noprofile.jpg",false);
+        Image im = new Image("/resources/images/noprofile.jpg",false);
+        try {
+            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         profilePicContainer.setFill(new ImagePattern(im));
    
         timeSlotSelected = new SimpleObjectProperty<>();
@@ -218,7 +223,7 @@ public class BookController implements Initializable {
         //court.setItems(list);
         
         
-       Platform.runLater(() -> {
+       //Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
             isBooked1.setValue(Boolean.FALSE);
             isBooked2.setValue(Boolean.FALSE);
@@ -255,8 +260,20 @@ public class BookController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-        
+        //});
+            fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button");
+            fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button");
+            fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button");
+            fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button");
+            fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button");
+            fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button");
+            fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button");
+            fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button");
+            fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button");
+            fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button");
+            fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button");
+            fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button");
+            fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");   
     }
 
 /*    private void setTimeSlotsGrid(LocalDate date) {
@@ -289,7 +306,7 @@ public class BookController implements Initializable {
             slotIndex++;
         }
     }
-*/
+
     private void registerHandlers(TimeSlot timeSlot) {
 
         timeSlot.getView().setOnMousePressed((MouseEvent event) -> {
@@ -324,9 +341,10 @@ public class BookController implements Initializable {
                     }
                 }
             }
-            */
+            
         });   
     }
+    */
     @FXML
     private void isExited(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -378,12 +396,11 @@ public class BookController implements Initializable {
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
         if(isSelected){
-            LocalDate date = LocalDate.now();
-            LocalDateTime datetime = LocalDateTime.of(date, myTime);
+            LocalDateTime datetime = LocalDateTime.now();
             Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
             boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
             Court selected = getMyCourt();
-            Booking b = Club.getInstance().registerBooking(datetime, daySelected, myTime, isPaid, selected , myMember);
+            Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
       
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -392,6 +409,7 @@ public class BookController implements Initializable {
             // or null if we do not want a header
             alert.setContentText("You can see the details in My Bookings");
             alert.showAndWait();
+            
             /*} else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -402,6 +420,8 @@ public class BookController implements Initializable {
             alert.showAndWait();
             }
             */
+            displayCourtAvailability();
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
@@ -443,7 +463,7 @@ public class BookController implements Initializable {
     }
     
     private Court returnCourt(String nombrePista) throws ClubDAOException, IOException{
-        ArrayList<Court> courtList = (ArrayList<Court>) Club.getInstance().getCourts();
+        List<Court> courtList = Club.getInstance().getCourts();
         for(int i = 0; i < courtList.size(); i++){
             if(courtList.get(i).getName().equals(nombrePista)){
                 return courtList.get(i);
@@ -456,7 +476,7 @@ public class BookController implements Initializable {
     @FXML
     private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
-        
+        displayCourtAvailability();
     }
     private void displayCourtAvailability() throws ClubDAOException, IOException{
         //to do
@@ -472,8 +492,7 @@ public class BookController implements Initializable {
         fil10.setText("Free");
         fil11.setText("Free");
         fil12.setText("Free");
-        fil13.setText("Free");
-        
+        fil13.setText("Free");        
         
         isBooked1.setValue(Boolean.FALSE);
         isBooked2.setValue(Boolean.FALSE);
@@ -489,8 +508,22 @@ public class BookController implements Initializable {
         isBooked12.setValue(Boolean.FALSE);
         isBooked13.setValue(Boolean.FALSE);
         
-        List<Booking> bl = Club.getInstance().getCourtBookings(getMyCourt().getName(), daySelected);
-        ArrayList<Booking> b = new ArrayList<>(bl);
+        fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button");
+        fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button");
+        fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button");
+        fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button");
+        fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button");
+        fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button");
+        fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button");
+        fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button");
+        fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button");
+        fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button");
+        fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button");
+        fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button");
+        fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button");
+        
+        
+        List<Booking> b = Club.getInstance().getCourtBookings(getMyCourt().getName(), day.getValue());
         for (Booking bi : b){
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             String t = bi.getFromTime().format(timeFormatter);
@@ -498,54 +531,67 @@ public class BookController implements Initializable {
                 case "09:00" :
                     fil1.setText("Booked");
                     isBooked1.setValue(Boolean.TRUE);
+                    fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "10:00" :
                     fil2.setText("Booked");
                     isBooked2.setValue(Boolean.TRUE);
+                    fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "11:00" :
                     fil3.setText("Booked");
                     isBooked3.setValue(Boolean.TRUE);
+                    fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "12:00" :
                     fil4.setText("Booked");
                     isBooked4.setValue(Boolean.TRUE);
+                    fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "13:00" :
                     fil5.setText("Booked");
                     isBooked5.setValue(Boolean.TRUE);
+                    fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "14:00" :
                     fil6.setText("Booked");
                     isBooked6.setValue(Boolean.TRUE);
+                    fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "15:00" :
                     fil7.setText("Booked");
                     isBooked7.setValue(Boolean.TRUE);
+                    fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "16:00" :
                     fil8.setText("Booked");
                     isBooked8.setValue(Boolean.TRUE);
+                    fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "17:00" :
                     fil9.setText("Booked");
                     isBooked9.setValue(Boolean.TRUE);
+                    fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "18:00" :
                     fil10.setText("Booked");
                     isBooked10.setValue(Boolean.TRUE);
+                    fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "19:00" :
                     fil11.setText("Booked");
                     isBooked11.setValue(Boolean.TRUE);
+                    fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "20:00" :
                     fil12.setText("Booked");
                     isBooked12.setValue(Boolean.TRUE);
+                    fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button-occupied");
                     break;
                 case "21:00" :
                     fil3.setText("Booked");
                     isBooked13.setValue(Boolean.TRUE);
+                    fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button-occupied");
                     break;
             }
         }
@@ -554,66 +600,79 @@ public class BookController implements Initializable {
     @FXML
     private void fil1clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(9, 0);
     }
 
     @FXML
     private void fil2clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(10, 0);
     }
 
     @FXML
     private void fil3clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(11, 0);
     }
 
     @FXML
     private void fil4clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(12, 0);
     }
 
     @FXML
     private void fil5clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(13, 0);
     }
 
     @FXML
     private void fil6clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(14, 0);
     }
 
     @FXML
     private void fil7clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(15, 0);
     }
 
     @FXML
     private void fil8clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(16, 0);
     }
 
     @FXML
     private void fil11clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(17, 0);
     }
 
     @FXML
     private void fil9clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(18, 0);
     }
 
     @FXML
     private void fil10clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(19, 0);
     }
 
     @FXML
     private void fil12clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(20, 0);
     }
 
     @FXML
     private void fil13clicked(ActionEvent event) {
         isSelected = true;
+        myTime = LocalTime.of(21, 0);
     }
 
 

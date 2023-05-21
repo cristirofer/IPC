@@ -1,16 +1,18 @@
-.button1 {
-    -fx-background-color: #339900;
-    -fx-background-radius: 5;
+.toggle-button {
+    -fx-background-color:  #2d752f;
     -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
 }
 
-.button1:hover {
-    -fx-background-color: #339900;
-    -fx-background-radius: 5;
+.toggle-button:hover {
+    -fx-background-color: lightgrey;
 }
 
-.button2 {
-    -fx-background-color: #99ff99;
-    -fx-background-radius: 5;
-    -fx-text-fill: #339900;
+.toggle-button:selected {
+    -fx-background-color: grey;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: default;
+}
+.toggle-button-occupied{
+    -fx-background-color: red;
 }

@@ -198,27 +198,30 @@ public class LogInController implements Initializable {
     
     @FXML
     private void logInClicked(MouseEvent event) throws ClubDAOException, IOException {
-        if(checkEditEmail()){
-            //load next screen
-            Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setMinHeight(579);
-            stage.setMinWidth(976);
-            Image icon = new Image("/resources/images/pelota.png");
-            stage.getIcons().add(icon);
-            stage.setTitle("Main Window");
-            stage.setFullScreen(false);
-            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
-            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-            linktoSignUp.getScene().getWindow().hide();
-        }else{//do nothing, user must re-try
-            
+            if(validFields.get()){
+            if(checkEditEmail()){
+                //load next screen
+                myString1 = loginemail.textProperty().getValueSafe();
+                myString2 = loginpassword.textProperty().getValueSafe();
+                Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setMinHeight(579);
+                stage.setMinWidth(976);
+                Image icon = new Image("/resources/images/pelota.png");
+                stage.getIcons().add(icon);
+                stage.setTitle("Main Window");
+                stage.setFullScreen(false);
+                stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+                stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                linktoSignUp.getScene().getWindow().hide();
+            }else{//do nothing, user must re-try
+            }
         }
     }
     
@@ -283,6 +286,8 @@ public class LogInController implements Initializable {
         if(validFields.get() && event.getCode() == KeyCode.ENTER){
             if(checkEditEmail()){
                 //load next screen
+                myString1 = loginemail.textProperty().getValueSafe();
+                myString2 = loginpassword.textProperty().getValueSafe();
                 Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
                 Parent root = loader.load();
