@@ -173,7 +173,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                            <children>
-                              <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#signUpClicked" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="ACCEPT" textFill="WHITE">
+                              <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#signUpClicked" onMouseClicked="#isAccepted" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="SAVE" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
