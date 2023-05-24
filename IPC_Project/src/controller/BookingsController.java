@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -41,6 +43,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -78,33 +81,46 @@ public class BookingsController implements Initializable {
     @FXML
     private TableColumn<Booking, Court> courtColumn;
     @FXML
-    private TableColumn<Booking, LocalDateTime> dateColumn;
+    private TableColumn<Booking, LocalTime> dateColumn;
     @FXML
     private TableColumn<Booking, Boolean> paidColumn;
     
     private String login;
-    private ObservableList<Booking> obsList = null;
+    private ObservableList<Booking> obsList;
+    @FXML
+    private Circle profilePicContainer;
     
 
     
     private void initializeModel() throws ClubDAOException, IOException {
-        List<Booking> bookings = Club.getInstance().getUserBookings(login);
-        obsList = FXCollections.observableList(bookings);
+        List<Booking> bookingArrayList = new ArrayList<Booking>();
+        login = LogInController.getMyNickname();
+        
+        bookingArrayList = Club.getInstance().getUserBookings(login);
+        int startIndex = Math.max(0, bookingArrayList.size() - 10);  // Índice inicial para obtener los últimos 10 elementos
+        List<Booking> lastTenBookings = bookingArrayList.subList(startIndex, bookingArrayList.size());
+    
+        
+        obsList = FXCollections.observableList(lastTenBookings);
+        
         dayColumn.setCellValueFactory(cellData -> {
             Booking booking = cellData.getValue();
             LocalDate madeForDay = booking.getMadeForDay();
             return new SimpleObjectProperty<>(madeForDay);
         });
+        
         courtColumn.setCellValueFactory(cellData -> {
             Booking booking = cellData.getValue();
             Court court = booking.getCourt();
             return new SimpleObjectProperty<>(court);
         });
+        
         dateColumn.setCellValueFactory(cellData -> {
             Booking booking = cellData.getValue();
-            LocalDateTime date = booking.getBookingDate();
+            LocalTime date = booking.getFromTime();
             return new SimpleObjectProperty<>(date);
         });
+        
         paidColumn.setCellValueFactory(cellData -> {
             Booking booking = cellData.getValue();
             Boolean paid = false;
@@ -117,18 +133,23 @@ public class BookingsController implements Initializable {
             }
             return new SimpleBooleanProperty(paid);
         });
+        
         bookingTableView.setItems(obsList);
     }
     
-    class DateTableCell extends TableCell<Booking,LocalDateTime> {
+    class DateTableCell extends TableCell<Booking,LocalTime> {
         @Override
-        protected void updateItem(LocalDateTime item, boolean empty) {
+        protected void updateItem(LocalTime item, boolean empty) {
             super.updateItem(item, empty);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy, h:mm a");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
             if (empty || item == null) {
                 setText(null);
             } else {
-                setText(formatter.format((LocalDateTime) item));
+                setAlignment(Pos.CENTER);
+                String firstHour = item.format(formatter);
+                String lastHour = item.plusMinutes(60).format(formatter); 
+                String res = "From: " + firstHour + " until " + lastHour;
+                setText(res);
             }
         }
     } 
@@ -140,6 +161,7 @@ public class BookingsController implements Initializable {
             if (empty || item == null) {
                 setText(null);
             } else {
+                setAlignment(Pos.CENTER);
                 setText(item.getName());
             }
         }
@@ -152,7 +174,10 @@ public class BookingsController implements Initializable {
             if (empty || item == null) {
                 setText(null);
             } else {
-                setText(item.toString());
+                setAlignment(Pos.CENTER);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String formattedDate = item.format(formatter);
+                setText(formattedDate);
             }
         }
     } 
@@ -164,11 +189,17 @@ public class BookingsController implements Initializable {
             if (empty || item == null) {
                 setText(null);
             } else {
-                setText(item.toString());
+                String res="";
+                if(item) {
+                    res = "Paid";
+                } else {
+                    res = "Pending payment";
+                }
+                setText(res);
             }
         }
     } 
-    
+    /*
     public void initBooking(String login) {
         this.login = login;
     }
@@ -181,6 +212,7 @@ public class BookingsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
+            
             initializeModel();
         } catch (ClubDAOException ex) {
             Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
