@@ -43,6 +43,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -93,6 +94,15 @@ public class BookingsController implements Initializable {
 
     
     private void initializeModel() throws ClubDAOException, IOException {
+        Image im = new Image("/resources/images/noprofile.jpg",false);
+        try {
+            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        profilePicContainer.setFill(new ImagePattern(im));
+        
+        
         List<Booking> bookingArrayList = new ArrayList<Booking>();
         login = LogInController.getMyNickname();
         
