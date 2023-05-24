@@ -26,14 +26,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -147,7 +150,7 @@ public class EditProfileController implements Initializable {
         validImagePath.setValue(Boolean.FALSE);
         
         BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords).and(validPhone).and(validName).and(validSurname);
-        acceptButton.disableProperty().bind(Bindings.not(validFields));
+        //acceptButton.disableProperty().bind(Bindings.not(validFields));
         
         nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
             validName.setValue(true);
@@ -278,7 +281,28 @@ public class EditProfileController implements Initializable {
     }
 
     @FXML
-    private void signUpClicked(ActionEvent event) {
+    private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
+        TextInputDialog dialog = new TextInputDialog(); // Default value
+        dialog.setTitle("Confirmation");
+        dialog.setHeaderText("Verification step");
+        dialog.setContentText("Enter your current password:");
+        Optional<String> result = dialog.showAndWait();
+        // Obtain the result (before Java 8)
+        if (result.isPresent()){
+            if (result.equals(LogInController.getMyPassword())){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Profile updated");
+                alert.setHeaderText("Your information has been updated");
+                alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
+                alert.showAndWait();
+            } else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Password is not correct");
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
@@ -303,6 +327,13 @@ public class EditProfileController implements Initializable {
 
     @FXML
     private void makeFullScreen(KeyEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
     }
     
     
@@ -416,6 +447,17 @@ public class EditProfileController implements Initializable {
     {
         errorLabel.visibleProperty().set(false);
         textField.styleProperty().setValue("");
+    }
+
+    @FXML
+    private void infoPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("About us...");
+        alert.setHeaderText(null);
+        // or null if we do not want a header
+        alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
+        alert.showAndWait();
     }
     
 }
