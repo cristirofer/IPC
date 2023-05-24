@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -23,7 +26,7 @@
          <menus>
             <Menu text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About us" />
+                  <MenuItem mnemonicParsing="false" onAction="#infoPressed" text="About us" />
                </items>
             </Menu>
             <Menu text="Options">
@@ -42,6 +45,7 @@
                         <Image url="@../resources/images/tennisCourt2.jpg" />
                      </image>
                   </ImageView>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>
             <VBox fx:id="vBox" alignment="TOP_CENTER" prefHeight="488.0" prefWidth="529.0" styleClass="secondary-color">
@@ -58,31 +62,52 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="384.0" prefWidth="529.0" spacing="8.0" stylesheets="@../resources/css/calendar-view.css">
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="402.0" prefWidth="529.0" spacing="8.0" stylesheets="@../resources/css/calendar-view.css">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="433.0">
+                        <HBox alignment="CENTER" prefHeight="41.0" prefWidth="464.0" spacing="20.0">
                            <children>
-                              <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="115.0" vgap="2.0">
+                              <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="134.0" vgap="2.0">
                                  <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <DatePicker fx:id="day" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="115.0" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="day" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="137.0" GridPane.rowIndex="1" />
                                     <Label fx:id="dateLabel" text="Date:" GridPane.halignment="LEFT" />
                                  </children>
+                                 <HBox.margin>
+                                    <Insets left="80.0" />
+                                 </HBox.margin>
                               </GridPane>
+                              <ComboBox fx:id="court" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#selectCourt" prefHeight="25.0" prefWidth="150.0" promptText="Please select" value="Court 1">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="Court 1" />
+                                       <String fx:value="Court 2" />
+                                       <String fx:value="Court 3" />
+                                       <String fx:value="Court 4" />
+                                       <String fx:value="Court 5" />
+                                       <String fx:value="Court 6" />
+                                    </FXCollections>
+                                 </items>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets top="15.0" />
+                                 </HBox.margin>
+                              </ComboBox>
                            </children>
-                           <VBox.margin>
+                           <opaqueInsets>
                               <Insets />
-                           </VBox.margin>
-                        </VBox>
-                        <VBox prefHeight="278.0" prefWidth="433.0">
+                           </opaqueInsets>
+                        </HBox>
+                        <VBox prefHeight="378.0" prefWidth="433.0">
                            <children>
-                              <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" VBox.vgrow="ALWAYS">
+                              <GridPane fx:id="grid" focusTraversable="true" minHeight="-Infinity" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" />
@@ -160,28 +185,97 @@
                                     <Label fx:id="label19" text="19:00 - 20:00" GridPane.rowIndex="11" />
                                     <Label fx:id="label20" text="20:00 - 21:00" GridPane.rowIndex="12" />
                                     <Label fx:id="label21" text="21:00 - 22:00" GridPane.rowIndex="13" />
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil2clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil3clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil4clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil5clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil6clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil7clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil8clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil9clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil10clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="11" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil11clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="12" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil12" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil12clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="13" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <ToggleButton fx:id="fil13" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil13clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </GridPane>
-                              <Label fx:id="slotSelected" prefHeight="17.0" prefWidth="368.0" textFill="GREEN">
-                                 <VBox.margin>
-                                    <Insets left="75.0" />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets left="145.0" top="5.0" />
-                                 </padding>
-                              </Label>
+                              <HBox alignment="CENTER" prefHeight="29.0" prefWidth="433.0">
+                                 <children>
+                                    <Label fx:id="whoBooked" text="Label" textFill="#2d752f">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="60.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="48.0" right="48.0" />
+                        <Insets left="48.0" right="48.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="68.0" prefWidth="529.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="76.0" prefWidth="529.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#changeMode" prefHeight="37.0" prefWidth="50.0">
                            <HBox.margin>
-                              <Insets right="200.0" />
+                              <Insets right="200.0" top="5.0" />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
@@ -199,10 +293,13 @@
                            <font>
                               <Font name="Century Gothic" size="12.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
                      <opaqueInsets>
-                        <Insets />
+                        <Insets top="10.0" />
                      </opaqueInsets>
                      <padding>
                         <Insets bottom="5.0" />

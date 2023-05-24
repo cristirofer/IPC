@@ -4,6 +4,13 @@
     -fx-cursor: hand;
 }
 
+.toggle-button:disabled {
+    -fx-background-color:  #2d752f;
+    -fx-text-fill: #ffffff;
+    -fx-opacity: 1.0;
+    -fx-cursor: default;
+}
+
 .toggle-button:hover {
     -fx-background-color: lightgrey;
 }
@@ -15,4 +22,18 @@
 }
 .toggle-button-occupied{
     -fx-background-color: red;
+}
+
+.toggle-button-occupied2{
+    -fx-background-color: red;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+}
+
+.toggle-button-occupied2:selected {
+    -fx-background-color: grey;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: default;
+}.toggle-button-occupied2:hover {
+    -fx-background-color: #804040;
 }
