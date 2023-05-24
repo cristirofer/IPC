@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -104,6 +106,8 @@ public class EditProfileController implements Initializable {
     private BooleanProperty validImagePath;
     private Image globalAvatar;
     private int fullScreen = 1;
+    @FXML
+    private TextField nicknameS;
 
     /**
      * Initializes the controller class.
@@ -111,6 +115,14 @@ public class EditProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        Image im = new Image("/resources/images/noprofile.jpg",false);
+        try {
+            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        profilePicContainer.setFill(new ImagePattern(im));
         Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
             banner.fitHeightProperty().bind(banner.getScene().heightProperty());
@@ -202,10 +214,25 @@ public class EditProfileController implements Initializable {
                 checkEquals();
             }
         });
-        Image im ;
-        im = new Image("/resources/images/noprofile.jpg",false);
-        profilePicContainer.setFill(new ImagePattern(im));
-        globalAvatar = im;
+        Member myMember = null;
+        try {
+            myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword());
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(EditProfileController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EditProfileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        nameS.setText(myMember.getName());
+        fNameS.setText(myMember.getSurname());
+        numberS.setText(myMember.getTelephone());
+        if (myMember.checkHasCreditInfo()){
+            cardS.setText(myMember.getCreditCard());
+            cscS.setText(Integer.toString(myMember.getSvc()));
+        }
+        nicknameS.setText(LogInController.getMyNickname());
+        nicknameS.setDisable(true);
+        
     }    
 
     @FXML
