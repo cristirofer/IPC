@@ -92,12 +92,12 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Password" GridPane.rowIndex="4">
+                        <Label text="New Password (optional)" GridPane.rowIndex="4">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Repeat Password" GridPane.rowIndex="5">
+                        <Label text="Repeat New Password" GridPane.rowIndex="5">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
