@@ -62,6 +62,7 @@ import model.ClubDAOException;
 import model.Court;
 import model.Member;
 import controller.LogInController;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.logging.Level;
@@ -96,6 +97,10 @@ public class BookController implements Initializable {
     @FXML
     private ComboBox<String> court;
     private int fullScreen = 1;
+    
+    private ToggleButton[] list = new ToggleButton[13];
+    private int index;
+    
     @FXML
     private MenuItem infoButton;
     @FXML
@@ -169,9 +174,21 @@ public class BookController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         // TODO
+        list[0] = fil1;
+        list[1] = fil2;
+        list[2] = fil3;
+        list[3] = fil4;
+        list[4] = fil5;
+        list[5] = fil6;
+        list[6] = fil7;
+        list[7] = fil8;
+        list[8] = fil9;
+        list[9] = fil10;
+        list[10] = fil11;
+        list[11] = fil12;
+        list[12] = fil3;
         
-        
-        
+       
         //BooleanBinding validFields = Binding(slotSelected);
         //bookButton.disableProperty().bind(Bindings.not(isSelected)); 
         Image im = new Image("/resources/images/noprofile.jpg",false);
@@ -400,31 +417,59 @@ public class BookController implements Initializable {
     
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
-        if(isSelected){
-            LocalDateTime datetime = LocalDateTime.now();
-            Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
-            boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
-            Court selected = getMyCourt();
-            Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
-      
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-            alert.setTitle("Done");
-            alert.setHeaderText("Your booking has been sucessfully created!");
-            // or null if we do not want a header
-            alert.setContentText("You can see the details in My Bookings");
-            alert.showAndWait();
-            
-            /*} else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            // or null if we do not want a header
-            alert.setContentText("You already have a booking at that time");
-            alert.showAndWait();
+        System.out.println(Club.getInstance().getBookingSlots());
+        List<Booking> b = Club.getInstance().getUserBookings(LogInController.getMyNickname());
+        int numBooks = 0;
+        for (Booking bi : b){
+            if (bi.getBookingDate().getDayOfYear() == LocalDateTime.now().getDayOfYear()){
+                numBooks++;
             }
-            */
+        }
+        if(isSelected){
+            if (Club.getInstance().getBookingSlots() == numBooks){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+                alert.setTitle("Error");
+                alert.setHeaderText("Error!");
+                // or null if we do not want a header
+                alert.setContentText("Maximum number of bookings per day reached!");
+                alert.showAndWait();;
+            }else{   
+                if (index == 0){
+                        if (list[index + 1].getText().equals("Booked") && list[index + 2].getText().equals("Booked")){
+                            showErrorMessage();
+                        } else{
+                            showCorrectMessage();
+                        }
+                } else if (index == 12){
+                        if (list[index - 1].getText().equals("Booked") && list[index - 2].getText().equals("Booked")){
+                            showErrorMessage();
+                        } else{
+                            showCorrectMessage();
+                        }
+                }else if (index == 1){
+                    if ((list[index + 1].getText().equals("Booked"))&&(list[index + 2].getText().equals("Booked") || list[index - 1].getText().equals("Booked"))){
+                            showErrorMessage();
+                    } else{
+                            showCorrectMessage();
+                    }
+                } else if (index == 11){
+                     if ((list[index - 1].getText().equals("Booked"))&&(list[index - 2].getText().equals("Booked") || list[index + 1].getText().equals("Booked"))){
+                            showErrorMessage();
+                    } else{
+                            showCorrectMessage();
+                    } 
+                }else {
+                        if((list[index + 1].getText().equals("Booked"))&&(list[index + 2].getText().equals("Booked") || list[index - 1].getText().equals("Booked"))){
+                            showErrorMessage(); 
+                        } else if ((list[index - 1].getText().equals("Booked"))&&(list[index - 2].getText().equals("Booked") || list[index + 1].getText().equals("Booked"))){
+                            showErrorMessage();
+                        } else{
+                            showCorrectMessage();
+                        }
+
+                }
+            }
             displayCourtAvailability();
             
         } else {
@@ -436,6 +481,31 @@ public class BookController implements Initializable {
             alert.setContentText("Please select something...");
             alert.showAndWait();
         }
+    }
+    public void showCorrectMessage() throws ClubDAOException, IOException{
+        LocalDateTime datetime = LocalDateTime.now();
+        Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
+        boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
+        Court selected = getMyCourt();
+        Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("Done");
+        alert.setHeaderText("Your booking has been sucessfully created!");
+        // or null if we do not want a header
+        alert.setContentText("You can see the details in My Bookings");
+        alert.showAndWait();
+    }
+    public void showErrorMessage(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("Error");
+        alert.setHeaderText("Error!");
+        // or null if we do not want a header
+        alert.setContentText("You cannot book more than two consecutive hours");
+        alert.showAndWait();
+        
     }
 
     @FXML
@@ -605,6 +675,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil1clicked(ActionEvent event) {
         isSelected = true;
+        index = 0;
         myTime = LocalTime.of(9, 0);
         fil1.setSelected(true);
         fil2.setSelected(false);
@@ -624,6 +695,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil2clicked(ActionEvent event) {
         isSelected = true;
+        index = 1;
         myTime = LocalTime.of(10, 0);
         fil2.setSelected(true);
         fil1.setSelected(false);
@@ -643,6 +715,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil3clicked(ActionEvent event) {
         isSelected = true;
+        index = 2;
         myTime = LocalTime.of(11, 0);
         fil3.setSelected(true);
         fil2.setSelected(false);
@@ -662,6 +735,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil4clicked(ActionEvent event) {
         isSelected = true;
+        index = 3;
         myTime = LocalTime.of(12, 0);
         fil4.setSelected(true);
         fil2.setSelected(false);
@@ -681,6 +755,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil5clicked(ActionEvent event) {
         isSelected = true;
+        index = 4;
         myTime = LocalTime.of(13, 0);
         fil5.setSelected(true);
         fil2.setSelected(false);
@@ -700,6 +775,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil6clicked(ActionEvent event) {
         isSelected = true;
+        index = 5;
         myTime = LocalTime.of(14, 0);
         fil6.setSelected(true);
         fil2.setSelected(false);
@@ -719,6 +795,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil7clicked(ActionEvent event) {
         isSelected = true;
+        index = 6;
         myTime = LocalTime.of(15, 0);
         fil7.setSelected(true);
         fil2.setSelected(false);
@@ -738,6 +815,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil8clicked(ActionEvent event) {
         isSelected = true;
+        index = 7;
         myTime = LocalTime.of(16, 0);
         fil8.setSelected(true);
         fil2.setSelected(false);
@@ -757,6 +835,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil11clicked(ActionEvent event) {
         isSelected = true;
+        index = 10;
         myTime = LocalTime.of(19, 0);
         fil11.setSelected(true);
         fil2.setSelected(false);
@@ -776,6 +855,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil9clicked(ActionEvent event) {
         isSelected = true;
+        index = 8;
         myTime = LocalTime.of(17, 0);
         fil9.setSelected(true);
         fil2.setSelected(false);
@@ -795,6 +875,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil10clicked(ActionEvent event) {
         isSelected = true;
+        index = 9;
         myTime = LocalTime.of(18, 0);
         fil10.setSelected(true);
         fil2.setSelected(false);
@@ -814,6 +895,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil12clicked(ActionEvent event) {
         isSelected = true;
+        index = 11;
         myTime = LocalTime.of(20, 0);
         fil12.setSelected(true);
         fil2.setSelected(false);
@@ -833,6 +915,7 @@ public class BookController implements Initializable {
     @FXML
     private void fil13clicked(ActionEvent event) {
         isSelected = true;
+        index = 12;
         myTime = LocalTime.of(21, 0);
         fil13.setSelected(true);
         fil2.setSelected(false);
