@@ -28,3 +28,7 @@ and open the template in the editor.
 .date-picker > .text-field {
     -fx-text-fill: green;
 }
+
+.table-view .column-header .label {
+    -fx-background-color: lightgreen; /* Cambia el color de fondo según tus necesidades */
+}

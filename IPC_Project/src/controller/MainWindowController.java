@@ -4,6 +4,7 @@
  */
 package controller;
 
+import static controller.LogInController.getMyNickname;
 import extra.Utils;
 import java.io.IOException;
 import java.net.URL;
@@ -142,8 +143,9 @@ public class MainWindowController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Bookings.fxml"));
         Parent root = loader.load();
         
-        BookingsController bookingsController = loader.<BookingsController>getController();
-        bookingsController.initBooking(login);
+        //BookingsController bookingsController = loader.<BookingsController>getController();
+        //bookingsController.initBooking(login);
+        //System.out.println("Nickname: " + login);
         
         Scene scene = new Scene(root);
         Stage stage = new Stage();

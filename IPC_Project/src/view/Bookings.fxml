@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
@@ -34,40 +35,43 @@
             <Insets top="20.0" />
          </padding>
          <children>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="179.0" prefWidth="960.0">
+            <HBox prefHeight="159.0" prefWidth="960.0">
                <children>
+                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Circle>
                   <ImageView fitHeight="102.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/greenBall%20blanco.png" />
                      </image>
-                     <VBox.margin>
-                        <Insets left="550.0" />
-                     </VBox.margin>
+                     <HBox.margin>
+                        <Insets left="400.0" top="10.0" />
+                     </HBox.margin>
                   </ImageView>
-                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                     <VBox.margin>
-                        <Insets bottom="50.0" left="50.0" />
-                     </VBox.margin>
-                  </Circle>
                </children>
-            </VBox>
+            </HBox>
             <VBox maxWidth="-Infinity" prefHeight="243.0" prefWidth="933.0">
                <children>
-                  <TableView fx:id="bookingTableView" maxWidth="-Infinity" prefHeight="260.0" prefWidth="796.0">
+                  <TableView fx:id="bookingTableView" maxWidth="-Infinity" prefHeight="260.0" prefWidth="796.0" stylesheets="@../resources/css/book-view.css">
                     <columns>
-                      <TableColumn fx:id="dayColumn" prefWidth="185.0" text="DAY" />
-                      <TableColumn fx:id="courtColumn" prefWidth="199.0" text="COURT" />
-                        <TableColumn fx:id="dateColumn" prefWidth="272.0" text="DATE" />
-                        <TableColumn fx:id="paidColumn" prefWidth="138.0" text="PAID" />
+                      <TableColumn fx:id="dayColumn" prefWidth="215.0" text="DAY" />
+                      <TableColumn fx:id="courtColumn" prefWidth="169.0" text="COURT" />
+                        <TableColumn fx:id="dateColumn" prefWidth="268.0" text="DATE" />
+                        <TableColumn fx:id="paidColumn" prefWidth="142.0" text="PAID" />
                     </columns>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
                   </TableView>
                </children>
             </VBox>
-            <VBox prefHeight="93.0" prefWidth="960.0">
+            <VBox prefHeight="92.0" prefWidth="960.0">
                <children>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#returnToMain" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: white; -fx-cursor: hand;" text="BACK">
                      <VBox.margin>
-                        <Insets left="840.0" top="15.0" />
+                        <Insets left="850.0" top="35.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Century Gothic" size="12.0" />
