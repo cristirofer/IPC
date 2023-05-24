@@ -262,6 +262,19 @@ public class AvailabilityController implements Initializable {
         //---------------------------------------------------------------------
         //cambia los SlotTime al cambiar de dia
         day.valueProperty().addListener((a, b, c) -> {
+            fil1.setSelected(false);
+            fil2.setSelected(false);
+            fil3.setSelected(false);
+            fil4.setSelected(false);
+            fil5.setSelected(false);
+            fil6.setSelected(false);
+            fil7.setSelected(false);
+            fil8.setSelected(false);
+            fil9.setSelected(false);
+            fil10.setSelected(false);
+            fil11.setSelected(false);
+            fil12.setSelected(false);
+            fil13.setSelected(false);
             try {
                 displayCourtAvailability();
             } catch (ClubDAOException | IOException ex) {
@@ -488,6 +501,19 @@ public class AvailabilityController implements Initializable {
     @FXML
     private void selectCourt(ActionEvent event) throws ClubDAOException, IOException {
         selectedCourt = court.getSelectionModel().getSelectedItem().toString();
+        fil1.setSelected(false);
+        fil2.setSelected(false);
+        fil3.setSelected(false);
+        fil4.setSelected(false);
+        fil5.setSelected(false);
+        fil6.setSelected(false);
+        fil7.setSelected(false);
+        fil8.setSelected(false);
+        fil9.setSelected(false);
+        fil10.setSelected(false);
+        fil11.setSelected(false);
+        fil12.setSelected(false);
+        fil13.setSelected(false);
         displayCourtAvailability();
     }
     
