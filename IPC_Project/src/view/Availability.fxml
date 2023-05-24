@@ -36,13 +36,13 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" prefHeight="540.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="TOP_RIGHT" prefHeight="1090.0" prefWidth="1159.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="500.0" prefWidth="431.0">
                <children>
                   <ImageView fx:id="banner" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/images/tennisCourt2.jpg" />
+                        <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
@@ -285,7 +285,7 @@
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="48.0" right="48.0" />
+                        <Insets left="30.0" right="80.0" />
                      </padding>
                   </VBox>
                   <HBox alignment="BOTTOM_CENTER" prefHeight="48.0" prefWidth="482.0">
