@@ -47,10 +47,17 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="71.0" prefWidth="388.0" text="Update data">
+                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="392.0">
                      <font>
                         <Font name="Century Gothic" size="42.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="103.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/53092b9d87c821f4e48148acb4506e91.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Label>
                   <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                   <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
@@ -60,6 +67,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="233.39995117187505" />
                      </columnConstraints>
                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -84,22 +92,22 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Password" GridPane.rowIndex="3">
+                        <Label text="Password" GridPane.rowIndex="4">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Repeat Password" GridPane.rowIndex="4">
+                        <Label text="Repeat Password" GridPane.rowIndex="5">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Payment Information (optional)" GridPane.rowIndex="5">
+                        <Label text="Payment Information (optional)" GridPane.rowIndex="6">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <Label text="Profile picture (optional)" GridPane.rowIndex="6">
+                        <Label text="Profile picture (optional)" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets right="10.0" />
                            </GridPane.margin>
@@ -111,9 +119,9 @@
                         </TextField>
                         <TextField fx:id="fNameS" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="numberS" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <PasswordField fx:id="passwS" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <PasswordField fx:id="repPasswS" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <PasswordField fx:id="passwS" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <PasswordField fx:id="repPasswS" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <children>
                               <TextField fx:id="cardS" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="143.0" promptText="Creditcard nr. (no hyphen)">
                                  <font>
@@ -127,26 +135,32 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Label fx:id="lIncorrectPassword" text="It must have at least 8 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Label fx:id="lIncorrectPassword" text="It must have at least 8 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lPassDifferent" prefHeight="17.0" prefWidth="151.0" text="Passwords don't match" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <Label fx:id="lPassDifferent" prefHeight="17.0" prefWidth="151.0" text="Passwords don't match" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
                         <Label fx:id="IincorrectPhoneNumber" layoutX="452.0" layoutY="112.0" prefHeight="17.0" prefWidth="180.0" text="It must be 9 characters long and only contain numbers." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <children>
                               <Button fx:id="selectprofileS" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchImage" prefHeight="25.0" prefWidth="80.0" style="-fx-cursor: hand; -fx-background-color: #2d752f;" text="Select" textFill="WHITE" />
                            </children>
                         </HBox>
-                        <Label fx:id="paymentError" layoutX="452.0" layoutY="174.0" prefHeight="17.0" prefWidth="151.0" text="Invalid payment information." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Label fx:id="paymentError" layoutX="452.0" layoutY="174.0" prefHeight="17.0" prefWidth="151.0" text="Invalid payment information." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                         <Label fx:id="incorrectName" layoutX="447.0" layoutY="81.0" prefHeight="17.0" prefWidth="180.0" text="Invalid name." textFill="RED" visible="false" GridPane.columnIndex="2" />
                         <Label fx:id="incorrectSurname" layoutX="447.0" layoutY="18.0" prefHeight="17.0" prefWidth="180.0" text="Invalid surname." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="incorrectImageRoute" layoutX="447.0" layoutY="50.0" prefHeight="17.0" prefWidth="180.0" text="Invalid image route." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <Label fx:id="incorrectImageRoute" layoutX="447.0" layoutY="50.0" prefHeight="17.0" prefWidth="180.0" text="Invalid image route." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <Label text="Nickname" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="nicknameS" alignment="CENTER" opacity="0.79" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                      <opaqueInsets>
                         <Insets right="10.0" />
