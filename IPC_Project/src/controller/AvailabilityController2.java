@@ -408,7 +408,7 @@ public class AvailabilityController2 implements Initializable {
     */
     @FXML
     private void isCancelled(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main Screen).fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -417,7 +417,7 @@ public class AvailabilityController2 implements Initializable {
 	stage.setMinWidth(976);
         Image icon = new Image("/resources/images/pelota.png");
         stage.getIcons().add(icon);
-        stage.setTitle("Log-in");
+        stage.setTitle("Main Window");
         stage.setFullScreen(false);
         stage.setFullScreenExitHint("Press F11 to exit fullscreen");
         stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));

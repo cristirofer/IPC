@@ -70,6 +70,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private MenuItem infoButton;
     private String login;
+    @FXML
+    private Button checkAvailability;
     
     public void initBooking(String login) {
         this.login = login;
@@ -194,7 +196,6 @@ public class MainWindowController implements Initializable {
         alert.showAndWait();
     }
 
-    @FXML
     private void loadAvailability(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Availability.fxml"));
         Parent root = loader.load();
@@ -213,4 +214,24 @@ public class MainWindowController implements Initializable {
         stage.show();
         bookButton.getScene().getWindow().hide();
     }   
+
+    @FXML
+    private void loadCheckAvailability(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Availability2.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Availability");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        bookButton.getScene().getWindow().hide();
+    }
 }

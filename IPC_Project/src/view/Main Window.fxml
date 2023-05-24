@@ -41,17 +41,24 @@
                         <Insets left="5.0" right="30.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <HBox alignment="TOP_RIGHT" prefHeight="130.0" prefWidth="559.0" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="130.0" prefWidth="559.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="configurationButton" mnemonicParsing="false" onAction="#loadConfig" style="-fx-background-color: #adf7af;" text="Profile Configuration" textFill="#2d752f">
-                           <font>
-                              <Font name="Calibri" size="13.0" />
-                           </font>
+                        <VBox alignment="CENTER" prefHeight="145.0" prefWidth="140.0" spacing="10.0">
+                           <children>
+                              <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Button fx:id="configurationButton" mnemonicParsing="false" onAction="#loadConfig" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #adf7af; -fx-cursor: hand;" text="Profile Configuration" textFill="#2d752f">
+                                 <font>
+                                    <Font name="Calibri" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
                            <HBox.margin>
-                              <Insets left="20.0" top="10.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
-                        </Button>
+                        </VBox>
                      </children>
                      <padding>
                         <Insets right="20.0" top="10.0" />
@@ -64,7 +71,7 @@
             </HBox>
             <HBox alignment="BOTTOM_LEFT" prefHeight="371.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="273.0" prefWidth="418.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER_LEFT" prefHeight="273.0" prefWidth="418.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label fx:id="labelWelcome" prefHeight="58.0" prefWidth="296.0" text="WELCOME" textFill="WHITE">
                            <font>
@@ -74,11 +81,11 @@
                               <Insets bottom="50.0" left="20.0" />
                            </VBox.margin>
                         </Label>
-                        <HBox alignment="TOP_CENTER" prefHeight="103.0" prefWidth="418.0">
+                        <HBox alignment="CENTER" prefHeight="78.0" prefWidth="426.0">
                            <children>
-                              <Button fx:id="bookButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#loadBook" prefHeight="60.0" prefWidth="395.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="WHITE">
+                              <Button fx:id="bookButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#loadBook" prefHeight="89.0" prefWidth="395.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" translateY="4.0">
                                        <image>
                                           <Image url="@../resources/images/Book%20a%20court.png" />
                                        </image>
@@ -90,11 +97,11 @@
                               <Insets left="30.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="132.0" prefWidth="418.0">
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="426.0">
                            <children>
                               <Button fx:id="myBookingsButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadBookings" prefHeight="57.0" prefWidth="389.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="#2d752f">
                                  <graphic>
-                                    <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true" translateY="4.0">
                                        <image>
                                           <Image url="@../resources/images/My%20reservations.png" />
                                        </image>
@@ -103,8 +110,27 @@
                               </Button>
                            </children>
                            <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="239.0" prefHeight="107.0" prefWidth="426.0">
+                           <children>
+                              <Button fx:id="checkAvailability" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadCheckAvailability" prefHeight="44.0" prefWidth="389.0" style="-fx-background-color: WHITE; -fx-cursor: hand;" textFill="#2d752f">
+                                 <graphic>
+                                    <ImageView fitHeight="89.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" translateY="5.0">
+                                       <image>
+                                          <Image url="@../resources/images/75e04c6bfc239bf89bd4afb81931bc6d.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
                               <Insets bottom="30.0" left="30.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets bottom="50.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
