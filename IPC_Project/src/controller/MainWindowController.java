@@ -164,7 +164,23 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void loadConfig(ActionEvent event) {
+    private void loadConfig(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Edit Profile.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Edit configuration");
+        stage.setFullScreen(false);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        bookButton.getScene().getWindow().hide();
     }
 
     @FXML
