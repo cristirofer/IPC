@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540.0" minWidth="960.0" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="517.0" minWidth="960.0" onKeyPressed="#makeFullScreen" prefHeight="564.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
       <MenuBar>
          <menus>
@@ -34,26 +34,26 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="530.0" prefWidth="290.0">
+            <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="banner" fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="banner" fitHeight="539.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0">
+            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
                      </image>
                   </ImageView>
-                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
+                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" VBox.vgrow="ALWAYS" />
+                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0" VBox.vgrow="ALWAYS">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="199.000048828125" />
@@ -168,7 +168,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </GridPane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="671.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="109.0" prefWidth="671.0" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                            <children>

@@ -46,6 +46,7 @@ public class JavaFXMLApplication extends Application {
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("Login");
+        stage.setResizable(true);
         stage.show();
     }
 

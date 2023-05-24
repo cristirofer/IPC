@@ -30,12 +30,12 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox fx:id="vBoxCenter" alignment="TOP_CENTER" prefHeight="520.0" prefWidth="960.0">
+      <VBox fx:id="vBoxCenter" alignment="TOP_CENTER" prefHeight="520.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <padding>
             <Insets top="20.0" />
          </padding>
          <children>
-            <HBox prefHeight="159.0" prefWidth="960.0">
+            <HBox prefHeight="159.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
                   <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                      <HBox.margin>
@@ -52,9 +52,9 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox maxWidth="-Infinity" prefHeight="255.0" prefWidth="934.0">
+            <VBox maxWidth="-Infinity" prefHeight="255.0" prefWidth="934.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="bookingTableView" maxWidth="-Infinity" prefHeight="260.0" prefWidth="796.0" stylesheets="@../resources/css/book-view.css">
+                  <TableView fx:id="bookingTableView" maxWidth="-Infinity" prefHeight="260.0" prefWidth="796.0" stylesheets="@../resources/css/book-view.css" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="dayColumn" prefWidth="215.0" text="DAY" />
                       <TableColumn fx:id="courtColumn" prefWidth="169.0" text="COURT" />
@@ -67,7 +67,7 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox prefHeight="83.0" prefWidth="960.0">
+            <VBox prefHeight="83.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#returnToMain" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: white; -fx-cursor: hand;" text="BACK">
                      <VBox.margin>
