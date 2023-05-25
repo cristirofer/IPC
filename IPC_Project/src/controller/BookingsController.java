@@ -36,6 +36,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -85,11 +86,14 @@ public class BookingsController implements Initializable {
     private TableColumn<Booking, LocalTime> dateColumn;
     @FXML
     private TableColumn<Booking, Boolean> paidColumn;
+    @FXML
+    private TableColumn<Void, Void> cancelCol;
     
     private String login;
     private ObservableList<Booking> obsList;
     @FXML
     private Circle profilePicContainer1;
+    
     
 
     
@@ -102,16 +106,15 @@ public class BookingsController implements Initializable {
         }
         profilePicContainer1.setFill(new ImagePattern(im));
         
+        bookingTableView.setEditable(true);
         
         List<Booking> bookingArrayList = new ArrayList<Booking>();
         login = LogInController.getMyNickname();
         
         bookingArrayList = Club.getInstance().getUserBookings(login);
-        int startIndex = Math.max(0, bookingArrayList.size() - 10);  // Índice inicial para obtener los últimos 10 elementos
+        int startIndex = Math.max(0, bookingArrayList.size() - 10);
         List<Booking> lastTenBookings = bookingArrayList.subList(startIndex, bookingArrayList.size());
-    
-        
-        obsList = FXCollections.observableList(lastTenBookings);
+        obsList = FXCollections.observableArrayList(lastTenBookings);
         
         dayColumn.setCellValueFactory(cellData -> {
             Booking booking = cellData.getValue();
@@ -233,6 +236,45 @@ public class BookingsController implements Initializable {
         courtColumn.setCellFactory(c -> new CourtTableCell());
         dayColumn.setCellFactory(c -> new DayTableCell());
         paidColumn.setCellFactory(c -> new PaidTableCell());
+        
+        cancelCol.setCellFactory(column -> {
+            return new TableCell<Void, Void>() {
+                private final Button button = new Button("CANCEL");
+
+                {
+                    button.setOnAction(event -> {
+                        TableRow<?> row = getTableRow();
+                        int rowIndex = row.getIndex();
+                        System.out.println(": "+ rowIndex);
+                        
+                        List<Booking> bookingArrayList = new ArrayList<Booking>();
+                        login = LogInController.getMyNickname();
+                        ObservableList<Booking> listaElementos = bookingTableView.getItems();
+                        Booking removedBooking = listaElementos.get(rowIndex);
+                        
+                        try {
+                            Club.getInstance().removeBooking(removedBooking);
+                            bookingTableView.getItems().remove(removedBooking);
+                            bookingTableView.refresh();
+                        } catch (ClubDAOException ex) {
+                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(button);
+                    }
+                }
+            };
+        });
     }    
 
     @FXML
