@@ -66,9 +66,9 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="414.0" prefWidth="960.0" spacing="150.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" prefHeight="376.0" prefWidth="940.0" spacing="120.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="336.0" prefWidth="100.0" style="-fx-background-color: WHITE;" HBox.hgrow="NEVER">
+                  <VBox alignment="CENTER_RIGHT" prefHeight="336.0" prefWidth="302.0" style="-fx-background-color: WHITE;" HBox.hgrow="NEVER">
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="106.0" prefWidth="367.0" VBox.vgrow="ALWAYS">
                            <children>
@@ -80,7 +80,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <DatePicker fx:id="day" prefHeight="34.0" prefWidth="194.0" />
+                              <DatePicker fx:id="day" prefHeight="34.0" prefWidth="206.0" />
                            </children>
                            <padding>
                               <Insets right="10.0" top="20.0" />
@@ -96,7 +96,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <ComboBox fx:id="court" onAction="#selectCourt" prefHeight="34.0" prefWidth="196.0" promptText="Please select">
+                              <ComboBox fx:id="court" onAction="#selectCourt" prefHeight="34.0" prefWidth="207.0" promptText="Please select">
                                 <items>
                                     <FXCollections fx:factory="observableArrayList">
                                         <String fx:value="Court 1" />
@@ -128,7 +128,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="bookButton" mnemonicParsing="false" onAction="#bookPressed" prefHeight="42.0" prefWidth="144.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="BOOK NOW" textFill="WHITE">
+                                    <Button fx:id="bookButton" mnemonicParsing="false" onAction="#bookPressed" prefHeight="42.0" prefWidth="152.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="BOOK NOW" textFill="WHITE">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -145,10 +145,10 @@
                         <Insets bottom="20.0" left="45.0" top="20.0" />
                      </HBox.margin>
                      <padding>
-                        <Insets right="25.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER_LEFT" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css" HBox.hgrow="ALWAYS">
                      <children>
                         <GridPane fx:id="grid" alignment="CENTER" focusTraversable="true" prefHeight="325.0" prefWidth="356.0" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
                            <columnConstraints>
@@ -325,6 +325,9 @@
                      </HBox.margin>
                   </VBox>
                </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
             </HBox>
          </children>
          <padding>
