@@ -37,3 +37,12 @@
 }.toggle-button-occupied2:hover {
     -fx-background-color: #804040;
 }
+
+.button-cell {
+    -fx-alignment: center;
+}
+
+.button-cell .button {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: black;
+}
