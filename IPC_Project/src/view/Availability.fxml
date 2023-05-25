@@ -42,7 +42,7 @@
                <children>
                   <ImageView fx:id="banner" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/images/tennisCourt.jpg" />
+                        <Image url="@../resources/images/tennisCourt2.jpg" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0" />

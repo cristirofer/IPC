@@ -290,11 +290,6 @@ public class EditProfileController implements Initializable {
         // Obtain the result (before Java 8)
         if (result.isPresent()){
             if (result.get().equals(LogInController.getMyPassword())){
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Profile updated");
-                alert.setHeaderText("Your information has been updated");
-                alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
-                alert.showAndWait();
                 
                 Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
                 myMember.setName(nameS.textProperty().getValueSafe());
@@ -309,6 +304,11 @@ public class EditProfileController implements Initializable {
                 }
                 myMember.setImage(globalAvatar);
                 
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Profile updated");
+                alert.setHeaderText("Your information has been updated");
+                alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
+                alert.showAndWait();
                 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
                 Parent root = loader.load();

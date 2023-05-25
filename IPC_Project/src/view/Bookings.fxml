@@ -35,22 +35,32 @@
             <Insets top="20.0" />
          </padding>
          <children>
-            <HBox prefHeight="159.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="TOP_RIGHT" prefHeight="158.0" prefWidth="960.0">
                <children>
-                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                  <HBox prefHeight="119.0" prefWidth="507.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Circle fx:id="profilePicContainer1" fill="DODGERBLUE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Circle>
+                     </children>
                      <HBox.margin>
-                        <Insets left="30.0" top="10.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
-                  </Circle>
-                  <ImageView fitHeight="102.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
+                  </HBox>
+                  <ImageView fitHeight="72.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/greenBall%20blanco.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="400.0" top="10.0" />
+                        <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
+               <opaqueInsets>
+                  <Insets right="10.0" />
+               </opaqueInsets>
             </HBox>
             <VBox maxWidth="-Infinity" prefHeight="255.0" prefWidth="934.0" VBox.vgrow="ALWAYS">
                <children>
@@ -67,17 +77,20 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox prefHeight="83.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#returnToMain" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: white; -fx-cursor: hand;" text="BACK">
                      <VBox.margin>
-                        <Insets bottom="30.0" left="840.0" right="10.0" top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Century Gothic Bold" size="19.0" />
                      </font>
                   </Button>
                </children>
+               <padding>
+                  <Insets bottom="20.0" right="25.0" />
+               </padding>
             </VBox>
          </children>
       </VBox>

@@ -65,7 +65,7 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <HBox prefHeight="414.0" prefWidth="960.0" spacing="150.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" prefHeight="414.0" prefWidth="960.0" spacing="150.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="336.0" prefWidth="100.0" style="-fx-background-color: WHITE;" HBox.hgrow="NEVER">
                      <children>
@@ -147,9 +147,9 @@
                         <Insets right="25.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css" HBox.hgrow="ALWAYS">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="376.0" prefWidth="356.0" stylesheets="@../resources/css/book-view.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <GridPane fx:id="grid" focusTraversable="true" prefHeight="325.0" prefWidth="356.0" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
+                        <GridPane fx:id="grid" alignment="CENTER" focusTraversable="true" prefHeight="325.0" prefWidth="356.0" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
                            <columnConstraints>
                               <ColumnConstraints hgrow="ALWAYS" maxWidth="152.79998779296875" minWidth="78.400048828125" prefWidth="142.4000244140625" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="214.3999755859375" />

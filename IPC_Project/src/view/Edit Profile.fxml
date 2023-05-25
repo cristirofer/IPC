@@ -34,9 +34,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="960.0">
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="530.0" prefWidth="290.0">
+            <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
                <children>
                   <ImageView fx:id="banner" fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +45,7 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="519.0" prefWidth="671.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" prefHeight="519.0" prefWidth="671.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label alignment="CENTER" prefHeight="78.0" prefWidth="392.0" VBox.vgrow="ALWAYS">
                      <font>

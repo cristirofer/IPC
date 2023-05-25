@@ -89,7 +89,7 @@ public class BookingsController implements Initializable {
     private String login;
     private ObservableList<Booking> obsList;
     @FXML
-    private Circle profilePicContainer;
+    private Circle profilePicContainer1;
     
 
     
@@ -100,7 +100,7 @@ public class BookingsController implements Initializable {
         } catch (ClubDAOException | IOException ex) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        profilePicContainer.setFill(new ImagePattern(im));
+        profilePicContainer1.setFill(new ImagePattern(im));
         
         
         List<Booking> bookingArrayList = new ArrayList<Booking>();
