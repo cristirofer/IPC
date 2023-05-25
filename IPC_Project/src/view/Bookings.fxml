@@ -64,9 +64,9 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-            <HBox prefHeight="273.0" prefWidth="960.0">
+            <HBox maxWidth="1.7976931348623157E308" prefHeight="273.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="bookingTableView" maxWidth="-Infinity" prefHeight="263.0" prefWidth="911.0" styleClass="button-cell">
+                  <TableView fx:id="bookingTableView" maxWidth="1.7976931348623157E308" prefHeight="263.0" prefWidth="911.0" styleClass="button-cell" HBox.hgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="dayColumn" prefWidth="215.0" text="DAY" />
                       <TableColumn fx:id="courtColumn" prefWidth="169.0" text="COURT" />
@@ -90,7 +90,7 @@
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
             </HBox>
-            <VBox prefHeight="92.0" prefWidth="960.0">
+            <VBox maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="960.0">
                <children>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#returnToMain" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: white; -fx-cursor: hand;" text="BACK">
                      <VBox.margin>

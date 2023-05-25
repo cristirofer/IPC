@@ -30,6 +30,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuBar;
@@ -175,7 +176,10 @@ public class BookingsController implements Initializable {
                 setText(null);
             } else {
                 setAlignment(Pos.CENTER);
-                setText(item.getName());
+                System.out.println(item.toString());
+                char numero = item.getName().charAt(item.getName().length() - 1);
+                String textDisplayed = "Court " + numero;
+                setText(textDisplayed);
             }
         }
     } 
@@ -240,6 +244,10 @@ public class BookingsController implements Initializable {
         cancelCol.setCellFactory(column -> {
             return new TableCell<Void, Void>() {
                 private final Button button = new Button("CANCEL");
+                {
+                    button.setMaxWidth(Double.MAX_VALUE);
+                    button.setPrefWidth(Double.MAX_VALUE);
+                }
 
                 {
                     button.setOnAction(event -> {
@@ -252,15 +260,29 @@ public class BookingsController implements Initializable {
                         ObservableList<Booking> listaElementos = bookingTableView.getItems();
                         Booking removedBooking = listaElementos.get(rowIndex);
                         
-                        try {
+                        LocalTime bookingTime = removedBooking.getFromTime();
+                        LocalTime nowTime = LocalTime.now();
+                        if(bookingTime.compareTo(nowTime) > 0) {
+                            try {
                             Club.getInstance().removeBooking(removedBooking);
                             bookingTableView.getItems().remove(removedBooking);
                             bookingTableView.refresh();
-                        } catch (ClubDAOException ex) {
+                            } catch (ClubDAOException ex) {
                             Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (IOException ex) {
+                            } catch (IOException ex) {
                             Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+                            alert.setTitle("Cancelation Not Allowed");
+                            alert.setHeaderText(null);
+                            // or null if we do not want a header
+                            alert.setContentText("Cancelation not allowed for past bookings.");
+                            alert.showAndWait();
                         }
+                        
+                        
                     });
                 }
 
