@@ -588,6 +588,17 @@ public class SignUpController implements Initializable {
         alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
         alert.showAndWait();
     }
+
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) acceptButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
 }
 
 

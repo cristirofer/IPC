@@ -390,4 +390,15 @@ public class LogInController implements Initializable {
         vBox.getStylesheets().add("/resources/css/darkMode.css");
     }
 
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) linktoSignUp.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
+
 }

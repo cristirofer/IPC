@@ -241,4 +241,15 @@ public class MainWindowController implements Initializable {
         stage.show();
         bookButton.getScene().getWindow().hide();
     }
+
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) bookButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
 }
