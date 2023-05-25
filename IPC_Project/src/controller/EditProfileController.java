@@ -23,12 +23,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
@@ -40,6 +42,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -282,10 +285,33 @@ public class EditProfileController implements Initializable {
 
     @FXML
     private void signUpClicked(ActionEvent event) throws ClubDAOException, IOException {
-        TextInputDialog dialog = new TextInputDialog(); // Default value
+        /*TextInputDialog dialog = new TextInputDialog(); // Default value
         dialog.setTitle("Confirmation");
         dialog.setHeaderText("Verification step");
         dialog.setContentText("Enter your current password:");
+        Optional<String> result = dialog.showAndWait();
+        */
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Confirmation");
+        dialog.setHeaderText("Verification step");
+        dialog.setContentText("Enter your current password:");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+
+        PasswordField pwd = new PasswordField();
+        HBox content = new HBox();
+        content.setAlignment(Pos.CENTER);
+        content.setSpacing(10);
+        content.getChildren().addAll(new Label("Enter your current password:"), pwd);
+        dialog.getDialogPane().setContent(content);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return pwd.getText();
+            }
+            return null;
+        });
+
+
         Optional<String> result = dialog.showAndWait();
         // Obtain the result (before Java 8)
         if (result.isPresent()){
