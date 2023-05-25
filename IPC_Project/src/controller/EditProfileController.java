@@ -119,13 +119,12 @@ public class EditProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        Image im = new Image("/resources/images/noprofile.jpg",false);
         try {
-            im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
+            globalAvatar = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
         } catch (ClubDAOException | IOException ex) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        profilePicContainer.setFill(new ImagePattern(im));
+        profilePicContainer.setFill(new ImagePattern(globalAvatar));
         Platform.runLater(() -> {
             // Realizar el binding después de que la escena esté disponible
             banner.fitHeightProperty().bind(banner.getScene().heightProperty());
@@ -149,8 +148,8 @@ public class EditProfileController implements Initializable {
         validPaymentInfo.setValue(Boolean.FALSE);
         validImagePath.setValue(Boolean.FALSE);
         
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword).and(equalPasswords).and(validPhone).and(validName).and(validSurname);
-        //acceptButton.disableProperty().bind(Bindings.not(validFields));
+        BooleanBinding validFields = Bindings.and( validPhone, validName).and(validSurname);
+        acceptButton.disableProperty().bind(Bindings.not(validFields));
         
         nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
             validName.setValue(true);
@@ -217,6 +216,7 @@ public class EditProfileController implements Initializable {
                 checkEquals();
             }
         });
+        
         Member myMember = null;
         try {
             myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword());
@@ -289,12 +289,43 @@ public class EditProfileController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         // Obtain the result (before Java 8)
         if (result.isPresent()){
-            if (result.equals(LogInController.getMyPassword())){
+            if (result.get().equals(LogInController.getMyPassword())){
+                
+                Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
+                myMember.setName(nameS.textProperty().getValueSafe());
+                myMember.setSurname(fNameS.textProperty().getValueSafe());
+                myMember.setTelephone(numberS.textProperty().getValueSafe());
+                if (!passwS.getText().equals("")){
+                    myMember.setPassword(passwS.textProperty().getValueSafe());
+                }
+                if (!cardS.getText().equals("") && !cscS.getText().equals("")){
+                    myMember.setCreditCard(cardS.textProperty().getValueSafe());
+                    myMember.setSvc(Integer.parseInt(cscS.textProperty().getValueSafe()));
+                }
+                myMember.setImage(globalAvatar);
+                
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Profile updated");
                 alert.setHeaderText("Your information has been updated");
                 alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
                 alert.showAndWait();
+                
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setMinHeight(579);
+                stage.setMinWidth(976);
+                Image icon = new Image("/resources/images/pelota.png");
+                stage.getIcons().add(icon);
+                stage.setTitle("Main Window");
+                stage.setFullScreen(false);
+                stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+                stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                nicknameS.getScene().getWindow().hide();
             } else{
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error");
@@ -370,9 +401,6 @@ public class EditProfileController implements Initializable {
             manageCorrect(paymentError, cscS,validPaymentInfo );
     }
     
-    private void checkEditEmail() throws ClubDAOException, IOException{
-        
-    }
     
     private void checkPhone(){
         if(!Utils.checkPhone(numberS.textProperty().getValueSafe()))

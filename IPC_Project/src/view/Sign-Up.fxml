@@ -18,13 +18,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540.0" minWidth="960.0" onKeyPressed="#makeFullScreen" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<VBox alignment="TOP_CENTER" minHeight="517.0" minWidth="960.0" onKeyPressed="#makeFullScreen" prefHeight="564.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
       <MenuBar>
          <menus>
             <Menu mnemonicParsing="false" text="Help">
               <items>
-                <MenuItem mnemonicParsing="false" text="About us" />
+                <MenuItem mnemonicParsing="false" onAction="#infoPressed" text="About us" />
               </items>
             </Menu>
             <Menu text="Options">
@@ -34,26 +34,26 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+      <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="530.0" prefWidth="290.0">
+            <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="SOMETIMES">
                <children>
-                  <ImageView fx:id="banner" fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="banner" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="671.0">
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="671.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
                      <image>
                         <Image url="@../resources/images/db6d7b6dc83b9c59286a10c9a023f14b.png" />
                      </image>
                   </ImageView>
-                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0">
+                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" VBox.vgrow="NEVER" />
+                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="250.0" prefWidth="671.0" VBox.vgrow="NEVER">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="199.000048828125" />
@@ -168,7 +168,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </GridPane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="671.0">
+                  <HBox alignment="BOTTOM_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="660.0" VBox.vgrow="SOMETIMES">
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                            <children>
@@ -183,10 +183,19 @@
                                  <font>
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" />
+                                 </VBox.margin>
                               </Button>
                            </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="400.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="154.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="109.0" prefWidth="137.0">
                            <children>
                               <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#canceledClicked" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #2d752f; -fx-cursor: hand;" text="CANCEL" textFill="WHITE">
                                  <graphic>
@@ -199,10 +208,16 @@
                                  <font>
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" right="20.0" />
+                                 </VBox.margin>
                               </Button>
                            </children>
                         </VBox>
                      </children>
+                     <opaqueInsets>
+                        <Insets right="20.0" />
+                     </opaqueInsets>
                   </HBox>
                </children>
                <padding>

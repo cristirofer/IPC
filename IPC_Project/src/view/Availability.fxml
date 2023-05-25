@@ -36,7 +36,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" prefHeight="540.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="TOP_RIGHT" prefHeight="1090.0" prefWidth="1159.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="500.0" prefWidth="431.0">
                <children>
@@ -50,14 +50,14 @@
             </VBox>
             <VBox fx:id="vBox" alignment="CENTER" prefHeight="488.0" prefWidth="529.0" styleClass="secondary-color" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" prefHeight="47.0" prefWidth="529.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="529.0">
                      <children>
                         <ImageView fitHeight="73.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/images/availability.png" />
                            </image>
                            <VBox.margin>
-                              <Insets left="70.0" top="5.0" />
+                              <Insets left="70.0" />
                            </VBox.margin>
                         </ImageView>
                      </children>
@@ -105,12 +105,12 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="433.0">
+                        <VBox alignment="CENTER" prefHeight="310.0" prefWidth="386.0">
                            <children>
-                              <GridPane fx:id="grid" alignment="CENTER" focusTraversable="true" minHeight="-Infinity" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
+                              <GridPane fx:id="grid" alignment="CENTER" focusTraversable="true" minHeight="-Infinity" prefHeight="328.0" prefWidth="371.0" stylesheets="@../resources/css/buttons.css" VBox.vgrow="ALWAYS">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="107.999951171875" minWidth="77.5999267578125" prefWidth="103.2000244140625" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.6666259765625" minWidth="-Infinity" prefWidth="281.5999755859375" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -132,7 +132,8 @@
                                     <Label fx:id="labelCol" text="COLUMNA 1" textFill="#2d752f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="16.0" />
-                                       </font></Label>
+                                       </font>
+                                    </Label>
                                     <Label fx:id="label9" text="9:00 - 10:00" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <opaqueInsets>
                                           <Insets />
@@ -181,10 +182,26 @@
                                           <Insets right="4.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label fx:id="label18" text="18:00 - 19:00" GridPane.rowIndex="10" />
-                                    <Label fx:id="label19" text="19:00 - 20:00" GridPane.rowIndex="11" />
-                                    <Label fx:id="label20" text="20:00 - 21:00" GridPane.rowIndex="12" />
-                                    <Label fx:id="label21" text="21:00 - 22:00" GridPane.rowIndex="13" />
+                                    <Label fx:id="label18" text="18:00 - 19:00" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets right="4.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="label19" text="19:00 - 20:00" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets right="4.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="label20" text="20:00 - 21:00" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets right="4.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="label21" text="21:00 - 22:00" GridPane.halignment="RIGHT" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets right="4.0" />
+                                       </GridPane.margin>
+                                    </Label>
                                     <VBox prefHeight="22.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                        <children>
                                           <ToggleButton fx:id="fil1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fil1clicked" text="ToggleButton" VBox.vgrow="ALWAYS" />
@@ -268,10 +285,10 @@
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="48.0" right="48.0" />
+                        <Insets left="30.0" right="80.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="81.0" prefWidth="480.0">
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="48.0" prefWidth="482.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#changeMode" prefHeight="37.0" prefWidth="50.0" style="-fx-cursor: hand;">
                            <HBox.margin>
@@ -306,6 +323,9 @@
                      </padding>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="30.0" />
+               </padding>
             </VBox>
          </children>
       </HBox>

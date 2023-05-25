@@ -577,6 +577,17 @@ public class SignUpController implements Initializable {
             nicknameS.getScene().getWindow().hide();
         }
     }
+
+    @FXML
+    private void infoPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+        alert.setTitle("About us...");
+        alert.setHeaderText(null);
+        // or null if we do not want a header
+        alert.setContentText("Developed by Cesar Gimeno Castellote, Javier García Cerdán and Cristina Rodríguez Fernández");
+        alert.showAndWait();
+    }
 }
 
 
