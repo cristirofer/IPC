@@ -150,6 +150,17 @@ public class BookingsController implements Initializable {
         
         bookingTableView.setItems(obsList);
     }
+
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
     
     class DateTableCell extends TableCell<Booking,LocalTime> {
         @Override

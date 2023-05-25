@@ -27,6 +27,7 @@
             </Menu>
             <Menu text="Options">
                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#setFullscreen" text="Set fullscreen" />
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#isExited" text="Exit" />
                </items>
             </Menu>

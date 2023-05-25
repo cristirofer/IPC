@@ -937,6 +937,17 @@ public class AvailabilityController implements Initializable {
         fil1.setSelected(false);
         whoBooked.setText(fil13N);
     }
+
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) banner.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
     
     public class TimeSlot {
 
