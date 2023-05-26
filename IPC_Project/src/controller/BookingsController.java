@@ -274,14 +274,40 @@ public class BookingsController implements Initializable {
                         LocalTime bookingTime = removedBooking.getFromTime();
                         LocalTime nowTime = LocalTime.now();
                         if(bookingTime.compareTo(nowTime) > 0) {
-                            try {
-                            Club.getInstance().removeBooking(removedBooking);
-                            bookingTableView.getItems().remove(removedBooking);
-                            bookingTableView.refresh();
-                            } catch (ClubDAOException ex) {
-                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (IOException ex) {
-                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                            if (bookingTime.compareTo(nowTime.plusHours(24)) < 0){
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation");
+                                alert.setHeaderText("Are you sure you want to cancel?");
+                                alert.setContentText("Extra costs will be efectuated");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.isPresent() && result.get() == ButtonType.OK){
+                                    try {
+                                    Club.getInstance().removeBooking(removedBooking);
+                                    bookingTableView.getItems().remove(removedBooking);
+                                    bookingTableView.refresh();
+                                    } catch (ClubDAOException ex) {
+                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                                    } catch (IOException ex) {
+                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
+                            }else{
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation");
+                                alert.setHeaderText("Are you sure you want to cancel?");
+                                alert.setContentText("Extra costs might be efectuated");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.isPresent() && result.get() == ButtonType.OK){
+                                    try {
+                                    Club.getInstance().removeBooking(removedBooking);
+                                    bookingTableView.getItems().remove(removedBooking);
+                                    bookingTableView.refresh();
+                                    } catch (ClubDAOException ex) {
+                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                                    } catch (IOException ex) {
+                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
                             }
                         } else {
                             Alert alert = new Alert(AlertType.INFORMATION);

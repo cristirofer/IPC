@@ -417,24 +417,8 @@ public class BookController implements Initializable {
     
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
-        System.out.println(Club.getInstance().getBookingSlots());
-        List<Booking> b = Club.getInstance().getUserBookings(LogInController.getMyNickname());
-        int numBooks = 0;
-        for (Booking bi : b){
-            if (bi.getBookingDate().getDayOfYear() == LocalDateTime.now().getDayOfYear()){
-                numBooks++;
-            }
-        }
-        if(isSelected){
-            if (Club.getInstance().getBookingSlots() == numBooks){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-                alert.setTitle("Error");
-                alert.setHeaderText("Error!");
-                // or null if we do not want a header
-                alert.setContentText("Maximum number of bookings per day reached!");
-                alert.showAndWait();;
-            }else{   
+        
+        if(isSelected){   
                 if (index == 0){
                         if (list[index + 1].getText().equals("Booked") && list[index + 2].getText().equals("Booked")){
                             showErrorMessage();
@@ -469,7 +453,6 @@ public class BookController implements Initializable {
                         }
 
                 }
-            }
             displayCourtAvailability();
             
         } else {
@@ -483,19 +466,34 @@ public class BookController implements Initializable {
         }
     }
     public void showCorrectMessage() throws ClubDAOException, IOException{
-        LocalDateTime datetime = LocalDateTime.now();
         Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
-        boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
-        Court selected = getMyCourt();
-        Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
+        if(myMember.checkHasCreditInfo()){
+            LocalDateTime datetime = LocalDateTime.now();
+            boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
+            Court selected = getMyCourt();
+            Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-        alert.setTitle("Done");
-        alert.setHeaderText("Your booking has been sucessfully created!");
-        // or null if we do not want a header
-        alert.setContentText("You can see the details in My Bookings");
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Booking sucessfully created!");
+            alert.setHeaderText("Transaction already paid");
+            // or null if we do not want a header
+            alert.setContentText("You can see the details in My Bookings");
+            alert.showAndWait();
+        } else{
+            LocalDateTime datetime = LocalDateTime.now();
+            boolean isPaid = Club.getInstance().hasCreditCard(LogInController.getMyNickname());
+            Court selected = getMyCourt();
+            Club.getInstance().registerBooking(datetime, day.getValue(),myTime,isPaid,selected ,myMember);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
+            alert.setTitle("Booking sucessfully created!");
+            alert.setHeaderText("Transaction is not paid");
+            // or null if we do not want a header
+            alert.setContentText("You can see the details in My Bookings");
+            alert.showAndWait();
+        }
     }
     public void showErrorMessage(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
