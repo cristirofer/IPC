@@ -68,6 +68,7 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
@@ -213,12 +214,22 @@ public class BookController implements Initializable {
             } catch (ClubDAOException | IOException ex) {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
+            //labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
         });
         
         //---------------------------------------------------------------------
         //inicializa el DatePicker al dia actual
-        day.setValue(LocalDate.now());        
+        day.setValue(LocalDate.now());
+        day.setDayCellFactory((DatePicker picker) -> {
+            return new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+            setDisable(empty || date.compareTo(today) < 0 );
+             }
+             };
+        });
 
         //---------------------------------------------------------------------
         // pinta los SlotTime en el grid

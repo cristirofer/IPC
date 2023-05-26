@@ -117,7 +117,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void makeFullScreen(KeyEvent event) {
-        Stage stage = (Stage) availabilityButton.getScene().getWindow();
+        Stage stage = (Stage) configurationButton.getScene().getWindow();
         fullScreen++;
         if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
             stage.setFullScreen(true);

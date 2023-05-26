@@ -41,6 +41,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -285,7 +286,17 @@ public class AvailabilityController implements Initializable {
         
         //---------------------------------------------------------------------
         //inicializa el DatePicker al dia actual
-        day.setValue(LocalDate.now());        
+        day.setValue(LocalDate.now());
+        day.setDayCellFactory((DatePicker picker) -> {
+            return new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+            setDisable(empty || date.compareTo(today) < 0 );
+             }
+             };
+        });
 
         //---------------------------------------------------------------------
         // pinta los SlotTime en el grid
