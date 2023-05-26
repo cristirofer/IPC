@@ -264,16 +264,29 @@ public class BookingsController implements Initializable {
                     button.setOnAction(event -> {
                         TableRow<?> row = getTableRow();
                         int rowIndex = row.getIndex();
-                        System.out.println(": "+ rowIndex);
                         
                         List<Booking> bookingArrayList = new ArrayList<Booking>();
                         login = LogInController.getMyNickname();
                         ObservableList<Booking> listaElementos = bookingTableView.getItems();
                         Booking removedBooking = listaElementos.get(rowIndex);
                         
+                        LocalDate bookingDate = removedBooking.getMadeForDay();
+                        LocalDate nowDate = LocalDate.now();
+                        
                         LocalTime bookingTime = removedBooking.getFromTime();
                         LocalTime nowTime = LocalTime.now();
-                        if(bookingTime.compareTo(nowTime) > 0) {
+                        
+                        if(bookingDate.compareTo(nowDate) > 0) {
+                            try {
+                            Club.getInstance().removeBooking(removedBooking);
+                            bookingTableView.getItems().remove(removedBooking);
+                            bookingTableView.refresh();
+                            } catch (ClubDAOException ex) {
+                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                            Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else if(bookingDate.compareTo(nowDate) == 0 && bookingTime.compareTo(nowTime) > 0) {
                             try {
                             Club.getInstance().removeBooking(removedBooking);
                             bookingTableView.getItems().remove(removedBooking);
@@ -292,8 +305,6 @@ public class BookingsController implements Initializable {
                             alert.setContentText("Cancelation not allowed for past bookings.");
                             alert.showAndWait();
                         }
-                        
-                        
                     });
                 }
 
