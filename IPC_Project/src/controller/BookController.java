@@ -214,7 +214,7 @@ public class BookController implements Initializable {
             } catch (ClubDAOException | IOException ex) {
                 Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            //labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
+            labelCol.setText(c.getDayOfWeek().getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()));
         });
         
         //---------------------------------------------------------------------
