@@ -275,7 +275,7 @@ public class BookingsController implements Initializable {
                         nor within 24h of the booking time
                         */
                         if(bookingDate.compareTo(nowDate) > 0) {
-                            if (bookingTime.compareTo(nowTime.plusHours(24)) < 0){
+                            if (bookingDate.compareTo(nowDate) == 1 && bookingTime.compareTo(nowTime) < 0){
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Cancelation Not Allowed");
                                 alert.setHeaderText("Important: Reservation Cancellation Notice");
