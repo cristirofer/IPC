@@ -62,9 +62,9 @@ import model.Member;
  * @author Javi
  */
 public class BookingsController implements Initializable {
-    
-    private int fullScreen = 1;
-
+    /*
+    FXML Objects
+    */
     @FXML
     private VBox vBox;
     @FXML
@@ -89,16 +89,23 @@ public class BookingsController implements Initializable {
     private TableColumn<Booking, Boolean> paidColumn;
     @FXML
     private TableColumn<Void, Void> cancelCol;
-    
-    private String login;
-    private ObservableList<Booking> obsList;
     @FXML
     private Circle profilePicContainer1;
     
+    /*
+    Attributes declaration
+    */
+    private int fullScreen = 1;
+    private String login;
+    private ObservableList<Booking> obsList;
+    
     
 
-    
+    /*
+    Table view and columns initialization
+    */
     private void initializeModel() throws ClubDAOException, IOException {
+        // Set profile pic
         Image im = new Image("/resources/images/noprofile.jpg",false);
         try {
             im = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
@@ -107,11 +114,10 @@ public class BookingsController implements Initializable {
         }
         profilePicContainer1.setFill(new ImagePattern(im));
         
+        // Initialization of ArrayList of 10 last bookings
         bookingTableView.setEditable(true);
-        
         List<Booking> bookingArrayList = new ArrayList<Booking>();
         login = LogInController.getMyNickname();
-        
         bookingArrayList = Club.getInstance().getUserBookings(login);
         int startIndex = Math.max(0, bookingArrayList.size() - 10);
         List<Booking> lastTenBookings = bookingArrayList.subList(startIndex, bookingArrayList.size());
@@ -150,18 +156,15 @@ public class BookingsController implements Initializable {
         
         bookingTableView.setItems(obsList);
     }
-
-    @FXML
-    private void setFullscreen(ActionEvent event) {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        fullScreen++;
-        if(Utils.isEven(fullScreen)){
-            stage.setFullScreen(true);
-            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
-            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-        }
-    }
     
+    
+    private boolean isItPaid(String login) throws ClubDAOException, IOException {
+        return Club.getInstance().hasCreditCard(login);
+    } 
+
+    /*
+    Cell format classes
+    */
     class DateTableCell extends TableCell<Booking,LocalTime> {
         @Override
         protected void updateItem(LocalTime item, boolean empty) {
@@ -226,11 +229,8 @@ public class BookingsController implements Initializable {
                 setText(res);
             }
         }
-    } 
-    /*
-    public void initBooking(String login) {
-        this.login = login;
     }
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -239,8 +239,6 @@ public class BookingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
-            
             initializeModel();
         } catch (ClubDAOException ex) {
             Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,7 +249,6 @@ public class BookingsController implements Initializable {
         courtColumn.setCellFactory(c -> new CourtTableCell());
         dayColumn.setCellFactory(c -> new DayTableCell());
         paidColumn.setCellFactory(c -> new PaidTableCell());
-        
         cancelCol.setCellFactory(column -> {
             return new TableCell<Void, Void>() {
                 private final Button button = new Button("CANCEL");
@@ -259,17 +256,13 @@ public class BookingsController implements Initializable {
                     button.setMaxWidth(Double.MAX_VALUE);
                     button.setPrefWidth(Double.MAX_VALUE);
                 }
-
                 {
                     button.setOnAction(event -> {
                         TableRow<?> row = getTableRow();
                         int rowIndex = row.getIndex();
-                        System.out.println(": "+ rowIndex);
-                        
-                        List<Booking> bookingArrayList = new ArrayList<Booking>();
                         login = LogInController.getMyNickname();
-                        ObservableList<Booking> listaElementos = bookingTableView.getItems();
-                        Booking removedBooking = listaElementos.get(rowIndex);
+                        ObservableList<Booking> bookingList = bookingTableView.getItems();
+                        Booking removedBooking = bookingList.get(rowIndex);
                         
                         LocalDate bookingDate = removedBooking.getMadeForDay();
                         LocalDate nowDate = LocalDate.now();
@@ -277,29 +270,31 @@ public class BookingsController implements Initializable {
                         LocalTime bookingTime = removedBooking.getFromTime();
                         LocalTime nowTime = LocalTime.now();
                         
+                        /*
+                        Cancelation not allowed neither for past bookings 
+                        nor within 24h of the booking time
+                        */
                         if(bookingDate.compareTo(nowDate) > 0) {
                             if (bookingTime.compareTo(nowTime.plusHours(24)) < 0){
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Confirmation");
-                                alert.setHeaderText("Are you sure you want to cancel?");
-                                alert.setContentText("Extra costs will be efectuated");
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Cancelation Not Allowed");
+                                alert.setHeaderText("Important: Reservation Cancellation Notice");
+                                alert.setContentText("\"Important: Reservation Cancellation Policy\n" +
+                                "\n" +
+                                "Please be informed that cancellations are not allowed within 24 hours of the reservation time. " +
+                                "In the event of a late cancellation or a no-show, a cancellation fee will be applied.\n" +
+                                "\n" +
+                                "We kindly request that you plan your changes accordingly to avoid any charges.\n" +
+                                "\n" +
+                                "If you have any questions or need further assistance, please contact our customer support team.\n" +
+                                "\n" +
+                                "Thank you for your understanding.");
                                 Optional<ButtonType> result = alert.showAndWait();
-                                if (result.isPresent() && result.get() == ButtonType.OK){
-                                    try {
-                                    Club.getInstance().removeBooking(removedBooking);
-                                    bookingTableView.getItems().remove(removedBooking);
-                                    bookingTableView.refresh();
-                                    } catch (ClubDAOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    } catch (IOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                }
                             }else {
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Confirmation");
                                 alert.setHeaderText("Are you sure you want to cancel?");
-                                alert.setContentText("Extra costs might be efectuated");
+                                alert.setContentText(null);
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.isPresent() && result.get() == ButtonType.OK){
                                     try {
@@ -314,47 +309,24 @@ public class BookingsController implements Initializable {
                                 }
                             }
                         } else if(bookingDate.compareTo(nowDate) == 0 && bookingTime.compareTo(nowTime) > 0) {
-                            if (bookingTime.compareTo(nowTime.plusHours(24)) < 0){
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Confirmation");
-                                alert.setHeaderText("Are you sure you want to cancel?");
-                                alert.setContentText("Extra costs will be efectuated");
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Cancelation Not Allowed");
+                                alert.setHeaderText("Important: Reservation Cancellation Notice");
+                                alert.setContentText("\"Important: Reservation Cancellation Policy\n" +
+                                "\n" +
+                                "Please be informed that cancellations are not allowed within 24 hours of the reservation time. " +
+                                "In the event of a late cancellation or a no-show, a cancellation fee will be applied.\n" +
+                                "\n" +
+                                "We kindly request that you plan your changes accordingly to avoid any charges.\n" +
+                                "\n" +
+                                "If you have any questions or need further assistance, please contact our customer support team.\n" +
+                                "\n" +
+                                "Thank you for your understanding.");
                                 Optional<ButtonType> result = alert.showAndWait();
-                                if (result.isPresent() && result.get() == ButtonType.OK){
-                                    try {
-                                    Club.getInstance().removeBooking(removedBooking);
-                                    bookingTableView.getItems().remove(removedBooking);
-                                    bookingTableView.refresh();
-                                    } catch (ClubDAOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    } catch (IOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                }
-                            }else {
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Confirmation");
-                                alert.setHeaderText("Are you sure you want to cancel?");
-                                alert.setContentText("Extra costs might be efectuated");
-                                Optional<ButtonType> result = alert.showAndWait();
-                                if (result.isPresent() && result.get() == ButtonType.OK){
-                                    try {
-                                    Club.getInstance().removeBooking(removedBooking);
-                                    bookingTableView.getItems().remove(removedBooking);
-                                    bookingTableView.refresh();
-                                    } catch (ClubDAOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    } catch (IOException ex) {
-                                    Logger.getLogger(BookingsController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                }
-                            }
                         } else {
                             Alert alert = new Alert(AlertType.INFORMATION);
-                            // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
                             alert.setTitle("Cancelation Not Allowed");
                             alert.setHeaderText(null);
-                            // or null if we do not want a header
                             alert.setContentText("Cancelation not allowed for past bookings.");
                             alert.showAndWait();
                         }
@@ -419,7 +391,8 @@ public class BookingsController implements Initializable {
         stage.show();
         backButton.getScene().getWindow().hide();
     }
-
+    
+    // By pressing key
     @FXML
     private void makeFullScreen(KeyEvent event) {
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -430,8 +403,16 @@ public class BookingsController implements Initializable {
             stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
         }
     }
-  
-    private boolean isItPaid(String login) throws ClubDAOException, IOException {
-        return Club.getInstance().hasCreditCard(login);
-    } 
+    
+    // Used in menu bar
+    @FXML
+    private void setFullscreen(ActionEvent event) {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen)){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
 }
