@@ -58,7 +58,9 @@ import model.Member;
  * @author Javi
  */
 public class EditProfileController implements Initializable {
-
+    /*
+    FXML objects
+    */
     @FXML
     private MenuItem exitButton;
     @FXML
@@ -99,6 +101,8 @@ public class EditProfileController implements Initializable {
     private Button acceptButton;
     @FXML
     private Button cancelButton;
+    @FXML
+    private TextField nicknameS;
     
     //properties to control valid fieds values. 
     private final int EQUALS = 0;
@@ -112,16 +116,13 @@ public class EditProfileController implements Initializable {
     private BooleanProperty validImagePath;
     private Image globalAvatar;
     private int fullScreen = 1;
-    @FXML
-    private TextField nicknameS;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
         try {
             globalAvatar = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getImage();
         } catch (ClubDAOException | IOException ex) {
@@ -239,48 +240,6 @@ public class EditProfileController implements Initializable {
         nicknameS.setText(LogInController.getMyNickname());
         nicknameS.setDisable(true);
         
-    }    
-
-    @FXML
-    private void isExited(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("You are about to leave the program");
-        alert.setContentText("Are you sure you want to leave?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK){
-            System.out.println("OK");
-            Platform.exit();
-        } else {
-            System.out.println("CANCEL");
-        }
-    }
-
-    @FXML
-    private void searchImage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
-        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().addAll(extFilterJPG,extFilterJPEG,extFilterPNG);
-        File file = fileChooser.showOpenDialog(null);
-        if(file != null){
-            Image avatar = new Image(file.toURI().toString());
-            profilePicContainer.setFill(new ImagePattern(avatar));
-            globalAvatar = avatar;
-        }
-    }
-
-    @FXML
-    private void isAccepted(MouseEvent event) {
-        passwS.textProperty().setValue("");
-        repPasswS.textProperty().setValue("");
-        numberS.textProperty().setValue("");
-        
-        validEmail.setValue(Boolean.FALSE);
-        validPassword.setValue(Boolean.FALSE);
-        equalPasswords.setValue(Boolean.FALSE);
-        validPhone.setValue(Boolean.FALSE);
     }
 
     @FXML
@@ -336,7 +295,7 @@ public class EditProfileController implements Initializable {
                 alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
                 alert.showAndWait();
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Log-in (main screen).fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -346,7 +305,11 @@ public class EditProfileController implements Initializable {
                 Image icon = new Image("/resources/images/pelota.png");
                 stage.getIcons().add(icon);
                 stage.setTitle("Main Window");
-                stage.setFullScreen(false);
+                if(Utils.isEven(fullScreen)) {
+                    stage.setFullScreen(true);
+                } else {
+                    stage.setFullScreen(false);
+                }
                 stage.setFullScreenExitHint("Press F11 to exit fullscreen");
                 stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -362,41 +325,6 @@ public class EditProfileController implements Initializable {
         }
     }
 
-    @FXML
-    private void canceledClicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Log-in");
-        stage.setMinHeight(579);
-	stage.setMinWidth(976);
-        stage.setFullScreen(false);
-        Image icon = new Image("/resources/images/pelota.png");
-        stage.getIcons().add(icon);
-        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
-        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
-        cancelButton.getScene().getWindow().hide();
-    }
-
-    @FXML
-    private void makeFullScreen(KeyEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        fullScreen++;
-        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
-            stage.setFullScreen(true);
-            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
-            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-        }
-    }
-    
-    
-    
-    
-    
      private void checkPaymentInfo(){
         if(!Utils.checkCreditCard(cardS.textProperty().getValueSafe()))
         //Incorrect email
@@ -501,6 +429,79 @@ public class EditProfileController implements Initializable {
     {
         errorLabel.visibleProperty().set(false);
         textField.styleProperty().setValue("");
+    }
+    
+    @FXML
+    private void canceledClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log-in");
+        stage.setMinHeight(579);
+	stage.setMinWidth(976);
+        stage.setFullScreen(false);
+        Image icon = new Image("/resources/images/pelota.png");
+        stage.getIcons().add(icon);
+        stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+        stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        cancelButton.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void makeFullScreen(KeyEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        fullScreen++;
+        if(Utils.isEven(fullScreen) && event.getCode() == KeyCode.F11){
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("Press F11 to exit fullscreen");
+            stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
+        }
+    }
+    
+    @FXML
+    private void isExited(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("You are about to leave the program");
+        alert.setContentText("Are you sure you want to leave?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK){
+            System.out.println("OK");
+            Platform.exit();
+        } else {
+            System.out.println("CANCEL");
+        }
+    }
+
+    @FXML
+    private void searchImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG,extFilterJPEG,extFilterPNG);
+        File file = fileChooser.showOpenDialog(null);
+        if(file != null){
+            Image avatar = new Image(file.toURI().toString());
+            profilePicContainer.setFill(new ImagePattern(avatar));
+            globalAvatar = avatar;
+        }
+    }
+
+    @FXML
+    private void isAccepted(MouseEvent event) {
+        passwS.textProperty().setValue("");
+        repPasswS.textProperty().setValue("");
+        numberS.textProperty().setValue("");
+        
+        validEmail.setValue(Boolean.FALSE);
+        validPassword.setValue(Boolean.FALSE);
+        equalPasswords.setValue(Boolean.FALSE);
+        validPhone.setValue(Boolean.FALSE);
     }
 
     @FXML
