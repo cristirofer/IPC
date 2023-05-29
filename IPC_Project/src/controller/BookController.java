@@ -499,8 +499,8 @@ public class BookController implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             // or AlertType.WARNING or AlertType.ERROR or AlertType.CONFIRMATION
-            alert.setTitle("Booking sucessfully created!");
-            alert.setHeaderText("Transaction is not paid");
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Booking sucessfully created!");
             // or null if we do not want a header
             alert.setContentText("You can see the details in My Bookings");
             alert.showAndWait();
