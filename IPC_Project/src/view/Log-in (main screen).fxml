@@ -119,7 +119,7 @@
                               <Hyperlink fx:id="linktoSignUp" accessibleRole="BUTTON" onAction="#signUpClicked" prefHeight="24.0" prefWidth="82.0" text="Sign-up here." />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="180.0" prefWidth="413.0" VBox.vgrow="NEVER">
+                        <HBox alignment="CENTER" prefHeight="149.0" prefWidth="592.0" VBox.vgrow="NEVER">
                            <children>
                               <Button mnemonicParsing="false" onAction="#changeMode" prefHeight="35.0" prefWidth="61.0" style="-fx-cursor: hand;">
                                  <graphic>
@@ -151,6 +151,7 @@
                               </Button>
                            </children>
                         </HBox>
+                        <Label text="Atention: Authentication is necessary to book tennis courts" textFill="RED" />
                      </children>
                   </VBox>
                </children>
