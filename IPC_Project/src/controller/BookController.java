@@ -167,6 +167,7 @@ public class BookController implements Initializable {
     private GridPane grid;
     @FXML
     private Label labelCol;
+    String [] names = new String[12];
     
     /**
      * Initializes the controller class.
@@ -428,36 +429,36 @@ public class BookController implements Initializable {
     
     @FXML
     private void bookPressed(ActionEvent event) throws ClubDAOException, IOException {
-        
+        Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
         if(isSelected){   
                 if (index == 0){
-                        if (list[index + 1].getText().equals("Booked") && list[index + 2].getText().equals("Booked")){
+                        if (list[index + 1].getText().equals("Booked") && names[index+1].equals(myMember.getName()) && list[index + 2].getText().equals("Booked") && names[index+2].equals(myMember.getName())){
                             showErrorMessage();
                         } else{
                             showCorrectMessage();
                         }
                 } else if (index == 12){
-                        if (list[index - 1].getText().equals("Booked") && list[index - 2].getText().equals("Booked")){
+                        if (list[index - 1].getText().equals("Booked") && names[index-1].equals(myMember.getName()) && list[index - 2].getText().equals("Booked") && names[index - 2].equals(myMember.getName())){
                             showErrorMessage();
                         } else{
                             showCorrectMessage();
                         }
                 }else if (index == 1){
-                    if ((list[index + 1].getText().equals("Booked"))&&(list[index + 2].getText().equals("Booked") || list[index - 1].getText().equals("Booked"))){
+                    if (((list[index + 1].getText().equals("Booked"))&& names[index + 1].equals(myMember.getName()))&&((list[index + 2].getText().equals("Booked")&& names[index+2].equals(myMember.getName())) || (list[index - 1].getText().equals("Booked")&& names[index-1].equals(myMember.getName())))){
                             showErrorMessage();
                     } else{
                             showCorrectMessage();
                     }
                 } else if (index == 11){
-                     if ((list[index - 1].getText().equals("Booked"))&&(list[index - 2].getText().equals("Booked") || list[index + 1].getText().equals("Booked"))){
+                     if ((list[index - 1].getText().equals("Booked")&& names[index-1].equals(myMember.getName()))&&((list[index - 2].getText().equals("Booked")&& names[index-2].equals(myMember.getName())) || (list[index + 1].getText().equals("Booked")&& names[index+1].equals(myMember.getName())))){
                             showErrorMessage();
                     } else{
                             showCorrectMessage();
                     } 
                 }else {
-                        if((list[index + 1].getText().equals("Booked"))&&(list[index + 2].getText().equals("Booked") || list[index - 1].getText().equals("Booked"))){
+                        if((list[index + 1].getText().equals("Booked")&& names[index+1].equals(myMember.getName()))&&((list[index + 2].getText().equals("Booked")&& names[index+2].equals(myMember.getName())) || (list[index - 1].getText().equals("Booked")&& names[index-1].equals(myMember.getName())))){
                             showErrorMessage(); 
-                        } else if ((list[index - 1].getText().equals("Booked"))&&(list[index - 2].getText().equals("Booked") || list[index + 1].getText().equals("Booked"))){
+                        } else if ((list[index - 1].getText().equals("Booked")&& names[index-1].equals(myMember.getName()))&&((list[index - 2].getText().equals("Booked")&& names[index-2].equals(myMember.getName())) || (list[index + 1].getText().equals("Booked")&& names[index+1].equals(myMember.getName())))){
                             showErrorMessage();
                         } else{
                             showCorrectMessage();
@@ -476,6 +477,7 @@ public class BookController implements Initializable {
             alert.showAndWait();
         }
     }
+   
     public void showCorrectMessage() throws ClubDAOException, IOException{
         Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
         if(myMember.checkHasCreditInfo()){
@@ -616,66 +618,79 @@ public class BookController implements Initializable {
                     fil1.setText("Booked");
                     isBooked1.setValue(Boolean.TRUE);
                     fil1.getStyleClass().clear();fil1.getStyleClass().add("toggle-button-occupied");
+                    names[0]=bi.getMember().getName();
                     break;
                 case "10:00" :
                     fil2.setText("Booked");
                     isBooked2.setValue(Boolean.TRUE);
                     fil2.getStyleClass().clear();fil2.getStyleClass().add("toggle-button-occupied");
+                    names[1]=bi.getMember().getName();
                     break;
                 case "11:00" :
                     fil3.setText("Booked");
                     isBooked3.setValue(Boolean.TRUE);
                     fil3.getStyleClass().clear();fil3.getStyleClass().add("toggle-button-occupied");
+                    names[2]=bi.getMember().getName();
                     break;
                 case "12:00" :
                     fil4.setText("Booked");
                     isBooked4.setValue(Boolean.TRUE);
                     fil4.getStyleClass().clear();fil4.getStyleClass().add("toggle-button-occupied");
+                    names[3]=bi.getMember().getName();
                     break;
                 case "13:00" :
                     fil5.setText("Booked");
                     isBooked5.setValue(Boolean.TRUE);
                     fil5.getStyleClass().clear();fil5.getStyleClass().add("toggle-button-occupied");
+                    names[4]=bi.getMember().getName();
                     break;
                 case "14:00" :
                     fil6.setText("Booked");
                     isBooked6.setValue(Boolean.TRUE);
                     fil6.getStyleClass().clear();fil6.getStyleClass().add("toggle-button-occupied");
+                    names[5]=bi.getMember().getName();
                     break;
                 case "15:00" :
                     fil7.setText("Booked");
                     isBooked7.setValue(Boolean.TRUE);
                     fil7.getStyleClass().clear();fil7.getStyleClass().add("toggle-button-occupied");
+                    names[6]=bi.getMember().getName();
                     break;
                 case "16:00" :
                     fil8.setText("Booked");
                     isBooked8.setValue(Boolean.TRUE);
                     fil8.getStyleClass().clear();fil8.getStyleClass().add("toggle-button-occupied");
+                    names[7]=bi.getMember().getName();
                     break;
                 case "17:00" :
                     fil9.setText("Booked");
                     isBooked9.setValue(Boolean.TRUE);
                     fil9.getStyleClass().clear();fil9.getStyleClass().add("toggle-button-occupied");
+                    names[8]=bi.getMember().getName();
                     break;
                 case "18:00" :
                     fil10.setText("Booked");
                     isBooked10.setValue(Boolean.TRUE);
                     fil10.getStyleClass().clear();fil10.getStyleClass().add("toggle-button-occupied");
+                    names[9]=bi.getMember().getName();
                     break;
                 case "19:00" :
                     fil11.setText("Booked");
                     isBooked11.setValue(Boolean.TRUE);
                     fil11.getStyleClass().clear();fil11.getStyleClass().add("toggle-button-occupied");
+                    names[10]=bi.getMember().getName();
                     break;
                 case "20:00" :
                     fil12.setText("Booked");
                     isBooked12.setValue(Boolean.TRUE);
                     fil12.getStyleClass().clear();fil12.getStyleClass().add("toggle-button-occupied");
+                    names[11]=bi.getMember().getName();
                     break;
                 case "21:00" :
                     fil13.setText("Booked");
                     isBooked13.setValue(Boolean.TRUE);
                     fil13.getStyleClass().clear();fil13.getStyleClass().add("toggle-button-occupied");
+                    names[12]=bi.getMember().getName();
                     break;
             }
         }
