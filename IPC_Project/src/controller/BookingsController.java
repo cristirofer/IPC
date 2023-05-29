@@ -312,14 +312,9 @@ public class BookingsController implements Initializable {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Cancelation Not Allowed");
                                 alert.setHeaderText("Important: Reservation Cancellation Notice");
-                                alert.setContentText("\"Important: Reservation Cancellation Policy\n" +
-                                "\n" +
-                                "Please be informed that cancellations are not allowed within 24 hours of the reservation time. " +
+                                alert.setContentText(
+                                "Cancellations are not allowed within 24 hours of the reservation time. " +
                                 "In the event of a late cancellation or a no-show, a cancellation fee will be applied.\n" +
-                                "\n" +
-                                "We kindly request that you plan your changes accordingly to avoid any charges.\n" +
-                                "\n" +
-                                "If you have any questions or need further assistance, please contact our customer support team.\n" +
                                 "\n" +
                                 "Thank you for your understanding.");
                                 Optional<ButtonType> result = alert.showAndWait();
