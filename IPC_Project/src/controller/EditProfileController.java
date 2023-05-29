@@ -103,6 +103,7 @@ public class EditProfileController implements Initializable {
     private Button cancelButton;
     @FXML
     private TextField nicknameS;
+    private Member myMember = LogInController.getMyMember();
     
     //properties to control valid fieds values. 
     private final int EQUALS = 0;
@@ -221,15 +222,6 @@ public class EditProfileController implements Initializable {
             }
         });
         
-        Member myMember = null;
-        try {
-            myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword());
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(EditProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(EditProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         nameS.setText(myMember.getName());
         fNameS.setText(myMember.getSurname());
         numberS.setText(myMember.getTelephone());
@@ -276,14 +268,15 @@ public class EditProfileController implements Initializable {
         if (result.isPresent()){
             if (result.get().equals(LogInController.getMyPassword())){
                 
-                Member myMember = Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(), LogInController.getMyPassword());
+                Member myMember = LogInController.getMyMember();
                 myMember.setName(nameS.textProperty().getValueSafe());
                 myMember.setSurname(fNameS.textProperty().getValueSafe());
                 myMember.setTelephone(numberS.textProperty().getValueSafe());
-                if (!passwS.getText().equals("")){
+                if (!passwS.textProperty().getValueSafe().equals("")){
                     myMember.setPassword(passwS.textProperty().getValueSafe());
+                    LogInController.setMyPassword(passwS.textProperty().getValueSafe());
                 }
-                if (!cardS.getText().equals("") && !cscS.getText().equals("")){
+                if (!cardS.textProperty().getValueSafe().equals("") && !cscS.textProperty().getValueSafe().equals("")){
                     myMember.setCreditCard(cardS.textProperty().getValueSafe());
                     myMember.setSvc(Integer.parseInt(cscS.textProperty().getValueSafe()));
                 }
@@ -292,7 +285,7 @@ public class EditProfileController implements Initializable {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Profile updated");
                 alert.setHeaderText("Your information has been updated");
-                alert.setContentText("Good bye " + Club.getInstance().getMemberByCredentials(LogInController.getMyNickname(),LogInController.getMyPassword()).getName() + "!");
+                alert.setContentText("Good bye " + myMember.getName() + "!");
                 alert.showAndWait();
                 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
@@ -379,14 +372,12 @@ public class EditProfileController implements Initializable {
             equalPasswords.setValue(Boolean.FALSE);
             passwS.textProperty().setValue("");
             repPasswS.textProperty().setValue("");
-            passwS.requestFocus();
         }else
             manageCorrect(lPassDifferent, repPasswS, equalPasswords);
     }
     private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage(errorLabel,textField);
-        textField.requestFocus();
  
     }
     private void manageError2(Label errorLabel,TextField textField, BooleanProperty boolProp ){

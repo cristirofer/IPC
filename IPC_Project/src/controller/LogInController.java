@@ -94,6 +94,7 @@ public class LogInController implements Initializable {
     private VBox vbox1;
     @FXML
     private Label accountLabel;
+    private static Member myMember;
     
     
     private static String myString1;
@@ -105,7 +106,14 @@ public class LogInController implements Initializable {
     public static String getMyPassword(){
         return myString2;
     }
-   
+    
+    public static Member getMyMember(){
+        return myMember;
+    }
+    
+    public static void setMyPassword(String p){
+        myString2 = p;
+    }
     
     private void manageNicknameError(Label errorLabel,TextField textField1,PasswordField textField2){
         showNicknameErrorMessage(errorLabel,textField1, textField2);
@@ -322,7 +330,7 @@ public class LogInController implements Initializable {
                 //load next screen
                 myString1 = loginemail.textProperty().getValueSafe();
                 myString2 = loginpassword.textProperty().getValueSafe();
-                Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
+                myMember = Club.getInstance().getMemberByCredentials(loginemail.textProperty().getValueSafe(), loginpassword.textProperty().getValueSafe());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main Window.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
