@@ -35,11 +35,11 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="NEVER">
                <children>
-                  <ImageView fx:id="banner" fitHeight="526.0" fitWidth="273.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="banner" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
@@ -48,7 +48,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="519.0" prefWidth="671.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="392.0" VBox.vgrow="ALWAYS">
+                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="392.0" VBox.vgrow="NEVER">
                      <font>
                         <Font name="Century Gothic" size="42.0" />
                      </font>
@@ -60,8 +60,8 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="242.0" prefWidth="671.0" VBox.vgrow="ALWAYS">
+                  <Circle fx:id="profilePicContainer" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" VBox.vgrow="NEVER" />
+                  <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="242.0" prefWidth="671.0" VBox.vgrow="NEVER">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="341.5999755859375" minWidth="10.0" prefWidth="238.4000671386719" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.39997558593745" minWidth="10.0" prefWidth="199.000048828125" />
@@ -170,7 +170,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </GridPane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="671.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="671.0" VBox.vgrow="NEVER">
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0" HBox.hgrow="NEVER">
                            <children>
