@@ -167,7 +167,7 @@ public class BookController implements Initializable {
     private GridPane grid;
     @FXML
     private Label labelCol;
-    String [] names = new String[12];
+    String [] names = new String[13];
     
     /**
      * Initializes the controller class.
