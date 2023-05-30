@@ -135,12 +135,12 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lIncorrectEmail" prefHeight="17.0" prefWidth="180.0" text="2-8 characters without spaces or special characters." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Label fx:id="lIncorrectEmail" prefHeight="17.0" prefWidth="180.0" text="2-8 characters. No spaces" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lIncorrectPassword" text="It must have at least 8 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <Label fx:id="lIncorrectPassword" text="Min 6 numbers or letters" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
@@ -150,7 +150,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="IincorrectPhoneNumber" layoutX="452.0" layoutY="112.0" prefHeight="17.0" prefWidth="180.0" text="It must be 9 characters long and only contain numbers." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="IincorrectPhoneNumber" layoutX="452.0" layoutY="112.0" prefHeight="17.0" prefWidth="180.0" text="Combination of 9 numbers" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <children>
                               <Button fx:id="selectprofileS" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchImage" prefHeight="25.0" prefWidth="80.0" style="-fx-cursor: hand; -fx-background-color: #2d752f;" text="Select" textFill="WHITE" />
