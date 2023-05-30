@@ -39,7 +39,7 @@
          <children>
             <VBox prefHeight="530.0" prefWidth="290.0" HBox.hgrow="SOMETIMES">
                <children>
-                  <ImageView fx:id="banner" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <ImageView fx:id="banner" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../resources/images/tennisCourt.jpg" />
                      </image>
@@ -169,7 +169,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </GridPane>
-                  <HBox alignment="BOTTOM_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="660.0" VBox.vgrow="SOMETIMES">
+                  <HBox alignment="BOTTOM_RIGHT" maxWidth="-Infinity" prefHeight="105.0" prefWidth="660.0" VBox.vgrow="NEVER">
                      <children>
                         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="128.0">
                            <children>
