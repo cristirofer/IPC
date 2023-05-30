@@ -157,28 +157,42 @@ public class EditProfileController implements Initializable {
         acceptButton.disableProperty().bind(Bindings.not(validFields));
         
         nameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validName.setValue(true);
+            if(nameS.textProperty().getValueSafe().toCharArray().length >= 1){
+                validName.setValue(true);
+            }
         }));
         
         fNameS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validSurname.setValue(true);
+            if(fNameS.textProperty().getValueSafe().toCharArray().length >= 1){
+                validSurname.setValue(true);
+            }
         }));
         
         numberS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validPhone.setValue(true);
+            if(numberS.textProperty().getValueSafe().toCharArray().length == 9){
+                validPhone.setValue(true);
+            }
         }));
         passwS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validPassword.setValue(true);
+            if((passwS.textProperty().getValueSafe().toCharArray().length >= 6) && (nameS.textProperty().getValueSafe().toCharArray().length <= 15)){
+                validPassword.setValue(true);
+            }
         }));
         cscS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validPaymentInfo.setValue(true);
+            if(cscS.textProperty().getValueSafe().toCharArray().length == 3){
+                validPaymentInfo.setValue(true);
+            }
         }));
         
         cardS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            validPaymentInfo.setValue(true);
+            if(cardS.textProperty().getValueSafe().toCharArray().length == 16){
+                validPaymentInfo.setValue(true);
+            }
         }));
         repPasswS.textProperty().addListener( ((observable, oldVal, newVal) -> {
-            equalPasswords.setValue(true);
+            if((passwS.textProperty().getValueSafe().toCharArray().length >= 6) && (nameS.textProperty().getValueSafe().toCharArray().length <= 15)){
+                equalPasswords.setValue(true);
+            }
         }));
         
         nameS.focusedProperty().addListener((observable, oldValue, newValue)->{
