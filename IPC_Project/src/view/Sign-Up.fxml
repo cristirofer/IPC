@@ -135,7 +135,7 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lIncorrectEmail" prefHeight="17.0" prefWidth="180.0" text="It must be 2-8 characters long, without spaces or special characters." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Label fx:id="lIncorrectEmail" prefHeight="17.0" prefWidth="180.0" text="2-8 characters without spaces or special characters." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
