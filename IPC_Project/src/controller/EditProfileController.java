@@ -443,7 +443,7 @@ public class EditProfileController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Log-in");
+        stage.setTitle("Main Window");
         stage.setMinHeight(579);
 	stage.setMinWidth(976);
         stage.setFullScreen(false);
