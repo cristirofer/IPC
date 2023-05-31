@@ -156,7 +156,7 @@
                               <Button fx:id="selectprofileS" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchImage" prefHeight="25.0" prefWidth="80.0" style="-fx-cursor: hand; -fx-background-color: #2d752f;" text="Select" textFill="WHITE" />
                            </children>
                         </HBox>
-                        <Label fx:id="paymentError" layoutX="452.0" layoutY="174.0" prefHeight="17.0" prefWidth="151.0" text="Invalid payment information." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <Label fx:id="paymentError" layoutX="452.0" layoutY="174.0" prefHeight="17.0" prefWidth="185.0" text="Invalid payment information." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                         <Label fx:id="incorrectName" layoutX="447.0" layoutY="81.0" prefHeight="17.0" prefWidth="180.0" text="Invalid name." textFill="RED" visible="false" GridPane.columnIndex="2" />
                         <Label fx:id="incorrectSurname" layoutX="447.0" layoutY="18.0" prefHeight="17.0" prefWidth="180.0" text="Invalid surname." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="incorrectImageRoute" layoutX="447.0" layoutY="50.0" prefHeight="17.0" prefWidth="180.0" text="Invalid image route." textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
